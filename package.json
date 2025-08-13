@@ -1,0 +1,20 @@
+{
+  "name": "fpfe",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "author": "pung@fp94214@gmail.com",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "tsdown": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  }
+}
+

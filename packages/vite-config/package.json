@@ -1,0 +1,29 @@
+{
+  "name": "@fp/vite-config",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsdown src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "lint:fix": "pnpm run lint --fix"
+  },
+  "peerDependencies": {
+    "vite": "catalog:"
+  },
+  "dependencies": {
+    "@fp/shared": "workspace:*",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
+    "unocss": "catalog:",
+    "unplugin-auto-import": "catalog:",
+    "unplugin-icons": "catalog:",
+    "unplugin-vue-components": "catalog:"
+  },
+  "devDependencies": {
+    "vite": "catalog:"
+  }
+}

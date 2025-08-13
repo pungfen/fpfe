@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+
+    "module": "esnext",
+
+    "moduleResolution": "bundler",
+    "allowJs": true,
+
+    "strict": true,
+    "noEmit": true
+  },
+  "include": ["eslint.config.*", "prettier.config.*"]
+}
