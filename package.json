@@ -5,18 +5,17 @@
   "type": "module",
   "author": "pung@fp94214@gmail.com",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "@eslint/js": "catalog:",
-    "@types/node": "catalog:",
-    "eslint": "catalog:",
-    "lint-staged": "catalog:",
-    "prettier": "catalog:",
+    "@types/node": "^24.2.1",
+    "lint-staged": "^16.1.5",
+    "prettier": "catalog:dev",
     "simple-git-hooks": "^2.13.1",
-    "tsdown": "catalog:",
-    "tsx": "catalog:",
-    "typescript": "catalog:"
+    "tsdown": "^0.14.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
@@ -25,3 +24,4 @@
     "*": "echo 'Hello!'"
   }
 }
+
