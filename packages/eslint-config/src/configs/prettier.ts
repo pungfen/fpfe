@@ -1,11 +1,11 @@
-import { pluginPrettier, pluginPrettierRecommended } from "../plugins";
+import { pluginPrettier, pluginPrettierRecommended } from '../plugins'
 
-import type { Config } from "../types";
+import type { TypedFlatConfigItem } from '../types'
 
-export const prettier = (): Config[] => {
+export const prettier = (): TypedFlatConfigItem[] => {
   return [
     {
-      name: "fp/prettier",
+      name: 'fp/prettier',
       plugins: {
         prettier: pluginPrettier,
       },
@@ -13,5 +13,5 @@ export const prettier = (): Config[] => {
         ...pluginPrettierRecommended.rules,
       },
     },
-  ];
-};
+  ]
+}

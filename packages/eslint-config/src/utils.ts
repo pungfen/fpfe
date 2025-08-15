@@ -1,9 +1,9 @@
 import type { Awaitable } from '@fp/shared'
-import type { Config } from './types'
+import type { TypedFlatConfigItem } from './types'
 
 export const combine = async (
-  ...configs: Awaitable<Config | Config[]>[]
-): Promise<Config[]> => {
+  ...configs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]
+): Promise<TypedFlatConfigItem[]> => {
   const resolved = await Promise.all(configs)
   return resolved.flat()
 }

@@ -14,29 +14,7 @@
     "eslint": "^9.32.0"
   },
   "dependencies": {
-    "@fp/shared": "workspace:*",
-    "@eslint-community/eslint-plugin-eslint-comments": "catalog:",
-    "@eslint/js": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-flat-gitignore": "catalog:",
-    "eslint-config-prettier": "catalog:",
-    "eslint-flat-config-utils": "catalog:",
-    "eslint-plugin-import-x": "catalog:",
-    "eslint-plugin-jsdoc": "catalog:",
-    "eslint-plugin-jsonc": "catalog:",
-    "eslint-plugin-n": "catalog:",
-    "eslint-plugin-perfectionist": "catalog:",
-    "eslint-plugin-pnpm": "catalog:",
-    "eslint-plugin-prettier": "catalog:",
-    "eslint-plugin-unused-imports": "catalog:",
-    "eslint-plugin-vue": "catalog:",
-    "eslint-plugin-yaml": "catalog:",
-    "eslint-plugin-yml": "catalog:",
-    "globals": "catalog:",
-    "jsonc-eslint-parser": "catalog:",
-    "typescript-eslint": "catalog:",
-    "vue-eslint-parser": "catalog:",
-    "yaml-eslint-parser": "catalog:"
+    "@fp/shared": "workspace:*"
   },
   "devDependencies": {
     "eslint-typegen": "catalog:"

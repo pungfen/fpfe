@@ -1,5 +1,5 @@
 import { tseslint } from '../plugins'
-import type { Config } from '../types'
+import type { TypedFlatConfigItem } from '../types'
 
 export const typescriptCore = tseslint.config({
   extends: [...tseslint.configs.recommended],
@@ -8,8 +8,8 @@ export const typescriptCore = tseslint.config({
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
   },
-}) as Config[]
+}) as TypedFlatConfigItem[]
 
-export const typescript = (): Config[] => {
+export const typescript = (): TypedFlatConfigItem[] => {
   return [...typescriptCore]
 }
