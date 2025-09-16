@@ -1,26 +1,18 @@
-import {
-  FlatConfigComposer,
-  type Arrayable,
-  type Awaitable,
-} from 'eslint-flat-config-utils'
+import { FlatConfigComposer, type Awaitable } from 'eslint-flat-config-utils'
 
 import { ignores, javascript } from './configs'
 
 import type { TypedFlatConfigItem, ConfigNames } from './types'
 
-export interface Options {
-  prettier?: boolean
-  typescript?: boolean
-}
-
 export const fp = (
-  options: Options = {},
+  options: {
+    typescript?: boolean
+    vue?: boolean
+  } = {},
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> => {
-  const { prettier: enablePrettier, typescript: enableTypescript } = options
+  const { vue: enableVue, typescript: enableTypescript } = options
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = [ignores(), javascript()]
 
-  let composer = new FlatConfigComposer(...configs)
-
-  return composer
+  return new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>(...configs)
 }

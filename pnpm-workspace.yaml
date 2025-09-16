@@ -1,10 +1,10 @@
 packages:
   - packages/*
-  - __configs__/*
 
-catalogs:
-  dev:
-    prettier: ^3.6.2
+catalog:
+  '@eslint/js': ^9.35.0
+  eslint: ^9.35.0
+  prettier: ^3.6.2
 
 onlyBuiltDependencies:
   - simple-git-hooks

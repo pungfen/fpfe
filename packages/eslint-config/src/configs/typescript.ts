@@ -1,15 +1,13 @@
-import { tseslint } from '../plugins'
+import tseslint from 'typescript-eslint'
+
 import type { TypedFlatConfigItem } from '../types'
 
-export const typescriptCore = tseslint.config({
-  extends: [...tseslint.configs.recommended],
-  files: ['**/*.?([cm])ts', '**/*.tsx'],
-  name: 'fp/typescript',
-  rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
-  },
-}) as TypedFlatConfigItem[]
-
-export const typescript = (): TypedFlatConfigItem[] => {
-  return [...typescriptCore]
+export const typescript = async (): Promise<TypedFlatConfigItem[]> => {
+  return [
+    {
+      rules: {
+        '@typescript-eslint/adjacent-overload-signatures': 'off',
+      },
+    },
+  ]
 }

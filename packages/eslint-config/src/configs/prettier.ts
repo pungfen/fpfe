@@ -2,7 +2,7 @@ import { pluginPrettier, pluginPrettierRecommended } from '../plugins'
 
 import type { TypedFlatConfigItem } from '../types'
 
-export const prettier = (): TypedFlatConfigItem[] => {
+export const prettier = async (): Promise<TypedFlatConfigItem[]> => {
   return [
     {
       name: 'fp/prettier',
