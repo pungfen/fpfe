@@ -2,11 +2,13 @@
   "name": "@fp/eslint-config",
   "version": "0.0.1",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "pnpm run build:typegen && tsdown src/index.ts",
     "build:typegen": "tsx typegen.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint",
+    "test": "vitest"
   },
   "peerDependencies": {
     "eslint": "^9.35.0"

@@ -2,10 +2,10 @@ import fs from 'node:fs/promises'
 
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 
-import { javascript, ignores, perfectionist, imports } from './src/configs'
+import { javascript, ignores, perfectionist, imports, typescript } from './src/configs'
 
 const configs = (
-  await Promise.all([ignores(), javascript(), perfectionist(), imports()])
+  await Promise.all([ignores(), javascript(), perfectionist(), imports(), typescript()])
 ).flat()
 const names = configs.map(i => i.name).filter(Boolean) as string[]
 

@@ -1,6 +1,6 @@
 import type { RuleOptions, ConfigNames } from './typegen'
 
-import type { Linter } from 'eslint'
+import { Linter  } from 'eslint'
 
 export type { ConfigNames }
 
@@ -13,4 +13,10 @@ export type TypedFlatConfigItem = Omit<
 > & {
   plugins?: Record<string, any>
   rules?: Rules
+}
+
+export type Config = {
+  typescript?: boolean
+  vue?: boolean
+  formatter?: boolean
 }
