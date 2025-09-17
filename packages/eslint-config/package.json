@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "pnpm run build:typegen && tsdown src/index.ts",
+    "build": "pnpm run build:typegen && tsdown src/index.ts --clean --dts --format=esm",
     "build:typegen": "tsx typegen.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint",

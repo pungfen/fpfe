@@ -11,6 +11,7 @@
   "devDependencies": {
     "@fp/eslint-config": "workspace:*",
     "@types/node": "^24.2.1",
+    "eslint": "catalog:",
     "execa": "^9.6.0",
     "fast-glob": "^3.3.3",
     "lint-staged": "^16.1.5",

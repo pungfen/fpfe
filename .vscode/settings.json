@@ -6,6 +6,8 @@
 
   "editor.formatOnSave": true,
 
+  "eslint.runtime": "node",
+
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -22,5 +24,4 @@
     "xml"
   ],
 
-  "eslint.workingDirectories": ["./packages/eslint-config"]
 }

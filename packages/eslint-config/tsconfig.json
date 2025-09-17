@@ -7,5 +7,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["src", "test", "typegen.ts", "eslint.config.ts"]
+  "include": ["src", "test", "fixtures", "typegen.ts", "eslint.config.ts", "tsdown.config.ts"]
 }
