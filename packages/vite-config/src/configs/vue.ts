@@ -1,7 +1,7 @@
-import { pluginVue, type PluginVueOptions } from '../plugins'
-
 import type { Arrayable } from '@fp/shared'
 import type { Plugin } from 'vite'
+
+import { pluginVue, type PluginVueOptions } from '../plugins'
 
 export type VueOptions = PluginVueOptions
 

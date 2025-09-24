@@ -1,31 +1,13 @@
 {
   "name": "@fp/eslint-config",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "pnpm run build:typegen && tsdown src/index.ts --clean --dts --format=esm",
-    "build:typegen": "tsx typegen.ts",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint",
-    "test": "vitest"
-  },
-  "peerDependencies": {
-    "eslint": "^9.35.0"
-  },
-  "dependencies": {
-    "@eslint/js": "^9.35.0",
-    "eslint-flat-config-utils": "^2.1.1",
-    "eslint-plugin-import-lite": "^0.3.0",
-    "eslint-plugin-perfectionist": "^4.15.0",
-    "eslint-plugin-unused-imports": "^4.2.0",
-    "eslint-plugin-vue": "^10.4.0",
-    "globals": "^16.4.0",
-    "typescript-eslint": "^8.44.0",
-    "vue-eslint-parser": "^10.2.0"
+    "lint": "eslint"
   },
   "devDependencies": {
+    "@fp/shared": "workspace:*",
     "eslint-typegen": "^2.3.0"
   }
 }

@@ -1,3 +1,7 @@
+export type Arrayable<T> = T | T[]
+
+export type Awaitable<T> = Promise<T> | T
+
 export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N
 
 export type IsKeyValues<T, K = string> = IfAny<
@@ -5,6 +9,4 @@ export type IsKeyValues<T, K = string> = IfAny<
   false,
   T extends object ? (keyof T extends K ? true : false) : false
 >
-
-export type Awaitable<T> = T | Promise<T>
-export type Arrayable<T> = T | T[]
+export type Lazy<T> = () => Promise<T>

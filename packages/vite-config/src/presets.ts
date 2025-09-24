@@ -2,32 +2,32 @@ import { type UserConfig } from 'vite'
 
 import {
   autoImport,
-  unocss,
-  vue,
   type AutoImportOptions,
+  unocss,
   type UnocssOptions,
+  vue,
   type VueOptions
 } from './configs'
 
 export interface Options {
+  autoImport?: AutoImportOptions | boolean
+  components?: boolean
+  icons?: boolean
+  unocss?: boolean | UnocssOptions
   vue?: boolean | VueOptions
   vueJsx?: boolean
-  unocss?: boolean | UnocssOptions
-  autoImport?: boolean | AutoImportOptions
-  icons?: boolean
-  components?: boolean
 }
 
 export const fp = (options: Options = {}): UserConfig => {
   const {
     autoImport: enableAutoImport,
-    vue: enableVue,
-    unocss: enableUnocss
+    unocss: enableUnocss,
+    vue: enableVue
   } = options
 
   const config = {
     plugins: []
-  } as UserConfig & Required<Pick<UserConfig, 'plugins'>>
+  } as Required<Pick<UserConfig, 'plugins'>> & UserConfig
 
   if (enableVue) {
     config.plugins.push(typeof enableVue === 'object' ? vue(enableVue) : vue())

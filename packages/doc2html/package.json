@@ -1,0 +1,12 @@
+{
+  "name": "@fp/doc2html",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "mammoth": "^1.11.0",
+    "prettier": "^3.6.2"
+  }
+}
