@@ -1,5 +1,2 @@
-export * from './general'
-export * from './make-map'
-export * from './shape-flags'
 export * from './types'
 export * from './utils'

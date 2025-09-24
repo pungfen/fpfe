@@ -1,5 +1,7 @@
-import { Arrayable, Awaitable } from '@fp/shared'
-import { InlineConfig, type Plugin } from 'vite'
+import { resolve } from 'node:path'
+import { InlineConfig, type LibraryFormats, type Plugin } from 'vite'
+
+import type { Arrayable, Awaitable } from './types'
 
 import { autoImport, autoImportComponents, vue, vueJsx, vueRouter } from './plugins'
 
@@ -11,14 +13,19 @@ const combine = async (...ps: Awaitable<Arrayable<Plugin>>[]): Promise<Plugin[]>
 
 export const defineConfig = async (config: {
   elementPlus?: boolean
+  entry?: string
+  formats?: LibraryFormats[]
   mode?: 'build' | 'serve'
+  name?: string
+  resolve?: InlineConfig['resolve']
+  root?: string
   tailwindcss?: boolean
   type?: 'app' | 'lib'
   unocss?: boolean
   vue?: boolean
   vueJsx?: boolean
 } = {}) => {
-  const { elementPlus: enableElementPlus, vue: enableVue, vueJsx: enableVueJsx } = config
+  const { elementPlus: enableElementPlus, entry, formats = ['es'], name, root = process.cwd(), type = 'app', vue: enableVue, vueJsx: enableVueJsx } = config
 
   const plugins: Plugin[] = []
 
@@ -35,7 +42,18 @@ export const defineConfig = async (config: {
   }
 
   const inlineConfig: InlineConfig = {
-    plugins
+    plugins,
+    resolve: config.resolve
+  }
+
+  if (type === 'lib') {
+    inlineConfig.build = {
+      lib: {
+        entry: resolve(root, entry ?? 'src/index.ts'),
+        formats,
+        name
+      }
+    }
   }
 
   return inlineConfig

@@ -1,5 +1,7 @@
 import { type Plugin } from 'vite'
-import { type Arrayable, interopDefault } from '@fp/shared'
+
+import { type Arrayable } from '../types'
+import { interopDefault } from '../utils'
 
 export const vue = async (): Promise<Arrayable<Plugin>> => {
   const pluginVue = await interopDefault(import('@vitejs/plugin-vue'))

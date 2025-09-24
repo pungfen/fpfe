@@ -1,14 +1,16 @@
 import type { ComponentResolver } from 'unplugin-vue-components/types'
-import type { Plugin } from 'vite'
 
-import { interopDefault } from '@fp/shared'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { type Plugin } from 'vite'
+
+import { type Arrayable } from '../types'
+import { interopDefault } from '../utils'
 
 export const autoImport = async (config: {
   elementPlusResolver?: boolean
-} = {}): Promise<Plugin> => {
+} = {}): Promise<Arrayable<Plugin>> => {
   const { elementPlusResolver } = config
 
   const resolvers: (ComponentResolver | ComponentResolver[])[] = []
@@ -23,12 +25,12 @@ export const autoImport = async (config: {
     dirs: ['src/utils/**', 'src/composables/**', 'src/components/**'],
     imports: ['vue', VueRouterAutoImports],
     resolvers
-  }) as Plugin
+  })
 }
 
 export const autoImportComponents = async (config: {
   elementPlusResolver?: boolean
-} = {}): Promise<Plugin> => {
+} = {}): Promise<Arrayable<Plugin>> => {
   const { elementPlusResolver } = config
 
   const resolvers: (ComponentResolver | ComponentResolver[])[] = []
@@ -39,5 +41,5 @@ export const autoImportComponents = async (config: {
     )
   }
 
-  return Components({ resolvers }) as Plugin
+  return Components({ resolvers })
 }

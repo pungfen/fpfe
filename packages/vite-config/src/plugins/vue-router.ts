@@ -1,10 +1,9 @@
-import { type Arrayable, interopDefault } from '@fp/shared'
-import type { Plugin } from 'vite'
+import { type Plugin } from 'vite'
+
+import { type Arrayable } from '../types'
+import { interopDefault } from '../utils'
 
 export const vueRouter = async (): Promise<Arrayable<Plugin>> => {
   const pluginVueRouter = await interopDefault(import('unplugin-vue-router/vite'))
-  return {
-    name: 'vue-router',
-    ...pluginVueRouter({ pathParser: { dotNesting: true } })
-  }
+  return pluginVueRouter({ pathParser: { dotNesting: true } })
 }

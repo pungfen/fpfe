@@ -12,14 +12,14 @@ export const isObject = (val: unknown): val is Record<any, any> => val !== null 
 export const isFunction = (val: unknown): val is Function => val !== null && typeof val === 'function'
 
 export const isIntegerKey = (key: unknown): boolean => {
-  return isString(key) && key !== 'NaN' && key[0] !== '-' && '' + parseInt(key, 10) === key
+  return isString(key) && key !== 'NaN' && !key.startsWith('-') && '' + parseInt(key, 10) === key
 }
 
 export const NO = () => false
 export const isOn = (key: string): boolean => {
   return (
-    key.charCodeAt(0) === 111 /* o */ &&
-    key.charCodeAt(1) === 110 /* n */ &&
+    key.charCodeAt(0) === 111
+    && /* o */ key.charCodeAt(1) === 110 /* n */ &&
     // uppercase letter
     (key.charCodeAt(2) > 122 || key.charCodeAt(2) < 97)
   )

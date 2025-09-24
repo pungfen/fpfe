@@ -4,10 +4,10 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsdown src/index.ts"
+    "build": "tsdown"
   },
   "dependencies": {
-    "@fp/shared": "workspace:*",
+    "@tailwindcss/vite": "^4.1.13",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.0.1",
     "unocss": "^66.4.2",
