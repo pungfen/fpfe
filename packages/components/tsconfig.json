@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    
+    "target": "ESNext",
+    "moduleDetection": "force",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["eslint.config.ts", "src"]
+}
