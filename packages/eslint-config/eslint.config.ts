@@ -1,8 +1,20 @@
-import { defineConfig } from './src'
+import { globalIgnores } from 'eslint/config'
 
-export default defineConfig({
-  tsconfigRootDir: import.meta.dirname,
-  typescript: {
-    files: ['eslint.config.ts', 'src/**/*.ts']
-  }
-})
+import { javascript, typescript, stylistic, defineConfig, imports, jsonc, perfectionist, promise } from './src'
+
+export default defineConfig(
+  globalIgnores([
+    'src/types/gens/**',
+    'tsconfig.json',
+    '**/dist/**',
+    '**/.eslint-config-inspector/**',
+    'CHANGELOG.md'
+  ]),
+  javascript(),
+  typescript(),
+  imports({ typescript: true }),
+  jsonc({ json: true, json5: true, jsonc: true, prettier: true }),
+  promise(),
+  perfectionist(),
+  stylistic()
+)

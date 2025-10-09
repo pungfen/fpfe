@@ -7,26 +7,15 @@
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "@eslint/config-helpers": "^0.4.0",
-    "@eslint/js": "catalog:",
     "@fp/eslint-config": "workspace:*",
-    "@stylistic/eslint-plugin": "^5.4.0",
     "@types/node": "^24.7.0",
-    "@typescript-eslint/parser": "^8.46.0",
     "eslint": "catalog:",
-    "eslint-flat-config-utils": "^2.1.4",
-    "eslint-plugin-jsonc": "^2.21.0",
-    "eslint-plugin-perfectionist": "^4.15.1",
-    "eslint-plugin-vue": "^10.5.0",
-    "globals": "^16.4.0",
     "jiti": "^2.6.1",
+    "knip": "^5.64.2",
     "lint-staged": "^16.2.3",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "^0.15.6",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.0",
-    "vue-eslint-parser": "^10.2.0"
+    "typescript": "^5.9.3"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

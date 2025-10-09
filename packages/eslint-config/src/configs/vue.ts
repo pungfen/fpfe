@@ -1,79 +1,167 @@
-import { ConfigWithExtendsArray } from '@eslint/config-helpers'
-import { interopDefault } from '@fp/shared'
-import perfectionist from 'eslint-plugin-perfectionist'
-import globals from 'globals'
+import type { Linter } from 'eslint'
+
+import type { OverridesOptions, VueRules } from '../types'
+import type { TypeScriptOptions } from './typescript'
+
+import { GLOB_MARKDOWN, GLOB_VUE } from '../globs'
+import { getTypeScriptParser, loadPlugin } from '../utils'
+
+/**
+ * `@intlify/eslint-plugin-vue-i18n` configuration options.
+ * same `settings['vue-i18n']`
+ * see https://eslint-plugin-vue-i18n.intlify.dev/started.html#settings-vue-i18n
+ */
+export interface VueI18nOptions {
+  /**
+   * A directory path to the locale files
+   */
+  localeDir?: string
+
+  /**
+   * The version of the intlify message syntax to use
+   */
+  messageSyntaxVersion?: string
+}
 
 export const vue = async (options: {
-  files?: (string | string[])[]
-  tsconfigRootDir?: string
-} = {}): Promise<ConfigWithExtendsArray> => {
-  const { files = ['**/*.vue'], tsconfigRootDir } = options
+  /**
+   * use TypeScript in `template` block
+   *
+   * @default false
+   */
+  typescript?: boolean
 
-  const [js, ts, vue, stylistic] = await Promise.all(
-    [
-      interopDefault(import('@eslint/js')),
-      interopDefault(import('typescript-eslint')),
-      interopDefault(import('eslint-plugin-vue')),
-      interopDefault(import('@stylistic/eslint-plugin'))
-    ]
+  /**
+   * enable `eslint-plugin-vue-composable` rules
+   *
+   * @default false
+   */
+  composable?: boolean
+
+  /**
+   * enable `eslint-plugin-vue-scoped-css` rules
+   *
+   * @default false
+   */
+  scopedCss?: boolean
+
+  /**
+   * enable `eslint-plugin-vue-eslint-plugin-vuejs-accessibility` rules
+   *
+   * @default false
+   */
+  a11y?: boolean
+
+  /**
+   * enable `@intlify/eslint-plugin-vue-i18n` rules
+   *
+   * @default false
+   */
+  i18n?: VueI18nOptions
+} & TypeScriptOptions & OverridesOptions<VueRules> = {}): Promise<Linter.Config[]> => {
+  const { rules: overrideRules = {}, parserOptions = { projectService: true } } = options
+
+  const vue = await loadPlugin<typeof import('eslint-plugin-vue')>('eslint-plugin-vue')
+  const vueParser = vue.configs['flat/base'][1]['languageOptions']?.parser
+
+  const configs: Linter.Config[] = []
+  configs.push(
+    ...(vue.configs['flat/recommended'] as Linter.Config[]).map(config => ({
+      ...config,
+      ignores: [GLOB_MARKDOWN]
+    }))
   )
 
-  return [
-    {
-      extends: [
-        js.configs.recommended,
-        ts.configs.strictTypeChecked,
-        ts.configs.stylisticTypeChecked,
-        perfectionist.configs['recommended-natural'],
-        stylistic.configs.recommended,
-        vue.configs['flat/recommended']
-      ],
-      files,
-      languageOptions: {
-        globals: {
-          ...globals.browser,
-          computed: 'readonly',
-          defineEmits: 'readonly',
-          defineExpose: 'readonly',
-          defineProps: 'readonly',
-          onMounted: 'readonly',
-          onUnmounted: 'readonly',
-          reactive: 'readonly',
-          ref: 'readonly',
-          request: 'readonly',
-          useFetch: 'readonly',
-          useQuery: 'readonly',
-          useRouter: 'readonly',
-          useTemplateRef: 'readonly',
-          watch: 'readonly',
-          watchEffect: 'readonly'
-        },
-        parserOptions: {
-          ecmaFeatures: { jsx: true },
-          extraFileExtensions: ['.vue'],
-          parser: ts.parser,
-          projectService: true,
-          tsconfigRootDir
+  if (options.composable) {
+    // @ts-ignore -- NOTE(kazupon): `eslint-plugin-vue-composable` is not yet type definitions exporting
+    const composable = await loadPlugin<typeof import('eslint-plugin-vue-composable')>('eslint-plugin-vue-composable')
+    const composableBase = { ...composable.configs['flat/recommended'][0] }
+
+    delete composableBase.languageOptions // NOTE(kazupon): not use languageOptions, because cannot work if we use it.
+    configs.push(composableBase, composable.configs['flat/recommended'][1])
+  }
+
+  if (options.scopedCss) {
+    const scopedCss
+
+      // @ts-ignore -- NOTE(kazupon): `eslint-plugin-vue-scoped-css` is not yet type definitions exporting
+      = await loadPlugin<typeof import('eslint-plugin-vue-scoped-css')>(
+        'eslint-plugin-vue-scoped-css'
+      )
+
+    const scopedCssMapped = scopedCss.configs['flat/recommended'].map(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- NOTE(kazupon): `eslint-plugin-vue-scoped-css` is not yet type definitions exporting
+      (config: any, index: number) => {
+        const mapped = { ...config, ignores: [GLOB_MARKDOWN] } as Linter.Config
+        if (!config.name) {
+          mapped.name = `vue/scoped-css/recommended/${index}`
         }
-      },
+        return mapped
+      }
+    )
 
-      rules: {
-        '@stylistic/comma-dangle': ['error', 'never'],
-        '@stylistic/indent': ['error', 2],
-        '@stylistic/space-before-blocks': ['error'],
-        '@stylistic/space-before-function-paren': ['error', 'always'],
+    configs.push(scopedCssMapped[0], scopedCssMapped[2])
+  }
 
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
+  if (options.a11y) {
+    const a11y = await loadPlugin<typeof import('eslint-plugin-vuejs-accessibility')>(
+      'eslint-plugin-vuejs-accessibility'
+    )
+    const a11yBase = { ...a11y.configs['flat/recommended'][0] }
 
-        'no-undef': 'off',
+    // @ts-expect-error -- NOTE(kazupon): `eslint-plugin-vuejs-accessibility` does not have a `languageOptions` property in the config
+    delete a11yBase.languageOptions // NOTE(kazupon): not use languageOptions
+    configs.push(a11yBase)
+    const a11yRules = { ...a11y.configs['flat/recommended'][1], name: 'vuejs-accessibility:rules' }
 
-        'vue/block-order': ['error', { order: ['script', 'template', 'style'] }],
-        'vue/max-attributes-per-line': 'off',
-        'vue/multi-word-component-names': 'off',
-        'vue/singleline-html-element-content-newline': 'off'
+    // @ts-expect-error -- NOTE(kazupon): `eslint-plugin-vuejs-accessibility` does not have a `languageOptions` property in the config
+    delete a11yRules.languageOptions // NOTE(kazupon): not use languageOptions
+    // @ts-expect-error -- NOTE(kazupon): `eslint-plugin-vuejs-accessibility` does not have a `plugins` property in the config
+    delete a11yRules.plugins
+    configs.push(a11yRules)
+  }
+
+  if (options.i18n) {
+    const i18n = await loadPlugin<typeof import('@intlify/eslint-plugin-vue-i18n')>(
+      '@intlify/eslint-plugin-vue-i18n'
+    )
+    configs.push(
+      ...(i18n.configs['recommended'] as Linter.Config[]).map(config => ({
+        ...config,
+        ignores: [GLOB_MARKDOWN]
+      })),
+      {
+        name: '@intlify/vue-i18n/settings',
+        settings: {
+          'vue-i18n': options.i18n
+        }
+      }
+    )
+  }
+
+  const customConfig: Linter.Config = {
+    name: '@kazupon/vue',
+    files: [GLOB_VUE],
+    rules: {
+      ...overrideRules
+    }
+  }
+
+  if (options.typescript) {
+    customConfig.languageOptions = {
+      parser: vueParser,
+      parserOptions: {
+        sourceType: 'module',
+        parser: await getTypeScriptParser(),
+        ecmaFeatures: {
+          jsx: true
+        },
+        extraFileExtensions: ['.vue'],
+        ...parserOptions
       }
     }
-  ]
+  }
+  configs.push(customConfig)
+
+  return configs
 }

@@ -26,3 +26,4 @@ mock-dist
 *.sw?
 
 *.output
+packages/eslint-config/src/types/gens
