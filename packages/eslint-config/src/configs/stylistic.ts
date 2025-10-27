@@ -1,61 +1,36 @@
-import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import type { Linter } from 'eslint'
+import { defineConfig } from 'eslint/config'
 
-import { GLOB_SRC } from '../globs'
-import { OverridesOptions, StylisticRules } from '../types'
 import { loadPlugin } from '../utils'
 
-export const stylistic = async (options: {
-  /**
-   * stylistic customize options
-   *
-   * @see https://eslint.style/guide/config-presets#configuration-factory
-   */
-  customize?: StylisticCustomizeOptions
-} & OverridesOptions<StylisticRules> = {}): Promise<Linter.Config[]> => {
-  const { rules: overrideRules = {}, customize = {
-    commaDangle: 'never',
-    blockSpacing: true,
-    quoteProps: 'as-needed',
-    pluginName: '@stylistic'
-  } } = options
+export const stylistic = async (): Promise<ReturnType<typeof defineConfig>> => {
+  const stylistic = await loadPlugin('@stylistic/eslint-plugin') as any
 
-  const stylistic = await loadPlugin<(typeof import('@stylistic/eslint-plugin'))['default']>(
-    '@stylistic/eslint-plugin'
-  )
-
-  const config = stylistic.configs.customize(customize)
-
-  return [
+  return defineConfig([
     {
-      name: '@stylistic/eslint-plugin',
-      files: [GLOB_SRC],
-      plugins: {
-        [customize.pluginName!]: stylistic
-      },
+
+      plugins: { '@stylistic': stylistic },
       rules: {
-        ...config.rules,
-        '@stylistic/brace-style': 'off',
+        ...(stylistic.configs.customize().rules),
+        '@stylistic/array-bracket-newline': ['error', { multiline: true }],
+        '@stylistic/array-element-newline': ['error', { multiline: true }],
         '@stylistic/arrow-parens': ['error', 'as-needed'],
-        '@stylistic/lines-around-comment': [
+        '@stylistic/comma-dangle': ['error', 'never'],
+        '@stylistic/max-statements-per-line': ['error', { max: 1 }],
+        '@stylistic/no-mixed-spaces-and-tabs': 'error',
+        '@stylistic/no-multiple-empty-lines': [
           'error',
           {
-            beforeBlockComment: true,
-            beforeLineComment: true,
-            allowBlockStart: true,
-            allowObjectStart: true,
-            allowArrayStart: true,
-            allowClassStart: true,
-            allowEnumStart: true,
-            allowInterfaceStart: true,
-            allowModuleStart: true,
-            allowTypeStart: true
+            max: 1,
+            maxBOF: 0,
+            maxEOF: 0
           }
         ],
-        '@stylistic/spaced-comment': ['error'],
-        '@stylistic/multiline-comment-style': ['error', 'separate-lines'],
-        ...overrideRules
+        '@stylistic/object-curly-newline': ['error', { multiline: true }],
+        '@stylistic/object-property-newline': 'error',
+        '@stylistic/semi': ['error', 'never'],
+        '@stylistic/spaced-comment': ['error']
       }
     }
   ]
+  )
 }

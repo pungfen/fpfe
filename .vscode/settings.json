@@ -1,10 +1,9 @@
 {
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "editor.formatOnSave": false,
-
   "eslint.runtime": "node",
   "eslint.validate": [
     "javascript",
@@ -21,6 +20,6 @@
     "toml",
     "xml"
   ],
-
-  "prettier.enable": false
+  "prettier.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

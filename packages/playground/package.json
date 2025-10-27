@@ -1,0 +1,19 @@
+{
+    "name": "@fpfe/playground",
+    "type": "module",
+    "scripts": {
+        "dev": "vite"
+    },
+    "dependencies": {
+        "@pungfen/ui": "link:/home/fp/workspace/ui",
+        "vue": "^3.5.22"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.1.13",
+        "@types/node": "^24.7.0",
+        "@vitejs/plugin-vue": "^6.0.1",
+        "@vue/tsconfig": "^0.8.1",
+        "tailwindcss": "^4.1.16",
+        "vite": "^7.1.7"
+    }
+}
