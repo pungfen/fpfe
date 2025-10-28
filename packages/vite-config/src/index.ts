@@ -1,60 +1,65 @@
-import { resolve } from 'node:path'
-import { InlineConfig, type LibraryFormats, type Plugin } from 'vite'
+import { resolve } from 'path'
+import { type ConfigEnv, defineConfig as dc, type LibraryFormats, type UserConfig } from 'vite'
+import Dts from 'vite-plugin-dts'
 
-import type { Arrayable, Awaitable } from './types'
+import { vue } from './plugins'
 
-import { autoImport, autoImportComponents, vue, vueJsx, vueRouter } from './plugins'
-
-const combine = async (...ps: Awaitable<Arrayable<Plugin>>[]): Promise<Plugin[]> => {
-  // eslint-disable-next-line @typescript-eslint/await-thenable
-  const resolved = await Promise.all(ps)
-  return resolved.flat()
-}
-
-export const defineConfig = async (config: {
+interface Config {
+  autoComponents?: boolean
+  autoImport?: boolean
   elementPlus?: boolean
-  entry?: string
+  entry: string
+  externals?: string[]
   formats?: LibraryFormats[]
-  mode?: 'build' | 'serve'
+  mode?: string
   name?: string
-  resolve?: InlineConfig['resolve']
-  root?: string
+  resolve?: UserConfig['resolve']
+  root: string
   tailwindcss?: boolean
   type?: 'app' | 'lib'
   unocss?: boolean
   vue?: boolean
   vueJsx?: boolean
-} = {}) => {
-  const { elementPlus: enableElementPlus, entry, formats = ['es'], name, root = process.cwd(), type = 'app', vue: enableVue, vueJsx: enableVueJsx } = config
+}
 
-  const plugins: Plugin[] = []
-
-  if (enableVue || enableVueJsx) {
-    plugins.push(...await combine(vueRouter(), autoImport({ elementPlusResolver: enableElementPlus }), autoImportComponents({ elementPlusResolver: enableElementPlus })))
-  }
-
-  if (enableVue) {
-    plugins.push(...await combine(vue()))
-  }
-
-  if (enableVueJsx) {
-    plugins.push(...await combine(vueJsx()))
-  }
-
-  const inlineConfig: InlineConfig = {
-    plugins,
-    resolve: config.resolve
-  }
-
-  if (type === 'lib') {
-    inlineConfig.build = {
-      lib: {
-        entry: resolve(root, entry ?? 'src/index.ts'),
-        formats,
-        name
-      }
+export const defineConfig = (config: ((env: ConfigEnv) => Config) | Config) => {
+  return dc(async env => {
+    let userConfig: Config | undefined
+    if (typeof config === 'function') {
+      userConfig = config(env)
     }
-  }
+    else {
+      userConfig = config
+    }
 
-  return inlineConfig
+    const { entry, externals = [], formats = ['es'], name, root, type, vue: enableVue } = userConfig
+
+    const vc: UserConfig = {}
+
+    if (type === 'lib') {
+      vc.root = root
+
+      vc.build = {
+        lib: {
+          entry,
+          fileName: name,
+          formats
+        },
+        rollupOptions: { external: externals }
+      }
+
+      vc.plugins = [Dts({ rollupTypes: true })]
+    }
+    else if (type === 'app') {
+      vc.plugins = []
+
+      if (enableVue) {
+        vc.plugins.push(await vue())
+      }
+
+      vc.resolve = { alias: { '@': resolve(entry, 'src') } }
+    }
+
+    return vc
+  })
 }

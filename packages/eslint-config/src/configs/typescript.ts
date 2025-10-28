@@ -1,8 +1,8 @@
 import type { Linter } from 'eslint'
 import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
 
-import { resolve } from 'path'
-import { cwd } from 'process'
+import { resolve } from 'node:path'
+import { cwd } from 'node:process'
 
 import { loadPlugin } from '../utils'
 

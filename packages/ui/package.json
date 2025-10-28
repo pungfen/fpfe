@@ -1,3 +1,17 @@
 {
-    "name": "@fpfe/ui"
+    "name": "@fpfe/ui",
+    "type": "module",
+    "scripts": {
+        "build": "tsdown"
+    },
+    "devDependencies": {
+        "@fpfe/shared": "workspace:*",
+        "@fpfe/vite-config": "workspace:*",
+        "@vue/tsconfig": "^0.8.1",
+        "vite": "^7.1.12"
+    },
+    "dependencies": {
+        "class-variance-authority": "^0.7.1",
+        "vue": "^3.5.22"
+    }
 }

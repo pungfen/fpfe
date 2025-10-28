@@ -17,7 +17,6 @@
     "@eslint/js": "^9.37.0",
     "@eslint/json": "^0.13.2",
     "@fpfe/shared": "workspace:*",
-    "@pnpm/workspace.find-packages": "^1000.0.42",
     "eslint-flat-config-utils": "^2.1.4",
     "globals": "^16.4.0"
   },
@@ -26,6 +25,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-perfectionist": "^4.15.1",
     "eslint-plugin-unused-imports": "^4.2.0",
+    "eslint-plugin-vue": "^10.5.1",
     "eslint-typegen": "^2.3.0",
     "typescript-eslint": "^8.46.0"
   },

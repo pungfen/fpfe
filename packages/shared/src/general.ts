@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 export const hasChanged = (value: any, oldValue: any): boolean => !Object.is(value, oldValue)
 
-export const objectToString = Object.prototype.toString
-export const toTypeString = (value: unknown) => objectToString.call(value)
+export const toTypeString = (value: unknown) => Object.prototype.toString.call(value)
 export const toRawType = (value: unknown) => toTypeString(value).slice(8, -1)
 
 export const isArray: typeof Array.isArray = Array.isArray
@@ -19,9 +19,8 @@ export const NO = () => false
 export const isOn = (key: string): boolean => {
   return (
     key.charCodeAt(0) === 111
-    && /* o */ key.charCodeAt(1) === 110 /* n */ &&
-    // uppercase letter
-    (key.charCodeAt(2) > 122 || key.charCodeAt(2) < 97)
+    && key.charCodeAt(1) === 110
+    && (key.charCodeAt(2) > 122 || key.charCodeAt(2) < 97)
   )
 }
 
@@ -32,5 +31,4 @@ export const getGlobalThis = (): any => {
 
 export const extend: typeof Object.assign = Object.assign
 
-const hasOwnProperty = Object.prototype.hasOwnProperty
-export const hasOwn = (val: object, key: string | symbol): key is keyof typeof val => hasOwnProperty.call(val, key)
+export const hasOwn = (val: object, key: string | symbol): key is keyof typeof val => Object.prototype.hasOwnProperty.call(val, key)

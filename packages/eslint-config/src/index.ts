@@ -6,7 +6,7 @@ export * from './configs'
 
 import type { Config } from './types'
 
-import { imports, javascript, perfectionist, stylistic, typescript } from './configs'
+import { imports, javascript, perfectionist, stylistic, typescript, vue } from './configs'
 
 export const defineWorkspaceConfig = async (configs: (Config & { entry: string })[]) => {
   const compose = composer()
@@ -14,7 +14,15 @@ export const defineWorkspaceConfig = async (configs: (Config & { entry: string }
   Promise.all(
     configs.map(
       async config => {
-        const { entry, imports: enableImports, javascript: enableJavascript, perfectionist: enablePerfectionist, stylistic: enableStylistic, typescript: enableTypescript } = config
+        const {
+          entry,
+          imports: enableImports,
+          javascript: enableJavascript,
+          perfectionist: enablePerfectionist,
+          stylistic: enableStylistic,
+          typescript: enableTypescript,
+          vue: enableVue
+        } = config
 
         if (enableJavascript) {
           compose.append(
@@ -38,7 +46,17 @@ export const defineWorkspaceConfig = async (configs: (Config & { entry: string }
           )
         }
 
-        console.log(enableImports)
+        if (enableVue) {
+          compose.append(
+            vue(
+              {
+                prefix: `${entry}/`,
+                typescript: !!enableTypescript,
+                ...(typeof enableVue === 'object' ? enableVue : {})
+              }
+            )
+          )
+        }
 
         if (enableImports) {
           compose.append(

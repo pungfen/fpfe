@@ -5,20 +5,12 @@ import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { type Plugin } from 'vite'
 
-import { type Arrayable } from '../types'
-import { interopDefault } from '../utils'
-
-export const autoImport = async (config: {
-  elementPlusResolver?: boolean
-} = {}): Promise<Arrayable<Plugin>> => {
+export const autoImport = async (config: { elementPlusResolver?: boolean } = {}): Promise<Arrayable<Plugin>> => {
   const { elementPlusResolver } = config
 
   const resolvers: (ComponentResolver | ComponentResolver[])[] = []
 
   if (elementPlusResolver) {
-    resolvers.push(
-      (await interopDefault(import('unplugin-vue-components/resolvers'))).ElementPlusResolver()
-    )
   }
 
   return AutoImport({
@@ -28,17 +20,13 @@ export const autoImport = async (config: {
   })
 }
 
-export const autoImportComponents = async (config: {
-  elementPlusResolver?: boolean
-} = {}): Promise<Arrayable<Plugin>> => {
+export const autoImportComponents = async (config: { elementPlusResolver?: boolean } = {}): Promise<Arrayable<Plugin>> => {
   const { elementPlusResolver } = config
 
   const resolvers: (ComponentResolver | ComponentResolver[])[] = []
 
   if (elementPlusResolver) {
-    resolvers.push(
-      (await interopDefault(import('unplugin-vue-components/resolvers'))).ElementPlusResolver()
-    )
+    await Promise.resolve([])
   }
 
   return Components({ resolvers })

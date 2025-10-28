@@ -1,8 +1,6 @@
-import '@/tw.css'
 import { createApp } from 'vue'
-import App from '@/app.vue'
 
-import '@pungfen/ui/dist/index.css'
+import App from '@/app.vue'
 
 const app = createApp(App)
 

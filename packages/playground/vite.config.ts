@@ -1,14 +1,12 @@
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from '@fpfe/vite-config'
+import { fileURLToPath } from 'node:url'
 
-import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
-import Tailwindcss from '@tailwindcss/vite'
+const root = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineConfig({
-    plugins: [Vue(), Tailwindcss()],
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
-    }
+  entry: 'src/index.ts',
+  root,
+  tailwindcss: true,
+  type: 'app',
+  vue: true
 })
