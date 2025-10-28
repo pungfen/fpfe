@@ -1,13 +1,15 @@
-import { defineConfig } from 'eslint/config'
+import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
 
 import { loadPlugin } from '../utils'
 
-export const stylistic = async (): Promise<ReturnType<typeof defineConfig>> => {
-  const stylistic = await loadPlugin('@stylistic/eslint-plugin') as any
+export const stylistic = async (options: { prefix?: string } = {}) => {
+  const stylistic = await loadPlugin<(typeof import('@stylistic/eslint-plugin'))['default']>('@stylistic/eslint-plugin')
 
-  return defineConfig([
+  const { prefix = '' } = options
+
+  return [
     {
-
+      files: [`${prefix}**/*.?([cm])[jt]s?(x)`],
       plugins: { '@stylistic': stylistic },
       rules: {
         ...(stylistic.configs.customize().rules),
@@ -31,6 +33,5 @@ export const stylistic = async (): Promise<ReturnType<typeof defineConfig>> => {
         '@stylistic/spaced-comment': ['error']
       }
     }
-  ]
-  )
+  ] as ResolvableFlatConfig
 }
