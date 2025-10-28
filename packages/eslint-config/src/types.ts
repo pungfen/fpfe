@@ -1,8 +1,10 @@
+import type { Linter } from 'eslint'
+
 export interface Config {
-  imports?: boolean
-  javascript?: boolean
-  perfectionist?: boolean
-  stylistic?: boolean
-  typescript?: boolean
-  vue?: boolean
+  imports?: boolean | Linter.Config
+  javascript?: boolean | Linter.Config
+  perfectionist?: boolean | Linter.Config
+  stylistic?: boolean | Linter.Config
+  typescript?: boolean | Linter.Config
+  vue?: boolean | Linter.Config
 }

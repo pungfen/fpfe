@@ -1,18 +1,40 @@
+import type { Linter } from 'eslint'
+import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
+
+import { resolve } from 'path'
+import { cwd } from 'process'
+
 import { loadPlugin } from '../utils'
 
-export const typescript = async (options: { prefix?: string } = {}) => {
-  const { prefix = '' } = options
+export const typescript = async (options: Linter.Config & { prefix?: string } = {}) => {
+  const { languageOptions: overrideLanguageOptions = {}, prefix = '', rules: overrideRules = {} } = options
 
   const ts = await loadPlugin<typeof import('typescript-eslint')>('typescript-eslint')
 
-  return [
-    ...(ts.configs.recommended),
+  const recommended = ts.configs.recommended.reduce((res, config) => Object.assign(res, config.rules ?? {}), {} as object)
+  const recommendedTypeChecked = ts.configs.recommendedTypeChecked.reduce((res, config) => Object.assign(res, config.rules ?? {}), {} as object)
+
+  const files = [`${prefix}**/*.?([cm])[jt]s?(x)`]
+  const configs: ResolvableFlatConfig = [
     {
-      files: [`${prefix}**/*.?([cm])[jt]s?(x)`],
+      files,
       languageOptions: {
         parser: ts.parser,
-        parserOptions: { project: true }
+        parserOptions: {
+          projectService: true,
+          sourceType: 'module',
+          tsconfigRootDir: resolve(cwd(), prefix),
+          ...(overrideLanguageOptions.parserOptions ?? {})
+        }
+      },
+      plugins: { '@typescript-eslint': ts.plugin },
+      rules: {
+        ...recommended,
+        ...recommendedTypeChecked,
+        ...overrideRules
       }
     }
   ]
+
+  return configs
 }

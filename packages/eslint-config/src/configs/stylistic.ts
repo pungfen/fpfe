@@ -1,11 +1,12 @@
+import type { Linter } from 'eslint'
 import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
 
 import { loadPlugin } from '../utils'
 
-export const stylistic = async (options: { prefix?: string } = {}) => {
+export const stylistic = async (options: Linter.Config & { prefix?: string } = {}) => {
   const stylistic = await loadPlugin<(typeof import('@stylistic/eslint-plugin'))['default']>('@stylistic/eslint-plugin')
 
-  const { prefix = '' } = options
+  const { prefix = '', rules: overrideRules = {} } = options
 
   return [
     {
@@ -30,7 +31,8 @@ export const stylistic = async (options: { prefix?: string } = {}) => {
         '@stylistic/object-curly-newline': ['error', { multiline: true }],
         '@stylistic/object-property-newline': 'error',
         '@stylistic/semi': ['error', 'never'],
-        '@stylistic/spaced-comment': ['error']
+        '@stylistic/spaced-comment': ['error'],
+        ...overrideRules
       }
     }
   ] as ResolvableFlatConfig

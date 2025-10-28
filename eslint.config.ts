@@ -2,18 +2,28 @@ import { defineWorkspaceConfig} from '@fpfe/eslint-config'
 
 export default defineWorkspaceConfig([
   {
-    path: 'packages/eslint-config',
     javascript: true,
-    typescript: true,
+    entry: 'packages/eslint-config',
     perfectionist: true,
-    stylistic: true
+    stylistic: true,
+    imports: true,
+    typescript: {
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
+    }
   },
   {
-    path: 'packages/shared',
     javascript: true,
-    typescript: true,
+    entry: 'packages/shared',
     perfectionist: true,
-    stylistic: true
+    stylistic: true,
+    imports: true,
+    typescript: {
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
+    }
   }
 ]
 )
