@@ -1,8 +1,5 @@
 {
     "name": "@fpfe/leetcode",
     "type": "module",
-    "version": "0.0.1",
-    "scripts": {
-        "test": "vitest"
-    }
+    "version": "0.0.1"
 }

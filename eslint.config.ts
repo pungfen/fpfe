@@ -1,6 +1,5 @@
+import { defineConfig, imports, javascript, jsonc, perfectionist, sortPackageJson, stylistic, typescript } from '@fpfe/eslint-config'
 import { globalIgnores } from 'eslint/config'
-
-import { defineConfig, imports, javascript, jsonc, perfectionist, sortPackageJson, stylistic, typescript } from './src'
 
 export default defineConfig(
   globalIgnores(['node_modules']),
@@ -9,6 +8,6 @@ export default defineConfig(
   javascript(),
   typescript(),
   imports({ typescript: true }),
-  perfectionist(),
-  stylistic()
+  stylistic(),
+  perfectionist()
 )
