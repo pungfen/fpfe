@@ -1,22 +1,27 @@
 import type { Linter } from 'eslint'
-import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
 
 import globals from 'globals'
 
-import { loadPlugin } from '../utils'
+import type { OverridesOptions } from '../types'
+export interface JavaScriptOptions {
+  // TODO
+  name?: 'javascript'
+}
 
-export const javascript = async (options: Linter.Config & { prefix?: string } = {}) => {
-  const { prefix = '', rules: overrideRules = {} } = options
+export const javascript = async (options: JavaScriptOptions & OverridesOptions<{ 'no-xx': string }> = {}): Promise<Linter.Config[]> => {
+  const { rules: overrideRules = {} } = options
 
-  const js = await loadPlugin<typeof import('@eslint/js')>('@eslint/js')
+  await Promise.resolve()
 
   return [
     {
-      extends: ['js/recommended'],
-      files: [`${prefix}**/*.js`],
-      languageOptions: { globals: globals.node },
-      plugins: { js },
+      languageOptions: {
+        globals: {
+          ...globals.browser,
+          ...globals.node
+        }
+      },
       rules: { ...overrideRules }
     }
-  ] as ResolvableFlatConfig
+  ]
 }

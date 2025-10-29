@@ -5,9 +5,9 @@ export interface OverridesOptions<Rules = Linter.Config['rules']> {
 
   ignores?: Linter.Config['ignores']
 
-  rules?: Rules
-
   parserOptions?: ESLint.Environment['parserOptions']
+
+  rules?: Rules
 
   settings?: Linter.Config['settings']
 }

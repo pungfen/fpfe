@@ -1,7 +1,16 @@
-import { defineProject } from 'vitest/config'
+import { defineConfig } from 'vitest/config'
 
-export default defineProject({
-  test: {
-    projects: ['packages/*']
+export default defineConfig(
+  {
+    test: {
+      projects: [
+        'packages/*', 
+        {
+          test: {
+            include: ['tests/**/*.test.ts']
+          }
+        }
+      ]
+    }
   }
-})
+)

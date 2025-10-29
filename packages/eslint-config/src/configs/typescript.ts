@@ -1,40 +1,44 @@
 import type { Linter } from 'eslint'
-import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
 
-import { resolve } from 'node:path'
-import { cwd } from 'node:process'
+import type { OverridesOptions } from '../types'
+
+export interface TypeScriptOptions { extraFileExtensions?: string[] }
 
 import { loadPlugin } from '../utils'
 
-export const typescript = async (options: Linter.Config & { prefix?: string } = {}) => {
-  const { languageOptions: overrideLanguageOptions = {}, prefix = '', rules: overrideRules = {} } = options
+export const typescript = async (options: OverridesOptions<{ 'no-xx': string }> & TypeScriptOptions = {}): Promise<Linter.Config[]> => {
+  const { extraFileExtensions = [], parserOptions = { project: true }, rules: overrideRules = {} } = options
 
   const ts = await loadPlugin<typeof import('typescript-eslint')>('typescript-eslint')
 
-  const recommended = ts.configs.recommended.reduce((res, config) => Object.assign(res, config.rules ?? {}), {} as object)
-  const recommendedTypeChecked = ts.configs.recommendedTypeChecked.reduce((res, config) => Object.assign(res, config.rules ?? {}), {} as object)
+  const baseFiles = [`**/*.?([cm])ts`, `**/*.?([cm])tsx`, ...extraFileExtensions.map(ext => `**/*.${ext}`)]
+  const files = [...(options.files ?? []), ...baseFiles]
 
-  const files = [`${prefix}**/*.?([cm])[jt]s?(x)`]
-  const configs: ResolvableFlatConfig = [
+  const recommendedTypeChecked = (ts.configs.recommendedTypeChecked as Linter.Config[]).map(config => {
+    return {
+      ...config,
+      files
+    }
+  })
+
+  return [
+    ...recommendedTypeChecked,
+    {
+      files: [`**/*.?([cm])js`, `**/*.?([cm])jsx`, `**/*.json`, `**/*.json5`, `**/*.jsonc`],
+      ...ts.configs.disableTypeChecked
+    },
     {
       files,
       languageOptions: {
         parser: ts.parser,
         parserOptions: {
-          projectService: true,
+          extraFileExtensions: extraFileExtensions.map(ext => `.${ext}`),
           sourceType: 'module',
-          tsconfigRootDir: resolve(cwd(), prefix),
-          ...(overrideLanguageOptions.parserOptions ?? {})
+          tsconfigRootDir: process.cwd(),
+          ...parserOptions
         }
       },
-      plugins: { '@typescript-eslint': ts.plugin },
-      rules: {
-        ...recommended,
-        ...recommendedTypeChecked,
-        ...overrideRules
-      }
+      rules: { ...overrideRules }
     }
   ]
-
-  return configs
 }

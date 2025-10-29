@@ -1,21 +1,21 @@
-import type { Linter } from 'eslint'
-import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
-
+import { OverridesOptions } from '../types'
 import { loadPlugin } from '../utils'
 
-export const perfectionist = async (options: Linter.Config & { prefix?: string } = {}) => {
-  const perfectionist = await loadPlugin<typeof import('eslint-plugin-perfectionist')>('eslint-plugin-perfectionist')
+export interface PerfectionistOptions { name?: 'perfectionist' }
 
-  const { prefix = '', rules: overrideRules = {} } = options
+export const perfectionist = async (options: OverridesOptions<{ 'on-xx': string }> & PerfectionistOptions = {}) => {
+  const { rules: overrideRules = {} } = options
+
+  const perfectionist = await loadPlugin<typeof import('eslint-plugin-perfectionist')>('eslint-plugin-perfectionist')
 
   return [
     {
-      ...perfectionist.configs['recommended-natural'],
-      files: [`${prefix}**/*.?([cm])[jt]s?(x)`],
+      files: [`**/*.?([cm])[jt]s?(x)`],
+      plugins: { perfectionist },
       rules: {
-        ...perfectionist.configs['recommended-natural'].rules,
+        ...perfectionist.configs['recommended-natural']['rules'],
         ...overrideRules
       }
     }
-  ] as ResolvableFlatConfig
+  ]
 }

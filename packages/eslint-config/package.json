@@ -1,9 +1,32 @@
 {
-  "name": "@fpfe/eslint-config",
+  "dependencies": {
+    "@eslint/js": "^9.37.0",
+    "@eslint/json": "^0.13.2",
+    "@fpfe/shared": "workspace:*",
+    "eslint-flat-config-utils": "^2.1.4",
+    "globals": "^16.4.0"
+  },
   "description": "ESLint configs for @fp",
-  "version": "1.0.0",
-  "type": "module",
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.4.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-import-lite": "^0.3.0",
+    "eslint-plugin-perfectionist": "^4.15.1",
+    "eslint-plugin-unused-imports": "^4.2.0",
+    "eslint-plugin-vue": "^10.5.1",
+    "eslint-typegen": "^2.3.0",
+    "typescript-eslint": "^8.46.0"
+  },
   "main": "src/index.ts",
+  "name": "@fpfe/eslint-config",
+  "peerDependencies": {
+    "@stylistic/eslint-plugin": ">=5.4.0",
+    "eslint": ">= 9",
+    "eslint-plugin-import": ">=2.32.0",
+    "eslint-plugin-perfectionist": ">=4.15.1",
+    "eslint-plugin-unused-imports": ">=4.2.0",
+    "typescript-eslint": ">=8.46.0"
+  },
   "scripts": {
     "build": "tsdown",
     "fix": "pnpm run --color \"/^fix:/\"",
@@ -13,28 +36,6 @@
     "lint:eslint": "eslint .",
     "lint:knip": "knip"
   },
-  "dependencies": {
-    "@eslint/js": "^9.37.0",
-    "@eslint/json": "^0.13.2",
-    "@fpfe/shared": "workspace:*",
-    "eslint-flat-config-utils": "^2.1.4",
-    "globals": "^16.4.0"
-  },
-  "devDependencies": {
-    "@stylistic/eslint-plugin": "^5.4.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-perfectionist": "^4.15.1",
-    "eslint-plugin-unused-imports": "^4.2.0",
-    "eslint-plugin-vue": "^10.5.1",
-    "eslint-typegen": "^2.3.0",
-    "typescript-eslint": "^8.46.0"
-  },
-  "peerDependencies": {
-    "@stylistic/eslint-plugin": ">=5.4.0",
-    "eslint": ">= 9",
-    "eslint-plugin-import": ">=2.32.0",
-    "eslint-plugin-perfectionist": ">=4.15.1",
-    "eslint-plugin-unused-imports": ">=4.2.0",
-    "typescript-eslint": ">=8.46.0"
-  }
+  "type": "module",
+  "version": "1.0.0"
 }

@@ -16,7 +16,8 @@
     "lint-staged": "^16.2.3",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "^0.15.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.4"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

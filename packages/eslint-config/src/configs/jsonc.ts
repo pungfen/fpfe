@@ -1,24 +1,43 @@
-import json from '@eslint/json'
+import type { Linter } from 'eslint'
 
-export const jsonc = async () => {
+import { OverridesOptions } from '../types'
+import { loadPlugin } from '../utils'
+
+export interface JsoncOptions { name?: 'jsonc' }
+
+export const jsonc = async (options: JsoncOptions & OverridesOptions<{ 'on-xx': string }> = {}): Promise<Linter.Config[]> => {
+  const { rules: overrideRules = {} } = options
+
+  const json = await loadPlugin<typeof import('@eslint/json')['default']>('@eslint/json')
+
   return [
     {
-      extends: ['json/recommended'],
-      files: ['**/*.json'],
+      files: [`**/*.json`],
+      ignores: ['package-lock.json'],
       language: 'json/json',
-      plugins: { json }
+      plugins: { json },
+      rules: {
+        ...json.configs.recommended.rules,
+        ...overrideRules
+      }
     },
     {
-      extends: ['json/recommended'],
-      files: ['**/*.jsonc'],
+      files: [`**/*.jsonc`],
       language: 'json/jsonc',
-      plugins: { json }
+      plugins: { json },
+      rules: {
+        ...json.configs.recommended.rules,
+        ...overrideRules
+      }
     },
     {
-      extends: ['json/recommended'],
-      files: ['**/*.json5'],
+      files: [`**/*.json5`],
       language: 'json/json5',
-      plugins: { json }
+      plugins: { json },
+      rules: {
+        ...json.configs.recommended.rules,
+        ...overrideRules
+      }
     }
   ]
 }

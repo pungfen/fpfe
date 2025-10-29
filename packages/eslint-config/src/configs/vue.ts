@@ -1,47 +1,41 @@
 import type { Linter } from 'eslint'
-import type { ResolvableFlatConfig } from 'eslint-flat-config-utils'
 
-import { resolve } from 'node:path'
-import { cwd } from 'node:process'
-
+import { OverridesOptions } from '../types'
 import { loadPlugin } from '../utils'
+import { TypeScriptOptions } from './typescript'
 
-export const vue = async (options: Linter.Config & {
-  prefix?: string
-  typescript?: boolean
-} = {}) => {
-  const { prefix = '', rules: overrideRules = {}, typescript: enableTypescript } = options
+export interface VueOptions { typescript?: boolean }
 
-  const files = [`${prefix}**/*.vue`, `${prefix}**/*.tsx`]
+export const vue = async (options: OverridesOptions<{ 'on-xx': string }> & TypeScriptOptions & VueOptions = {}) => {
+  const { parserOptions = { projectService: true }, rules: overrideRules = {} } = options
+
   const vue = await loadPlugin<typeof import('eslint-plugin-vue')>('eslint-plugin-vue')
-  const ts = await loadPlugin<typeof import('typescript-eslint')>('typescript-eslint')
+  const vueParser = vue.configs['flat/base'][1]['languageOptions']?.parser
 
-  const config: Linter.Config = { files }
+  const configs: Linter.Config[] = []
 
-  const baseSetup = vue.configs['flat/recommended'].find(config => config.name === 'vue/base/setup-for-vue')
-  const recommended = vue.configs['flat/recommended'].reduce((res, config) => Object.assign(res, config.rules ?? {}), {} as object)
+  configs.push(...vue.configs['flat/recommended'])
 
-  if (enableTypescript) {
-    Object.assign(config, baseSetup)
-    config.rules = {
-      ...recommended,
-      ...overrideRules
-    }
-    config.languageOptions = {
-      ...baseSetup?.languageOptions,
+  const customConfig: Linter.Config = {
+    files: [`**/*.vue`],
+    rules: { ...overrideRules }
+  }
+
+  if (options.typescript) {
+    const ts = await loadPlugin<typeof import('typescript-eslint')>('typescript-eslint')
+    customConfig.languageOptions = {
+      parser: vueParser,
       parserOptions: {
         ecmaFeatures: { jsx: true },
         extraFileExtensions: ['.vue'],
         parser: ts.parser,
-        projectService: true,
-        tsconfigRootDir: resolve(cwd(), prefix)
+        sourceType: 'module',
+        ...parserOptions
       }
     }
   }
 
-  config.files = files
-
-  const configs: ResolvableFlatConfig = [config]
+  configs.push(customConfig)
 
   return configs
 }
