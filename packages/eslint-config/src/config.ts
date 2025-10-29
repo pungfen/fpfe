@@ -5,6 +5,6 @@ import { composer } from 'eslint-flat-config-utils'
 import { cwd } from 'node:process'
 
 export const defineConfig = async (...configs: Awaitable<Linter.Config | Linter.Config[]>[]) => {
-  console.log(cwd())
+  console.info('eslint in ...', cwd())
   return composer().append(...configs)
 }
