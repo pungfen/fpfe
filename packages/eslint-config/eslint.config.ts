@@ -1,11 +1,10 @@
 import { globalIgnores } from 'eslint/config'
 
-import { defineConfig, imports, javascript, jsonc, perfectionist, sortPackageJson, stylistic, typescript } from './src'
+import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript } from './src'
 
 export default defineConfig(
   globalIgnores(['node_modules']),
   jsonc(),
-  sortPackageJson(),
   javascript(),
   typescript(),
   imports({ typescript: true }),

@@ -1,8 +1,5 @@
 import type { Linter } from 'eslint'
 
-import pluginImports from 'eslint-plugin-import'
-import unused from 'eslint-plugin-unused-imports'
-
 import type { OverridesOptions } from '../types'
 
 import { loadPlugin } from '../utils'
@@ -12,12 +9,12 @@ export interface ImportsOptions { typescript?: boolean }
 const IMPORTS_FILES = [`**/*.?([cm])js`, `**/*.?([cm])jsx`, `**/*.?([cm])ts`, `**/*.?([cm])tsx`]
 
 export const imports = async (options: ImportsOptions & OverridesOptions<{ 'no-xx': string }> = {}): Promise<Linter.Config[]> => {
-  // const imports = await loadPlugin<typeof import('eslint-plugin-import')>('eslint-plugin-import')
-  // const unused = await loadPlugin<typeof import('eslint-plugin-unused-imports')['default']>('eslint-plugin-unused-imports')
+  const imports = await loadPlugin<typeof import('eslint-plugin-import')>('eslint-plugin-import')
+  const unused = await loadPlugin<typeof import('eslint-plugin-unused-imports')['default']>('eslint-plugin-unused-imports')
 
   const { rules: overrideRules = {} } = options
 
-  const configs: Linter.Config[] = [pluginImports.flatConfigs.recommended as Linter.Config]
+  const configs: Linter.Config[] = [imports.flatConfigs.recommended as Linter.Config]
 
   if (options.typescript) {
     try {
@@ -30,7 +27,7 @@ export const imports = async (options: ImportsOptions & OverridesOptions<{ 'no-x
 
       configs.push({
         name: 'import/typescript',
-        ...pluginImports.flatConfigs.typescript
+        ...imports.flatConfigs.typescript
       })
     }
     catch (error: unknown) {
