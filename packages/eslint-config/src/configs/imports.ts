@@ -2,15 +2,15 @@ import type { Linter } from 'eslint'
 
 import type { OverridesOptions } from '../types'
 
-import { loadPlugin } from '../utils'
+import { interopDefault } from '../utils'
 
 export interface ImportsOptions { typescript?: boolean }
 
 const IMPORTS_FILES = [`**/*.?([cm])js`, `**/*.?([cm])jsx`, `**/*.?([cm])ts`, `**/*.?([cm])tsx`]
 
 export const imports = async (options: ImportsOptions & OverridesOptions<{ 'no-xx': string }> = {}): Promise<Linter.Config[]> => {
-  const imports = await loadPlugin<typeof import('eslint-plugin-import')>('eslint-plugin-import')
-  const unused = await loadPlugin<typeof import('eslint-plugin-unused-imports')['default']>('eslint-plugin-unused-imports')
+  const imports = await interopDefault(import('eslint-plugin-import'))
+  const unused = await interopDefault(import('eslint-plugin-unused-imports') as unknown as typeof import('eslint-plugin-unused-imports')['default'])
 
   const { rules: overrideRules = {} } = options
 
@@ -18,12 +18,10 @@ export const imports = async (options: ImportsOptions & OverridesOptions<{ 'no-x
 
   if (options.typescript) {
     try {
-      await loadPlugin<typeof import('eslint-import-resolver-typescript')>(
-        'eslint-import-resolver-typescript'
-      )
+      await interopDefault(import('eslint-import-resolver-typescript'))
 
       // @ts-expect-error -- NOTE(kazupon): add typescript resolver
-      pluginImports.flatConfigs.typescript.settings['import/resolver']['typescript'] = true
+      imports.flatConfigs.typescript.settings['import/resolver']['typescript'] = true
 
       configs.push({
         name: 'import/typescript',

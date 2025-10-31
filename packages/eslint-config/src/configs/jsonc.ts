@@ -1,14 +1,14 @@
 import type { Linter } from 'eslint'
 
 import { OverridesOptions } from '../types'
-import { loadPlugin } from '../utils'
+import { interopDefault } from '../utils'
 
 export interface JsoncOptions { name?: 'jsonc' }
 
 export const jsonc = async (options: JsoncOptions & OverridesOptions<{ 'on-xx': string }> = {}): Promise<Linter.Config[]> => {
   const { rules: overrideRules = {} } = options
 
-  const json = await loadPlugin<typeof import('@eslint/json')['default']>('@eslint/json')
+  const json = await interopDefault(import('@eslint/json') as unknown as typeof import('@eslint/json')['default'])
 
   return [
     {

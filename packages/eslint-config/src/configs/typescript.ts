@@ -4,12 +4,12 @@ import type { OverridesOptions } from '../types'
 
 export interface TypeScriptOptions { extraFileExtensions?: string[] }
 
-import { loadPlugin } from '../utils'
+import { interopDefault } from '../utils'
 
 export const typescript = async (options: OverridesOptions<{ 'no-xx': string }> & TypeScriptOptions = {}): Promise<Linter.Config[]> => {
   const { extraFileExtensions = [], parserOptions = { project: true }, rules: overrideRules = {} } = options
 
-  const ts = await loadPlugin<typeof import('typescript-eslint')>('typescript-eslint')
+  const ts = await interopDefault(import('typescript-eslint'))
 
   const baseFiles = [`**/*.?([cm])ts`, `**/*.?([cm])tsx`, ...extraFileExtensions.map(ext => `**/*.${ext}`)]
   const files = [...(options.files ?? []), ...baseFiles]

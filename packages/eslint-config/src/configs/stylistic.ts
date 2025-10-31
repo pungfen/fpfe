@@ -3,7 +3,7 @@ import type { Linter } from 'eslint'
 
 import type { OverridesOptions } from '../types'
 
-import { loadPlugin } from '../utils'
+import { interopDefault } from '../utils'
 
 export interface StylisticOptions { customize?: StylisticCustomizeOptions }
 
@@ -18,7 +18,7 @@ export const stylistic = async (options: OverridesOptions<{ 'no-xx': string }> &
     rules: overrideRules = {}
   } = options
 
-  const stylistic = await loadPlugin<(typeof import('@stylistic/eslint-plugin'))['default']>('@stylistic/eslint-plugin')
+  const stylistic = await interopDefault(import('@stylistic/eslint-plugin') as unknown as typeof import('@stylistic/eslint-plugin')['default'])
 
   return [
     {
