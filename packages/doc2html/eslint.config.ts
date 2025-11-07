@@ -1,8 +1,12 @@
-import { defineConfig } from '@fp/eslint-config'
+import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript } from '@fpfe/eslint-config'
+import { globalIgnores } from 'eslint/config'
 
-export default defineConfig({
-  tsconfigRootDir: import.meta.dirname,
-  typescript: {
-    files: ['eslint.config.ts', 'src/**/*.ts']
-  }
-})
+export default defineConfig(
+  globalIgnores(['node_modules']),
+  jsonc(),
+  javascript(),
+  typescript(),
+  imports({ typescript: true }),
+  perfectionist(),
+  stylistic()
+)

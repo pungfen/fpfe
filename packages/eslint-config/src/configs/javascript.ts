@@ -8,7 +8,7 @@ export interface JavaScriptOptions {
   name?: 'javascript'
 }
 
-export const javascript = async (options: JavaScriptOptions & OverridesOptions<{ 'no-xx': string }> = {}): Promise<Linter.Config[]> => {
+export const javascript = async (options: JavaScriptOptions & OverridesOptions = {}): Promise<Linter.Config[]> => {
   const { rules: overrideRules = {} } = options
 
   await Promise.resolve()

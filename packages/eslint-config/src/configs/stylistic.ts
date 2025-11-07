@@ -7,7 +7,7 @@ import { interopDefault } from '../utils'
 
 export interface StylisticOptions { customize?: StylisticCustomizeOptions }
 
-export const stylistic = async (options: OverridesOptions<{ 'no-xx': string }> & StylisticOptions = {}): Promise<Linter.Config[]> => {
+export const stylistic = async (options: OverridesOptions & StylisticOptions = {}): Promise<Linter.Config[]> => {
   const {
     customize = {
       blockSpacing: true,

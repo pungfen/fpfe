@@ -6,7 +6,7 @@ export interface TypeScriptOptions { extraFileExtensions?: string[] }
 
 import { interopDefault } from '../utils'
 
-export const typescript = async (options: OverridesOptions<{ 'no-xx': string }> & TypeScriptOptions = {}): Promise<Linter.Config[]> => {
+export const typescript = async (options: OverridesOptions & TypeScriptOptions = {}): Promise<Linter.Config[]> => {
   const { extraFileExtensions = [], parserOptions = { project: true }, rules: overrideRules = {} } = options
 
   const ts = await interopDefault(import('typescript-eslint'))

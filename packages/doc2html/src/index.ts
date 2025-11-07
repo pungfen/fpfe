@@ -5,10 +5,7 @@ import { format } from 'prettier'
 
 const cwd = process.cwd()
 const root = '/mnt/c/Users/fp942/Desktop/enoch/excel'
-const names = [
-  '用户协议中文-中国', '用户协议英文-中国', '用户协议中文-沙特', '用户协议英文-沙特',
-  '隐私政策中文-中国', '隐私政策英文-中国', '隐私政策中文-沙特', '隐私政策英文-沙特'
-]
+const names = ['用户协议中文-中国', '用户协议英文-中国', '用户协议中文-沙特', '用户协议英文-沙特', '隐私政策中文-中国', '隐私政策英文-中国', '隐私政策中文-沙特', '隐私政策英文-沙特']
 const html = (body: string): string => `
 <!doctype html>
 <html lang="en">
@@ -75,7 +72,7 @@ const transformDocument = (element: DocElement) => {
   if (element.children) {
     element.children = element.children.map(transformDocument)
   }
-  // eslint-disable-next-line no-empty
+
   if (element.type === 'paragraph') {
   }
   return element
@@ -83,7 +80,7 @@ const transformDocument = (element: DocElement) => {
 
 await Promise.all(
   names.map(
-    async (name) => {
+    async name => {
       const res = await convertToHtml({ path: `${root}/${name}.docx` },
         {
           // styleMap: [

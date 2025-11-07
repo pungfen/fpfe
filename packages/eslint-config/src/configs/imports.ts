@@ -8,7 +8,7 @@ export interface ImportsOptions { typescript?: boolean }
 
 const IMPORTS_FILES = [`**/*.?([cm])js`, `**/*.?([cm])jsx`, `**/*.?([cm])ts`, `**/*.?([cm])tsx`]
 
-export const imports = async (options: ImportsOptions & OverridesOptions<{ 'no-xx': string }> = {}): Promise<Linter.Config[]> => {
+export const imports = async (options: ImportsOptions & OverridesOptions = {}): Promise<Linter.Config[]> => {
   const imports = await interopDefault(import('eslint-plugin-import'))
   const unused = await interopDefault(import('eslint-plugin-unused-imports') as unknown as typeof import('eslint-plugin-unused-imports')['default'])
 
