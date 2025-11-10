@@ -1,19 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    
     "esModuleInterop": true,
     "module": "ESNext",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
-
-    "paths": {
-      "@/*": ["/src/*"]
-    },
     "skipLibCheck": true,
-
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "types": ["vitest/importMeta"]
   },
-  "include": ["*.config.ts", "src", "tests"]
+  "include": ["*.config.ts", "src"]
 }
