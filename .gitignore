@@ -26,3 +26,6 @@ mock-dist
 *.sw?
 
 *.output
+
+packages/playground/auto-imports.d.ts
+packages/playground/typed-router.d.ts

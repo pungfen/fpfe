@@ -1,4 +1,4 @@
-import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript, vue } from '@fpfe/eslint-config'
+import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript } from '@fpfe/eslint-config'
 import { globalIgnores } from 'eslint/config'
 
 export default defineConfig(
@@ -6,10 +6,6 @@ export default defineConfig(
   jsonc(),
   javascript(),
   typescript(),
-  vue({
-    rules: {},
-    typescript: true
-  }),
   imports({ typescript: true }),
   perfectionist(),
   stylistic()

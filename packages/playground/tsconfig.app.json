@@ -1,16 +1,21 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
+    "strict": true,
+    
     "types": [
       "vite/client",
+      "unplugin-vue-router/client"
     ],
     "paths": {
       "@/*": [
         "./src/*"
       ]
-    }
+    },
   },
   "include": [
-    "src"
+    "src",
+    "auto-imports.d.ts",
+    "typed-router.d.ts"
   ],
 }

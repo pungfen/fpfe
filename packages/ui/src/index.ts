@@ -1,4 +1,5 @@
 export const name = 'ui'
 
-export * from './bar'
-export * from './foo'
+export * from './button'
+export * from './floating'
+export * from './input'

@@ -1,9 +1,14 @@
 {
-  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
+  "editor.formatOnSave": false,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+
+  "eslint.ignoreUntitled": true,
   "eslint.runtime": "node",
   "eslint.validate": [
     "javascript",
@@ -14,13 +19,29 @@
     "html",
     "markdown",
     "json",
-    "json5",
     "jsonc",
     "yaml",
     "toml",
-    "xml"
+    "xml",
+    "gql",
+    "graphql",
+    "astro",
+    "svelte",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
   ],
-  "prettier.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "eslint.ignoreUntitled": true
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  "tailwindCSS.classFunctions": ["class", "ui", "cva", "cx"],
+  "tailwindCSS.experimental.classRegex": [
+    ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

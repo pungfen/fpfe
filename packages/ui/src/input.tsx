@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 
-export const Input = defineComponent(() => {
+export const UiInput = defineComponent(() => {
   return () => (
     <div>
       <input />

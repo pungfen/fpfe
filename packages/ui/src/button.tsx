@@ -25,16 +25,16 @@ const ui = cva('inline-flex items-center gap-2', {
   }
 })
 
-export type ButtonColors = Extract<Colors, 'cyan' | 'gray' | 'green' | 'red' | 'yellow'>
+export type UiButtonColors = Extract<Colors, 'cyan' | 'gray' | 'green' | 'red' | 'yellow'>
 
-export interface XButtonProps extends UIProps<string> {
-  color?: ButtonColors
+export interface UiButtonProps extends UIProps<string> {
+  color?: UiButtonColors
   disabled?: boolean
   type?: 'default' | 'plain' | 'text'
 }
 
-export const XButton = defineComponent(
-  (props: XButtonProps, { slots }) => {
+export const UiButton = defineComponent(
+  (props: UiButtonProps, { slots }) => {
     const type = computed(() => props.type ?? 'default')
 
     return () => (

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "lint": "eslint --cache .",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "dev": "pnpm -C packages/playground dev"
   },
   "devDependencies": {
     "@fpfe/eslint-config": "workspace:*",
