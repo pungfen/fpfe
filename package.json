@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint --cache .",
     "prepare": "simple-git-hooks",
-    "dev": "pnpm -C packages/playground dev"
+    "dev": "pnpm -C playground dev",
+    "build:ui": "pnpm -C packages/ui build"
   },
   "devDependencies": {
     "@fpfe/eslint-config": "workspace:*",

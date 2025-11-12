@@ -5,13 +5,17 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "tsdown"
+        "build": "vite build"
     },
     "devDependencies": {
         "@fpfe/shared": "workspace:*",
         "@fpfe/vite-config": "workspace:*",
+        "@vitejs/plugin-vue": "^6.0.1",
+        "@vitejs/plugin-vue-jsx": "^5.1.1",
         "@vue/tsconfig": "^0.8.1",
-        "vite": "^7.1.12"
+        "unplugin-auto-import": "^20.2.0",
+        "vite": "^7.1.12",
+        "vite-plugin-dts": "^4.5.4"
     },
     "dependencies": {
         "@floating-ui/dom": "^1.7.4",

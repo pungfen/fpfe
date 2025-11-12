@@ -13,5 +13,5 @@
 
     "jsx": "preserve"
   },
-  "include": ["*.config.ts", "src/**/*.ts", "src/**/*.tsx", "utils.d.ts"]
+  "include": ["*.config.ts", "utils.d.ts", "auto-imports.d.ts", "scripts", "src"]
 }

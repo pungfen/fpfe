@@ -27,5 +27,5 @@ mock-dist
 
 *.output
 
-playground/auto-imports.d.ts
-playground/typed-router.d.ts
+auto-imports.d.ts
+typed-router.d.ts
