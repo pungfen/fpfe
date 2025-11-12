@@ -9,7 +9,7 @@
   },
 
   "eslint.ignoreUntitled": true,
-  "eslint.runtime": "node",
+  "eslint.runtime": "/home/fp/.nvm/versions/node/v24.11.1/bin/node",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
