@@ -1,11 +1,9 @@
-import type { Linter } from 'eslint'
-
-import { OverridesOptions } from '../types'
+import { OverridesOptions, TypedFlatConfigItem } from '../types'
 import { interopDefault } from '../utils'
 
 export interface JsoncOptions { name?: 'jsonc' }
 
-export const jsonc = async (options: JsoncOptions & OverridesOptions<{ 'on-xx': string }> = {}): Promise<Linter.Config[]> => {
+export const jsonc = async (options: JsoncOptions & OverridesOptions<{ 'on-xx': string }> = {}): Promise<TypedFlatConfigItem[]> => {
   const { rules: overrideRules = {} } = options
 
   const json = await interopDefault(import('@eslint/json') as unknown as typeof import('@eslint/json')['default'])

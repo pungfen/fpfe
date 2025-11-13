@@ -1,19 +1,19 @@
-import { OverridesOptions } from '../types'
+import { OverridesOptions, TypedFlatConfigItem } from '../types'
 import { interopDefault } from '../utils'
 
 export interface PerfectionistOptions { name?: 'perfectionist' }
 
-export const perfectionist = async (options: OverridesOptions<{ 'on-xx': string }> & PerfectionistOptions = {}) => {
+export const perfectionist = async (options: OverridesOptions<{ 'on-xx': string }> & PerfectionistOptions = {}): Promise<TypedFlatConfigItem[]> => {
   const { rules: overrideRules = {} } = options
 
-  const perfectionist = await interopDefault(import('eslint-plugin-perfectionist'))
+  const pluginPerfectionist = await interopDefault(import('eslint-plugin-perfectionist'))
 
   return [
     {
       files: [`**/*.?([cm])[jt]s?(x)`],
-      plugins: { perfectionist },
+      plugins: { perfectionist: pluginPerfectionist },
       rules: {
-        ...perfectionist.configs['recommended-natural']['rules'],
+        ...pluginPerfectionist.configs['recommended-natural']['rules'],
         ...overrideRules
       }
     }

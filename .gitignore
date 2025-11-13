@@ -29,3 +29,4 @@ mock-dist
 
 auto-imports.d.ts
 typed-router.d.ts
+components.d.ts

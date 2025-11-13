@@ -6,7 +6,7 @@ export default defineConfig(
   jsonc(),
   javascript(),
   typescript(),
-  imports({ typescript: true }),
+  imports(),
   perfectionist(),
   stylistic()
 )

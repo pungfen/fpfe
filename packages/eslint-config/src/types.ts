@@ -1,5 +1,7 @@
 import type { ESLint, Linter } from 'eslint'
 
+export type Awaitable<T> = Promise<T> | T
+
 export interface Config {
   imports?: boolean | Linter.Config
   javascript?: boolean | Linter.Config
@@ -16,3 +18,5 @@ export interface OverridesOptions<Rules = Linter.Config['rules']> {
   rules?: Rules
   settings?: Linter.Config['settings']
 }
+
+export type TypedFlatConfigItem = Omit<Linter.Config, 'plugins'> & { plugins?: Record<string, any> }

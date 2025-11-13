@@ -1,12 +1,13 @@
 import type { Linter } from 'eslint'
 
-import type { OverridesOptions } from '../types'
+import type { OverridesOptions, TypedFlatConfigItem } from '../types'
+
+import { pluginAntfu } from '../plugins'
+import { interopDefault } from '../utils'
 
 export interface TypeScriptOptions { extraFileExtensions?: string[] }
 
-import { interopDefault } from '../utils'
-
-export const typescript = async (options: OverridesOptions & TypeScriptOptions = {}): Promise<Linter.Config[]> => {
+export const typescript = async (options: OverridesOptions & TypeScriptOptions = {}): Promise<TypedFlatConfigItem[]> => {
   const { extraFileExtensions = [], parserOptions = { project: true }, rules: overrideRules = {} } = options
 
   const ts = await interopDefault(import('typescript-eslint'))
@@ -14,7 +15,7 @@ export const typescript = async (options: OverridesOptions & TypeScriptOptions =
   const baseFiles = [`**/*.?([cm])ts`, `**/*.?([cm])tsx`, ...extraFileExtensions.map(ext => `**/*.${ext}`)]
   const files = [...(options.files ?? []), ...baseFiles]
 
-  const recommendedTypeChecked = (ts.configs.recommendedTypeChecked as Linter.Config[]).map(config => {
+  const recommendedTypeChecked = (ts.configs.recommendedTypeChecked as Linter.Config[]).map((config) => {
     return {
       ...config,
       files

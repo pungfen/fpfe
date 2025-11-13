@@ -1,61 +1,38 @@
-import type { Linter } from 'eslint'
+import type { OverridesOptions, TypedFlatConfigItem } from '../types'
 
-import type { OverridesOptions } from '../types'
-
+import { pluginAntfu } from '../plugins'
 import { interopDefault } from '../utils'
 
-export interface ImportsOptions { typescript?: boolean }
+export interface ImportsOptions { stylistic?: boolean }
 
-const IMPORTS_FILES = [`**/*.?([cm])js`, `**/*.?([cm])jsx`, `**/*.?([cm])ts`, `**/*.?([cm])tsx`]
+export const imports = async (options: ImportsOptions & OverridesOptions = {}): Promise<TypedFlatConfigItem[]> => {
+  const pluginImportLite = await interopDefault(import('eslint-plugin-import-lite'))
 
-export const imports = async (options: ImportsOptions & OverridesOptions = {}): Promise<Linter.Config[]> => {
-  const imports = await interopDefault(import('eslint-plugin-import'))
-  const unused = await interopDefault(import('eslint-plugin-unused-imports') as unknown as typeof import('eslint-plugin-unused-imports')['default'])
+  const { rules: overrideRules = {}, stylistic = true } = options
 
-  const { rules: overrideRules = {} } = options
+  return [
+    {
+      plugins: {
+        antfu: pluginAntfu,
+        import: pluginImportLite
+      },
+      rules: {
+        'antfu/import-dedupe': 'error',
+        'antfu/no-import-dist': 'error',
+        'antfu/no-import-node-modules-by-path': 'error',
 
-  const configs: Linter.Config[] = [imports.flatConfigs.recommended as Linter.Config]
+        'import/consistent-type-specifier-style': ['error', 'top-level'],
+        'import/first': 'error',
+        'import/no-duplicates': 'error',
+        'import/no-mutable-exports': 'error',
+        'import/no-named-default': 'error',
 
-  if (options.typescript) {
-    try {
-      await interopDefault(import('eslint-import-resolver-typescript'))
+        ...stylistic
+          ? { 'import/newline-after-import': ['error', { count: 1 }] }
+          : {},
 
-      // @ts-expect-error -- NOTE(kazupon): add typescript resolver
-      imports.flatConfigs.typescript.settings['import/resolver']['typescript'] = true
-
-      configs.push({
-        name: 'import/typescript',
-        ...imports.flatConfigs.typescript
-      })
+        ...overrideRules
+      }
     }
-    catch (error: unknown) {
-      throw new Error(`Not found eslint-import-resolver-typescript: ${(error as Error).message}`)
-    }
-  }
-
-  configs.push({
-    files: IMPORTS_FILES,
-    plugins: { 'unused-imports': unused },
-    rules: {
-      '@typescript-eslint/no-unused-vars': 'off',
-      'no-unused-vars': 'off',
-      'unused-imports/no-unused-imports': 'error',
-      'unused-imports/no-unused-vars': [
-        'error',
-        {
-          args: 'all',
-          argsIgnorePattern: '^_',
-          caughtErrors: 'all',
-          caughtErrorsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-          vars: 'all',
-          varsIgnorePattern: '^_'
-        }
-      ],
-      ...overrideRules
-    }
-  })
-
-  return configs
+  ]
 }

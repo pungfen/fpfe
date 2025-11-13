@@ -6,7 +6,7 @@ export default defineConfig(
   jsonc(),
   javascript(),
   typescript({ parserOptions: { project: ['./tsconfig.app.json', './tsconfig.node.json'] } }),
-  imports({ typescript: true }),
+  imports(),
   perfectionist(),
   stylistic()
 )

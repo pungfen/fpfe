@@ -1,14 +1,13 @@
-import type { Linter } from 'eslint'
-
 import globals from 'globals'
 
-import type { OverridesOptions } from '../types'
+import type { OverridesOptions, TypedFlatConfigItem } from '../types'
+
 export interface JavaScriptOptions {
   // TODO
   name?: 'javascript'
 }
 
-export const javascript = async (options: JavaScriptOptions & OverridesOptions = {}): Promise<Linter.Config[]> => {
+export const javascript = async (options: JavaScriptOptions & OverridesOptions = {}): Promise<TypedFlatConfigItem[]> => {
   const { rules: overrideRules = {} } = options
 
   await Promise.resolve()

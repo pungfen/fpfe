@@ -6,8 +6,8 @@ export default defineConfig(
   globalIgnores(['node_modules']),
   jsonc(),
   javascript(),
-  typescript(),
-  imports({ typescript: true }),
+  typescript({ rules: { '@typescript-eslint/no-explicit-any': 'off' } }),
+  imports(),
   perfectionist(),
   stylistic()
 )
