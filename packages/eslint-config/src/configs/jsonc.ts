@@ -1,11 +1,13 @@
-import type { OptionsStylistic, OverridesOptions, TypedFlatConfigItem } from '../types'
+import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+
+import type { OverridesOptions, TypedFlatConfigItem } from '../types'
 
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../globs'
 import { interopDefault } from '../utils'
 
-export interface JsoncOptions { name?: 'jsonc' }
+export interface JsoncOptions { name?: 'jsonc', stylistic?: boolean | Pick<StylisticCustomizeOptions, 'indent' | 'jsx' | 'quotes' | 'semi'> }
 
-export const jsonc = async (options: JsoncOptions & OptionsStylistic & OverridesOptions<{ 'on-xx': string }> = {}): Promise<TypedFlatConfigItem[]> => {
+export const jsonc = async (options: JsoncOptions & OverridesOptions = {}): Promise<TypedFlatConfigItem[]> => {
   const { files = [GLOB_JSON, GLOB_JSON5, GLOB_JSONC], rules: overrideRules = {} } = options
 
   const [pluginJsonc, parserJsonc] = await Promise.all([interopDefault(import('eslint-plugin-jsonc')), interopDefault(import('jsonc-eslint-parser'))] as const)

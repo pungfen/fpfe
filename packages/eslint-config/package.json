@@ -6,6 +6,7 @@
   "description": "ESLint configs for @fp",
   "scripts": {
     "build": "tsdown",
+    "gen": "jiti scripts/typegen.ts",
     "fix": "pnpm run --color \"/^fix:/\"",
     "fix:eslint": "eslint . --fix",
     "fix:knip": "knip --fix --no-exit-code",

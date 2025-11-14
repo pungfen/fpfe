@@ -14,7 +14,6 @@ export const stylistic = async (options: OverridesOptions & StylisticOptions = {
       commaDangle: 'never',
       indent: 2,
       jsx: true,
-      pluginName: 'style',
       quoteProps: 'as-needed',
       quotes: 'single',
       semi: false
@@ -24,18 +23,18 @@ export const stylistic = async (options: OverridesOptions & StylisticOptions = {
 
   const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin') as unknown as typeof import('@stylistic/eslint-plugin')['default'])
 
-  const config = pluginStylistic.configs.customize({ ...customize })
+  const config = pluginStylistic.configs.customize({ ...customize, pluginName: '@stylistic' })
 
   return [
     {
       plugins: {
-        antfu: pluginAntfu,
-        [customize.pluginName!]: pluginStylistic
+        '@stylistic': pluginStylistic,
+        antfu: pluginAntfu
       },
       rules: {
         ...config.rules,
-        'style/array-bracket-newline': ['error', { multiline: true }],
-        'style/array-element-newline': ['error', { multiline: true }],
+        '@stylistic/array-bracket-newline': ['error', { multiline: true }],
+        '@stylistic/array-element-newline': ['error', { multiline: true }],
         ...overrideRules
       }
     }

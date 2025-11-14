@@ -5,7 +5,7 @@ import { interopDefault } from '../utils'
 
 export interface TailwindcssOptions { name?: 'tailwindcss' }
 
-export const tailwindcss = async (options: OverridesOptions<{ 'on-xx': string }> & TailwindcssOptions = {}): Promise<Linter.Config[]> => {
+export const tailwindcss = async (options: OverridesOptions & TailwindcssOptions = {}): Promise<Linter.Config[]> => {
   const { rules: overrideRules = {} } = options
 
   const tailwindcss = await interopDefault(import('../plugins/tailwindcss') as unknown as typeof import('../plugins/tailwindcss')['default'])

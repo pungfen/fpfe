@@ -1,15 +1,11 @@
-import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
+import stylistic from '@stylistic/eslint-plugin'
+import perfectionist from 'eslint-plugin-perfectionist'
+import vue from 'eslint-plugin-vue'
+import { pluginsToRulesDTS } from 'eslint-typegen/core'
 import { writeFile } from 'node:fs/promises'
 
-import { javascript } from '@/configs'
-
-const presets = [javascript()]
-
-await Promise.all(
-  presets.map(
-    async preset => {
-      const dts = await flatConfigsToRulesDTS([])
-      await writeFile(`./types/xx.ts`, JSON.stringify({ a: 'xx' }), 'utf-8')
-    }
-  )
+const dts = await pluginsToRulesDTS(
+  { '@stylistic': stylistic, perfectionist, vue }
 )
+
+void writeFile('src/typegen.d.ts', dts, 'utf-8')
