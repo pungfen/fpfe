@@ -1,24 +1,22 @@
-import type { Linter } from 'eslint'
-
 import type { OverridesOptions, TypedFlatConfigItem } from '../types'
 
+import { GLOB_VUE } from '../globs'
 import { interopDefault } from '../utils'
 import { TypeScriptOptions } from './typescript'
 
 export interface VueOptions {
-  autoImports?: boolean
   typescript?: boolean
 }
 
-export const vue = async (options: OverridesOptions<{ 'on-xx': string }> & TypeScriptOptions & VueOptions = {}): Promise<TypedFlatConfigItem[]> => {
-  const { autoImports = false, files = [`**/*.vue`], parserOptions = { projectService: true }, rules: overrideRules = {}, typescript = false } = options
+export const vue = async (options: OverridesOptions & TypeScriptOptions & VueOptions = {}): Promise<TypedFlatConfigItem[]> => {
+  const { files = [`**/*.vue`], parserOptions = {}, rules: overrideRules = {}, typescript = false } = options
 
-  const [pluginVue, vueParser] = await Promise.all([interopDefault(import('eslint-plugin-vue')), interopDefault(import('vue-eslint-parser'))] as const)
+  const pluginVue = await interopDefault(import('eslint-plugin-vue'))
 
-  const configs: Linter.Config[] = []
+  const rules = [...pluginVue.configs['flat/essential'], ...pluginVue.configs['flat/strongly-recommended'], ...pluginVue.configs['flat/recommended']]
 
-  if (autoImports) {
-    configs.push({
+  return [
+    {
       languageOptions: {
         globals: {
           computed: 'readonly',
@@ -38,30 +36,38 @@ export const vue = async (options: OverridesOptions<{ 'on-xx': string }> & TypeS
         }
       },
       plugins: { vue: pluginVue }
-    })
-  }
-
-  configs.push({
-    files,
-    languageOptions: {
-      parser: vueParser,
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-        extraFileExtensions: ['.vue'],
-        parser: typescript ? (await interopDefault(import('typescript-eslint'))).parser : null,
-        sourceType: 'module',
-        ...parserOptions
-      }
     },
-    rules: {
-      ...pluginVue.configs.base.rules,
-      ...[...pluginVue.configs['flat/essential'], ...pluginVue.configs['flat/strongly-recommended'], ...pluginVue.configs['flat/recommended']].map(c => c.rules).reduce((acc, c) => ({
-        ...acc,
-        ...c
-      }), {}),
-      ...overrideRules
+    ...pluginVue.configs['flat/recommended'].map((config) => {
+      return {
+        ...config,
+        files
+      }
+    }),
+    {
+      files: [GLOB_VUE],
+      rules: {
+        ...pluginVue.configs.base.rules,
+        ...rules.map(c => c.rules).reduce((acc, c) => ({
+          ...acc,
+          ...c
+        }), {}),
+        ...overrideRules
+      },
+      ...typescript
+        ? {
+            languageOptions: {
+              parser: pluginVue.configs['flat/base'][1].languageOptions?.parser,
+              parserOptions: {
+                ecmaFeatures: { jsx: true },
+                extraFileExtensions: ['.vue'],
+                parser: typescript ? (await interopDefault(import('typescript-eslint'))).parser : null,
+                sourceType: 'module',
+                tsconfigRootDir: process.cwd(),
+                ...parserOptions
+              }
+            }
+          }
+        : {}
     }
-  })
-
-  return configs
+  ]
 }

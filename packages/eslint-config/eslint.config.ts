@@ -1,12 +1,10 @@
-import { globalIgnores } from 'eslint/config'
-
-import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript } from './src'
+import { defineConfig, ignores, imports, javascript, jsonc, perfectionist, stylistic, typescript } from './src'
 
 export default defineConfig(
-  globalIgnores(['node_modules']),
+  ignores(),
   jsonc(),
   javascript(),
-  typescript({ rules: { '@typescript-eslint/no-explicit-any': 'off' } }),
+  typescript({ rules: { '@typescript-eslint/no-explicit-any': 'off' }, stylistic: true }),
   imports(),
   perfectionist(),
   stylistic()

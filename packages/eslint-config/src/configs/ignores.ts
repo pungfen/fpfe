@@ -1,7 +1,7 @@
 import { GLOB_EXCLUDE } from '../globs'
 import { TypedFlatConfigItem } from '../types'
 
-export const ignores = async (): Promise<TypedFlatConfigItem[]> => {
+export const ignores = (): TypedFlatConfigItem[] => {
   return [
     {
       ignores: GLOB_EXCLUDE

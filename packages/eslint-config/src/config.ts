@@ -1,10 +1,11 @@
 import type { Awaitable } from '@fpfe/shared'
-import type { Linter } from 'eslint'
 
 import { composer } from 'eslint-flat-config-utils'
 import { cwd } from 'node:process'
 
-export const defineConfig = async (...configs: Awaitable<Linter.Config | Linter.Config[]>[]) => {
+import { TypedFlatConfigItem } from './types'
+
+export const defineConfig = async (...configs: Awaitable<TypedFlatConfigItem[]>[]) => {
   console.info('eslint in ...', cwd())
   return composer().append(...configs)
 }

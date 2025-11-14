@@ -1,11 +1,11 @@
-import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript } from '@fpfe/eslint-config'
-import { globalIgnores } from 'eslint/config'
+import { defineConfig, ignores, imports, javascript, jsonc, perfectionist, stylistic, typescript, vue } from '@fpfe/eslint-config'
 
 export default defineConfig(
-  globalIgnores(['node_modules', 'dist']),
+  ignores(),
   jsonc(),
   javascript(),
   typescript({ parserOptions: { project: ['./tsconfig.app.json', './tsconfig.node.json'] } }),
+  vue({ parserOptions: { project: ['./tsconfig.app.json', './tsconfig.node.json'] }, typescript: true }),
   imports(),
   perfectionist(),
   stylistic()

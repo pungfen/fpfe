@@ -1,6 +1,7 @@
 import globals from 'globals'
 
 import type { OverridesOptions, TypedFlatConfigItem } from '../types'
+import { pluginAntfu } from '../plugins'
 
 export interface JavaScriptOptions {
   // TODO
@@ -17,10 +18,31 @@ export const javascript = async (options: JavaScriptOptions & OverridesOptions =
       languageOptions: {
         globals: {
           ...globals.browser,
-          ...globals.node
-        }
+          ...globals.node,
+          document: 'readonly',
+          navigator: 'readonly',
+          window: 'readonly',
+        },
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          },
+          ecmaVersion: 'latest',
+          sourceType: 'module',
+        },
+        sourceType: 'module'
       },
-      rules: { ...overrideRules }
+      linterOptions: {
+        reportUnusedDisableDirectives: true,
+      },
+    },
+    {
+      plugins: {
+        antfu: pluginAntfu
+      },
+      rules: {
+        ...overrideRules
+      }
     }
   ]
 }

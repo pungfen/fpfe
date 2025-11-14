@@ -15,14 +15,12 @@
   },
   "dependencies": {
     "@eslint/js": "^9.37.0",
-    "@eslint/json": "^0.13.2",
     "@fpfe/shared": "workspace:*",
     "eslint-flat-config-utils": "^2.1.4",
     "globals": "^16.4.0"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^8.46.4",
     "eslint-plugin-antfu": "^3.1.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-import-lite": "^0.3.0",
@@ -31,8 +29,8 @@
     "eslint-plugin-unused-imports": "^4.2.0",
     "eslint-plugin-vue": "^10.5.1",
     "eslint-typegen": "^2.3.0",
-    "typescript-eslint": "^8.46.0",
-    "vue-eslint-parser": "^10.2.0"
+    "jsonc-eslint-parser": "^2.4.1",
+    "typescript-eslint": "^8.46.0"
   },
   "peerDependencies": {
     "@stylistic/eslint-plugin": ">=5.4.0",
