@@ -1,12 +1,15 @@
-import { defineConfig, imports, javascript, jsonc, perfectionist, stylistic, typescript } from '@fpfe/eslint-config'
-import { globalIgnores } from 'eslint/config'
+import config from '@antfu/eslint-config'
 
-export default defineConfig(
-  globalIgnores(['node_modules']),
-  jsonc(),
-  javascript(),
-  typescript(),
-  imports(),
-  stylistic(),
-  perfectionist()
+export default config(
+  {
+    ignores: ['node_modules'],
+    gitignore: true,
+    type: 'lib',
+    lessOpinionated: true,
+    stylistic: {
+      overrides: {
+        'style/comma-dangle': 'error'
+      }
+    }
+  }
 )

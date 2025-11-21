@@ -1,8 +1,8 @@
 {
   "name": "fp",
-  "private": true,
-  "version": "1.0.0",
   "type": "module",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "lint": "eslint --cache .",
     "prepare": "simple-git-hooks",
@@ -10,15 +10,18 @@
     "build:ui": "pnpm -C packages/ui build"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
     "@fpfe/eslint-config": "workspace:*",
-    "@types/node": "^24.7.0",
+    "@tsconfig/node24": "^24.0.3",
+    "@types/node": "^24.10.1",
     "eslint": "catalog:",
+    "eslint-plugin-format": "^1.0.2",
     "jiti": "^2.6.1",
-    "knip": "^5.69.0",
-    "lint-staged": "^16.2.6",
+    "knip": "^5.70.1",
+    "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.12"
   },
   "simple-git-hooks": {
     "pre-commit": "echo 'Hello!'"
