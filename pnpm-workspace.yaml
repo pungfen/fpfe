@@ -2,9 +2,6 @@ packages:
   - packages/*
   - playground
 
-catalog:
-  eslint: ^9.39.1
-
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - esbuild

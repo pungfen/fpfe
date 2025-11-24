@@ -1,11 +1,3 @@
-import { defineConfig, ignores, imports, javascript, jsonc, perfectionist, stylistic, typescript } from './src'
+import config from './src'
 
-export default defineConfig(
-  ignores(),
-  jsonc(),
-  javascript(),
-  typescript({ rules: { '@typescript-eslint/no-explicit-any': 'off' }, stylistic: true }),
-  imports(),
-  perfectionist(),
-  stylistic()
-)
+export default config()
