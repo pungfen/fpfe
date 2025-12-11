@@ -1,0 +1,17 @@
+{
+  "name": "@fpfe/packer",
+  "type": "module",
+  "version": "0.0.1",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "main": "src/index.ts",
+  "peerDependencies": {
+    "vite": ">=7"
+  },
+  "dependencies": {
+    "vite": "^7.2.7"
+  }
+}

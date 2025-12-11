@@ -1,10 +1,16 @@
-import { GLOB_EXCLUDE } from '../globs'
-import { TypedFlatConfigItem } from '../types'
+import type { EslintConfig } from '../types'
 
-export const ignores = (): TypedFlatConfigItem[] => {
+export const ignores = (): EslintConfig[] => {
   return [
     {
-      ignores: GLOB_EXCLUDE
+      ignores: [
+        "**/package-lock.json",
+        "**/pnpm-lock.yaml",
+        "**/node_modules",
+        "**/dist",
+        "**/auto-import?(s).d.ts",
+        "**/components.d.ts"
+      ]
     }
   ]
 }

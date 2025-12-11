@@ -1,44 +1,30 @@
-import type { OverridesOptions, TypedFlatConfigItem } from '../types'
 
-import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_TS, GLOB_TSX } from '../globs'
-import { interopDefault } from '../utils'
+import type { Linter } from 'eslint'
 
-export interface TypeScriptOptions { extraFileExtensions?: string[], stylistic?: boolean }
+import {
+  plugin,
+  configs
+} from 'typescript-eslint'
 
-export const typescript = async (options: OverridesOptions & TypeScriptOptions = {}): Promise<TypedFlatConfigItem[]> => {
-  const { extraFileExtensions = [], parserOptions = { project: true }, rules: overrideRules = {}, stylistic } = options
-
-  const files = [GLOB_TS, GLOB_TSX, ...extraFileExtensions.map(ext => `**/*.${ext}`)]
-
-  const pluginTypescript = await interopDefault(import('typescript-eslint'))
-  const typeChecked = [...pluginTypescript.configs.recommendedTypeChecked, ...(stylistic ? pluginTypescript.configs.stylisticTypeChecked : [])]
+export const typescript =  (): Linter.Config[] => {
 
   return [
-    ...typeChecked.map(
-      (config) => {
-        return {
-          ...config,
-          files
-        } as TypedFlatConfigItem
-      }
-    ),
     {
-      files: [GLOB_JSON, GLOB_JSONC, GLOB_JSON5],
-      ...pluginTypescript.configs.disableTypeChecked
+      plugins: {
+        ["@typescript-eslint"]: plugin
+      }
     },
     {
-      files,
       languageOptions: {
-        parser: pluginTypescript.parser,
+        ecmaVersion: 'latest',
         parserOptions: {
-          extraFileExtensions: extraFileExtensions.map(ext => `.${ext}`),
           sourceType: 'module',
           tsconfigRootDir: process.cwd(),
-          ...parserOptions
         }
       },
       rules: {
-        ...overrideRules
+        ...configs.recommendedTypeChecked.reduce<Linter.RulesRecord>((acc, c) => ({ ...acc, ...c.rules }), {}),
+        ...configs.stylisticTypeChecked.reduce<Linter.RulesRecord>((acc, c) => ({ ...acc, ...c.rules }), {}),
       }
     }
   ]

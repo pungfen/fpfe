@@ -1,49 +1,29 @@
-import globals from 'globals'
+import plugin, { configs } from '@eslint/js'
+import unicorn from "eslint-plugin-unicorn"
+import type { EslintConfig } from '../types'
 
-import type { OverridesOptions, TypedFlatConfigItem } from '../types'
-
-import { pluginAntfu } from '../plugins'
-
-export interface JavaScriptOptions {
-  // TODO
-  name?: 'javascript'
-}
-
-export const javascript = async (options: JavaScriptOptions & OverridesOptions = {}): Promise<TypedFlatConfigItem[]> => {
-  const { rules: overrideRules = {} } = options
-
-  await Promise.resolve()
-
+export const javascript = (): EslintConfig[] => {
   return [
     {
+      plugins: {
+        ['unicorn']: unicorn
+      }
+    },
+    plugin.configs.recommended,
+    {
       languageOptions: {
-        globals: {
-          ...globals.browser,
-          ...globals.node,
-          document: 'readonly',
-          navigator: 'readonly',
-          window: 'readonly'
-        },
+        ecmaVersion: 'latest',
         parserOptions: {
           ecmaFeatures: {
             jsx: true
           },
-          ecmaVersion: 'latest',
-          sourceType: 'module'
-        },
-        sourceType: 'module'
+          ecmaVersion: "latest",
+          sourceType: "module"
+        }
       },
       linterOptions: {
         reportUnusedDisableDirectives: true
-      }
-    },
-    {
-      plugins: {
-        antfu: pluginAntfu
       },
-      rules: {
-        ...overrideRules
-      }
     }
   ]
 }

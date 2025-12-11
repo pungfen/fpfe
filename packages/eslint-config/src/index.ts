@@ -1,29 +1,10 @@
-import { defineConfig } from 'eslint/config'
+import { javascript, perfectionist,stylistic } from './configs'
 
-import perfectionist from 'eslint-plugin-perfectionist'
-import ts from 'typescript-eslint'
+export * from './configs'
+export * from './plugins'
 
-export default () => {
-  return defineConfig([
-    {
-      ignores: []
-    },
-    {
-      languageOptions: {
-        globals: {
-          myGlobal: true
-        }
-      }
-    },
-    {
-      plugins: {
-        perfectionist
-      }
-    },
-    {
-      plugins: {
-        ts
-      }
-    }
-  ])
-}
+export default [
+  javascript(),
+  perfectionist(),
+  stylistic()
+]
