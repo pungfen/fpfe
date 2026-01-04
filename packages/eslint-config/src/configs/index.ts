@@ -1,8 +1,6 @@
 export * from './ignores'
-export * from './imports'
-export * from './javascript'
-export * from './jsonc'
-export * from './perfectionist'
-export * from './stylistic'
-export * from './typescript'
-export * from './vue'
+
+export const object = {
+  a: 2,
+  z: 3
+}

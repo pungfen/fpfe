@@ -1,16 +1,11 @@
 {
   "name": "@fpfe/eslint-config",
-  "main": "src/index.ts",
   "type": "module",
   "version": "1.0.0",
   "description": "ESLint configs for @fp",
-  "scripts": {
-    "build": "tsdown",
-    "gen": "jiti scripts/typegen.ts"
-  },
+  "main": "src/index.ts",
   "dependencies": {
     "@eslint/js": "^9.39.1",
-    "@fpfe/shared": "workspace:*",
     "eslint-flat-config-utils": "^2.1.4"
   },
   "devDependencies": {
