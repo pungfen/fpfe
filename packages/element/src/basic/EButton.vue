@@ -9,7 +9,7 @@ const { type = 'default' } = defineProps<EButtonProps>()
 </script>
 
 <template>
-  <el-button :type="type">
+  <ElButton :type="type">
     <slot />
-  </el-button>
+  </ElButton>
 </template>

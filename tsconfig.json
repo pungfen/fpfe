@@ -1,11 +1,9 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "composite": false
-  },
   "references": [
+    { "path": "./tsconfig.node.json" },
     { "path": "./packages/eslint-config" },
     { "path": "./packages/element" },
+    { "path": "./packages/ui" },
   ],
-  "include": ["eslint.config.ts"]
+  "files": []
 }

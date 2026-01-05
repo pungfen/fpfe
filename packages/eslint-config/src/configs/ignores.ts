@@ -1,16 +1,15 @@
-import type { EslintConfig } from '../types'
+import { globalIgnores } from 'eslint/config'
 
-export const ignores = (): EslintConfig[] => {
-  return [
-    {
-      ignores: [
-        "**/package-lock.json",
-        "**/pnpm-lock.yaml",
-        "**/node_modules",
-        "**/dist",
-        "**/auto-import?(s).d.ts",
-        "**/components.d.ts"
-      ]
-    }
-  ]
-}
+export const ignores = globalIgnores(
+  [
+      '**/node_modules',
+      '**/dist',
+      '**/package-lock.json',
+      '**/yarn.lock',
+      '**/pnpm-lock.yaml',
+      '**/bun.lockb',
+
+      '**/auto-import?(s).d.ts',
+      '**/components.d.ts',
+    ]
+  )

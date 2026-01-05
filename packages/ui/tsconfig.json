@@ -1,17 +1,7 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "compilerOptions": {
-    "esModuleInterop": true,
-    
-    "target": "ESNext",
-    "moduleDetection": "force",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-
-    "strict": true,
-    "skipLibCheck": true,
-
-    "jsx": "preserve"
-  },
-  "include": ["*.config.ts", "utils.d.ts", "auto-imports.d.ts", "scripts", "src"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.ui.json" },
+  ]
 }

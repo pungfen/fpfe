@@ -25,5 +25,5 @@ export default defineConfig({
     }
   },
   plugins: [Vue(), VueJsx(), AutoImport({ imports: ['vue'] }) as Plugin, Dts({ include: ['auto-imports.d.ts', 'utils.d.ts', 'src'] })],
-  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } }
+  resolve: { alias: { '@': fileURLToPath(new URL('src', import.meta.url)) } }
 })
