@@ -4,6 +4,8 @@
     "composite": false
   },
   "references": [
-    { "path": "./packages/eslint-config" }
-  ]
+    { "path": "./packages/eslint-config" },
+    { "path": "./packages/element" },
+  ],
+  "include": ["eslint.config.ts"]
 }

@@ -37,6 +37,8 @@
     "*.css": "tailwindcss"
   },
 
+  "prettier.enable": false,
+
   "tailwindCSS.classFunctions": ["class", "ui", "cva", "cx"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
