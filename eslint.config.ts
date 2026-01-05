@@ -1,7 +1,10 @@
 import { defineWorkspaceConfig } from '@fpfe/eslint-config'
 
 export default defineWorkspaceConfig(
-  [
-    { workspace: '@fpfe/ui', vue: true, typescript: true }
+  {
+    root: import.meta.dirname,
+    workspace: [
+    { name: '@fpfe/ui', vue: true, typescript: true }
   ]
+  }
 )

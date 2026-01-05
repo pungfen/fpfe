@@ -1,5 +1,7 @@
 import { defineConfig } from "eslint/config";
 
+import { findWorkspacePackages } from '@fpfe/pnpm'
+
 import js from "@eslint/js"
 import vue from 'eslint-plugin-vue'
 
@@ -30,9 +32,12 @@ export default defineConfig(
   }
 )
 
-export const defineWorkspaceConfig = (configs: { workspace?: string, vue?: boolean, typescript?: boolean }[]) => {
+export const defineWorkspaceConfig = async (options: { root?: string; workspace?: { name?: string, vue?: boolean, typescript?: boolean }[] }) => {
 
-  console.log(configs)
+  const { root = process.cwd() } = options
+  console.log(root)
+
+  console.log((await findWorkspacePackages(root)).map(it => it.manifest.name))
 
   return defineConfig(
     ignores,

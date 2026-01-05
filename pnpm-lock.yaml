@@ -79,6 +79,9 @@ importers:
       '@eslint/js':
         specifier: ^9.39.2
         version: 9.39.2
+      '@fpfe/pnpm':
+        specifier: workspace:*
+        version: link:../pnpm
       '@stylistic/eslint-plugin':
         specifier: ^5.6.1
         version: 5.6.1(eslint@9.39.2(jiti@2.6.1))
