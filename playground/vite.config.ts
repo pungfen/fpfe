@@ -1,13 +1,38 @@
-import Tailwindcss from '@tailwindcss/vite'
+import { fileURLToPath, URL } from 'node:url'
+
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
-import { fileURLToPath, URL } from 'node:url'
+import Tailwindcss from '@tailwindcss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import VueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [VueRouter({ pathParser: { dotNesting: true } }), Vue(), VueJsx(), AutoImport({ imports: ['vue', VueRouterAutoImports] }), Tailwindcss()],
-  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } }
+  plugins: [
+    VueRouter(),
+    Vue(),
+    VueJsx(),
+    Tailwindcss(),
+    Icons({ autoInstall: true }),
+    AutoImport({
+      dirs: ['./src/plugins'],
+      imports: ['@vueuse/core', 'vue', VueRouterAutoImports],
+      resolvers: [ElementPlusResolver(), IconsResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver(), IconsResolver()]
+    })
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
 })
+

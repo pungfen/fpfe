@@ -1,15 +1,12 @@
-
 <script setup lang="ts">
-import { UiXx } from '@fpfe/ui'
-
-console.log(UiXx)
+import { XButton } from '@fpfe/ui'
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <div>
-      <UiXx>default</UiXx>
-       <div>yy</div>
+    <div class="flex flex-col">
+      <XButton>default</XButton>
+      <XButton>primary</XButton>
     </div>
   </div>
 </template>

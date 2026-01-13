@@ -1,8 +1,7 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
-    "jsx": "preserve",
     "types": ["vite/client", "element-plus/global"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "src/**/*.vue"]
 }

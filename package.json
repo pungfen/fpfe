@@ -1,17 +1,23 @@
 {
-  "name": "fp",
+  "name": "fpfe",
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint",
+    "pretty": "prettu-quick",
     "dev": "pnpm -C playground dev"
   },
   "devDependencies": {
     "@fpfe/eslint-config": "workspace:*",
-    "@types/node": "^25.0.3",
+    "@types/node": "^25.0.7",
     "@vue/tsconfig": "^0.8.1",
     "eslint": "^9.39.2",
+    "prettier": "^3.7.4",
+    "pretty-quick": "^4.2.2",
+    "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.17"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm pretty-quick --staged"
   }
 }

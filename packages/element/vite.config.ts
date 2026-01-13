@@ -31,12 +31,12 @@ export default defineConfig({
   plugins: [
     Vue(),
     VueJsx(),
-    AutoImport({ imports: ['vue'] }) as Plugin,
+    AutoImport({ imports: ['vue'] }),
     Components({
       dirs: [path.resolve(__dirname, 'src/basic')],
       resolvers: [ElementPlusResolver({ importStyle: 'css' })]
     }) as Plugin,
-    Dts({ include: ['auto-imports.d.ts', 'utils.d.ts', 'src'] })
+    Dts({})
   ],
   resolve: { alias: { '@': fileURLToPath(new URL('src', import.meta.url)) } }
 })

@@ -1,18 +1,30 @@
 <script setup lang="tsx">
-export interface ButtonProps extends UIProps<string> {
+import { cva, cx } from 'class-variance-authority'
+
+export interface ButtonProps extends /* @vue-ignore */ UIProps<string> {
+  type?: 'default' | 'plain' | 'text'
   disabled?: boolean
 }
 
-const { disabled } = defineProps<ButtonProps>()
+const { type = 'default' } = defineProps<ButtonProps>()
 
-const obj = {
-  z: 2,
-  a: 3,
-}
-
-const UI = () => <button disabled={disabled} />
+const ui = cva('inline-flex items-center gap-2', {
+  compoundVariants: [
+    { type: 'default', class: 'bg-cyan-500 hover:bg-cyan-500' }
+  ],
+  variants: {
+    color: { cyan: '', grey: '', green: '', red: '', yellow: '' },
+    type: {
+      default: 'rounded-md px-3 py-1 text-white',
+      plain: '',
+      text: ''
+    }
+  }
+})
 </script>
 
 <template>
-  <UI />
+  <button :class="cx(ui({ type }))">
+    <slot />
+  </button>
 </template>

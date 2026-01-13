@@ -3,13 +3,14 @@ import type { ButtonProps } from 'element-plus'
 
 export interface EButtonProps {
   type?: ButtonProps['type']
+  size?: ButtonProps['size']
 }
 
 const { type = 'default' } = defineProps<EButtonProps>()
 </script>
 
 <template>
-  <ElButton :type="type">
+  <ElButton v-bind="{ size, type }">
     <slot />
   </ElButton>
 </template>

@@ -1,9 +1,9 @@
 import '@/assets/tw.css'
-import '@fpfe/element/style.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
+
 import { createApp } from 'vue'
 
 import App from '@/app.vue'
-import { router } from '@/router'
 
 const app = createApp(App)
 
