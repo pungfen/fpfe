@@ -18,13 +18,13 @@
   </ElDivider>
 
   <ElSpace wrap>
-    <XButton type="text">text</XButton>
-    <XButton>default</XButton>
-    <XButton type="primary">primary</XButton>
-    <XButton type="success">success</XButton>
-    <XButton type="warning">warning</XButton>
-    <XButton type="info">info</XButton>
-    <XButton type="danger">danger</XButton>
+    <XButton disabled type="text">text</XButton>
+    <XButton disabled>default</XButton>
+    <XButton disabled type="primary">primary</XButton>
+    <XButton disabled type="success">success</XButton>
+    <XButton disabled type="warning">warning</XButton>
+    <XButton disabled type="info">info</XButton>
+    <XButton disabled type="danger">danger</XButton>
   </ElSpace>
 </template>
 

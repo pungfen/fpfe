@@ -11,6 +11,9 @@ for (const route of routes) {
   if (route.path.startsWith('/element')) {
     route.meta ??= {}
     route.meta.layout = 'element'
+  } else if (route.path.startsWith('/ui')) {
+    route.meta ??= {}
+    route.meta.layout = 'ui'
   }
 }
 
@@ -72,5 +75,5 @@ const setupLayouts = (routes: RouteRecordRaw[]) => {
 
 export const router = createRouter({
   history: createWebHistory(),
-  routes: setupLayouts(routes)
+  routes: setupLayouts([...routes])
 })

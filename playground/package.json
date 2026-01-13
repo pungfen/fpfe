@@ -30,6 +30,10 @@
   "dependenciesMeta": {
     "@fpfe/element": {
       "injected": true
+    },
+    "@fpfe/ui": {
+      "injected": true
     }
   }
 }
+

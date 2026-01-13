@@ -66,6 +66,8 @@ const componentMenus: Menu[] = [
       <ElMain>
         <RouterView />
       </ElMain>
+
+      <ElAside class="outline outline-(--el-border-color)"></ElAside>
     </ElContainer>
   </ElContainer>
 </template>

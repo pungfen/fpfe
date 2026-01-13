@@ -5,7 +5,7 @@
     "*.css": "tailwindcss"
   },
 
-  "tailwindCSS.classFunctions": ["class", "ui", "cva", "cx"],
+  "tailwindCSS.classFunctions": ["tv"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],

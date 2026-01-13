@@ -1,3 +1,3 @@
 export const name = 'ui'
 
-export { default as XButton } from './button.vue'
+export { default as XButton } from './components/button.vue'
