@@ -3,48 +3,37 @@ import process from 'node:process'
 
 import { createServer, mergeConfig } from 'vite'
 
-import { entry } from './plugins'
+import Vue from '@vitejs/plugin-vue'
+import VueJsx from '@vitejs/plugin-vue-jsx'
+import VueRouter from 'unplugin-vue-router/vite'
+import Tailwindcss from '@tailwindcss/vite'
+import Icons from 'unplugin-icons/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 
 export const serve = async (config: Config) => {
-  const { apps, vite } = config
+  const { vue: enableVue = true } = config
 
-  await Promise.all(
-    apps.map(
-      async (app) => {
-        try {
-          const server = await createServer(mergeConfig({
-            plugins: [
-              entry({ apps })
-            ]
-          }, vite))
+  try {
+    const server = await createServer({
+      plugins: [
+        VueRouter(),
+        Vue(),
+        VueJsx(),
+        Tailwindcss(),
+        Icons(),
+        AutoImport({}),
+        Components()
+      ]
+    })
 
-          server.middlewares.use(
-            (req, res, next) => {
-              if (req.headers.accept.includes('text/html')) {
-                const pathname = new URL(req.url!, `http:/${req.headers.host}`).pathname
-                const target = apps.find(app => app.predicate(pathname))
-                if (!target) {
-                  throw new Error(`There is no corresponding app of '${pathname}'.`)
-                }
-                if (target.name === app.name) {
-                  next()
-                }
-                else {
-                  res.writeHead(301, { location: '' })
-                  res.end()
-                }
-              }
-            }
-          )
+    if (!server.httpServer) {
+      throw new Error('HTTP server not available')
+    }
 
-          await server.listen()
-          server.printUrls()
-        }
-        catch (e) {
-          console.error(e)
-          process.exit(1)
-        }
-      }
-    )
-  )
+    await server.listen()
+  } catch (e) {
+    process.exit(1)
+  }
 }
+
