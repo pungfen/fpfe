@@ -16,16 +16,16 @@
   },
   "devDependencies": {
     "@fpfe/packer": "workspace:*",
-    "@iconify-json/lucide": "^1.2.84",
+    "@iconify-json/lucide": "^1.2.85",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^25.0.7",
+    "@types/node": "^25.0.8",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vitejs/plugin-vue-jsx": "^5.1.3",
     "@vue/tsconfig": "^0.8.1",
     "tailwindcss": "^4.1.18",
-    "unplugin-auto-import": "^20.3.0",
-    "unplugin-icons": "^22.5.0",
-    "unplugin-vue-components": "^30.0.0",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-icons": "^23.0.1",
+    "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-router": "^0.19.2",
     "vite": "^7.3.1"
   },
@@ -38,4 +38,3 @@
     }
   }
 }
-

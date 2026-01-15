@@ -1,24 +1,32 @@
-import Vue from '@vitejs/plugin-vue'
-import VueJsx from '@vitejs/plugin-vue-jsx'
-import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
-import AutoImport from 'unplugin-auto-import/vite'
-import { defineConfig } from 'vite'
-import Dts from 'vite-plugin-dts'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+import { defineConfig } from 'vite'
+
+import vue from 'unplugin-vue/vite'
+import autoImport from 'unplugin-auto-import/vite'
+import dts from 'unplugin-dts/vite'
+
+import pkg from './package.json'
+
+const dependencies = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {})
+]
 
 export default defineConfig({
   build: {
-    cssCodeSplit: false,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      fileName: 'index',
-      formats: ['es']
+      entry: 'src/index.ts',
+      formats: ['es'],
+      fileName: 'index'
     },
     minify: false,
     rollupOptions: {
-      external: ['vue'],
+      external(source) {
+        return dependencies.some(
+          (dep) => source === dep || source.startsWith(`${dep}/`)
+        )
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -26,13 +34,20 @@ export default defineConfig({
           }
         }
       }
-    }
+    },
+    sourcemap: true
+  },
+  define: {
+    __VERSION__: JSON.stringify(pkg.version)
   },
   plugins: [
-    Vue(),
-    VueJsx(),
-    AutoImport({ dirs: ['./src/plugins'], imports: ['vue'] }),
-    Dts({})
+    vue(),
+    autoImport({ dirs: ['./src/plugins'], imports: ['@vueuse/core', 'vue'] }),
+    dts({ tsconfigPath: './tsconfig.ui.json', processor: 'vue' })
   ],
-  resolve: { alias: { '@': fileURLToPath(new URL('src', import.meta.url)) } }
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
 })

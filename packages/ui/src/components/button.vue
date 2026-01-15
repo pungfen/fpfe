@@ -1,32 +1,21 @@
 <script setup lang="tsx">
-import { tv } from 'tailwind-variants'
+import { type ButtonUiVariants, buttonUi } from '@/theme/button'
 
-export type ButtonVariants = VariantProps<typeof ui>
-
-export interface ButtonProps extends /* @vue-ignore */ ButtonVariants {
-  type?: 'default' | 'plain' | 'text'
+export interface ButtonProps {
+  color?: ButtonUiVariants['color']
+  size?: ButtonUiVariants['size']
   disabled?: boolean
 }
 
-const { type = 'default' } = defineProps<ButtonProps>()
+const { color, size, disabled } = defineProps<ButtonProps>()
 
-const ui = tv({
-  base: '',
-  defaultVariants: {
-    type: 'default'
-  },
-  variants: {
-    type: {
-      default: '',
-      plain: '',
-      text: ''
-    }
-  }
-})
+defineSlots<{
+  default(): Component
+}>()
 </script>
 
 <template>
-  <button :class="ui({ type })">
+  <button :class="buttonUi({ color, size })">
     <slot />
   </button>
 </template>

@@ -3,6 +3,17 @@
   "type": "module",
   "version": "0.0.1",
   "main": "dist/index.mjs",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*.d.mts",
+        "./*"
+      ]
+    }
+  },
   "scripts": {
     "build": "tsdown"
   },
@@ -10,9 +21,10 @@
     "@tailwindcss/vite": "^4.1.18",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vitejs/plugin-vue-jsx": "^5.1.3",
-    "unplugin-auto-import": "^20.3.0",
-    "unplugin-icons": "^22.5.0",
-    "unplugin-vue-components": "^30.0.0",
+    "local-pkg": "^1.1.2",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-icons": "^23.0.1",
+    "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-router": "^0.19.2",
     "vite": "^7.3.1"
   },

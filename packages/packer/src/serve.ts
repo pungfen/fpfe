@@ -3,7 +3,7 @@ import process from 'node:process'
 
 import { createServer, mergeConfig } from 'vite'
 
-import Vue from '@vitejs/plugin-vue'
+// import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import VueRouter from 'unplugin-vue-router/vite'
 import Tailwindcss from '@tailwindcss/vite'
@@ -18,7 +18,6 @@ export const serve = async (config: Config) => {
     const server = await createServer({
       plugins: [
         VueRouter(),
-        Vue(),
         VueJsx(),
         Tailwindcss(),
         Icons(),
