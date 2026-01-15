@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { type ButtonUiVariants, buttonUi } from '@/theme/button'
+import { type ButtonUiVariants, buttonUi } from '@ui/theme/button'
 
 export interface ButtonProps {
   color?: ButtonUiVariants['color']

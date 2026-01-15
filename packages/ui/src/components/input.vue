@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { type InputUiVariants, inputUi } from '@/theme/input'
+import { type InputUiVariants, inputUi } from '@ui/theme/input'
 
 export interface InputProps {
   color?: InputUiVariants['color']

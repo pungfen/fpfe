@@ -2,7 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@ui/*": ["./src/*"]
     }
   },
   "include": ["auto-imports.d.ts", "src/**/*", "src/**/*.vue"]

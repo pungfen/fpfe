@@ -22,7 +22,12 @@ export default defineConfig({
     Icons({ autoInstall: true }),
     AutoImport({
       dirs: ['./src/plugins'],
-      imports: ['@vueuse/core', 'vue', VueRouterAutoImports],
+      imports: [
+        '@vueuse/core',
+        'vue',
+        VueRouterAutoImports,
+        { from: '@fpfe/ui', imports: ['tv'], type: true }
+      ],
       resolvers: [ElementPlusResolver(), IconsResolver()]
     }),
     Components({
@@ -31,7 +36,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@ui': fileURLToPath(
+        new URL('./node_modules/@fpfe/ui/src', import.meta.url)
+      )
     }
   }
 })

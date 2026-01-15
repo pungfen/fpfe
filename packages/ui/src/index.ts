@@ -1,7 +1,9 @@
 export const name = 'ui'
 
-export { default as XButton } from '@/components/button.vue'
-export { default as XInput } from '@/components/input.vue'
+export { default as XButton } from '@ui/components/button.vue'
+export { default as XInput } from '@ui/components/input.vue'
 
-export * from '@/theme/button'
-export * from '@/theme/input'
+export * from '@ui/theme/button'
+export * from '@ui/theme/input'
+
+export * from '@ui/plugins/tv'
