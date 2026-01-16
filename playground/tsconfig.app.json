@@ -6,7 +6,8 @@
     "types": [
       "vite/client",
       "unplugin-vue-router/client",
-      "unplugin-icons/types/vue"
+      "unplugin-icons/types/vue",
+      "@fpfe/ui/types"
     ],
     "paths": {
       "@/*": ["./src/*"]

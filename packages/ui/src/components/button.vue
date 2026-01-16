@@ -1,10 +1,11 @@
 <script setup lang="tsx">
-import { type ButtonUiVariants, buttonUi } from '@ui/theme/button'
+import { type ButtonVariants, button as ui } from '@fpfe/theme'
 
 export interface ButtonProps {
-  color?: ButtonUiVariants['color']
-  size?: ButtonUiVariants['size']
+  color?: ButtonVariants['color']
+  size?: ButtonVariants['size']
   disabled?: boolean
+  text?: boolean
 }
 
 const { color, size, disabled } = defineProps<ButtonProps>()
@@ -15,7 +16,7 @@ defineSlots<{
 </script>
 
 <template>
-  <button :class="buttonUi({ color, size })">
+  <button :class="ui({ color, size, disabled })">
     <slot />
   </button>
 </template>

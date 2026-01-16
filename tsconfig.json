@@ -4,6 +4,7 @@
     { "path": "./packages/eslint-config" },
     { "path": "./packages/element" },
     { "path": "./packages/ui" },
+    { "path": "./playground" }
   ],
   "files": []
 }

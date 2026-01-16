@@ -181,8 +181,17 @@ importers:
         specifier: ^3.5.24
         version: 3.5.24
 
+  packages/theme:
+    dependencies:
+      tailwind-variants:
+        specifier: ^3.2.2
+        version: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.18)
+
   packages/ui:
     dependencies:
+      '@fpfe/theme':
+        specifier: workspace:*
+        version: link:../theme
       '@vueuse/components':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -244,9 +253,12 @@ importers:
       '@fpfe/element':
         specifier: workspace:*
         version: link:../packages/element
+      '@fpfe/theme':
+        specifier: workspace:*
+        version: link:../packages/theme
       '@fpfe/ui':
         specifier: workspace:*
-        version: link:../packages/ui
+        version: file:packages/ui(tailwindcss@4.1.18)(typescript@5.9.3)
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -842,6 +854,11 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fpfe/ui@file:packages/ui':
+    resolution: {directory: packages/ui, type: directory}
+    peerDependencies:
+      tailwindcss: '>=4.0.0'
 
   '@gwhitney/detect-indent@7.0.1':
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
@@ -5774,6 +5791,18 @@ snapshots:
       '@floating-ui/utils': 0.2.10
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fpfe/ui@file:packages/ui(tailwindcss@4.1.18)(typescript@5.9.3)':
+    dependencies:
+      '@fpfe/theme': link:packages/theme
+      '@vueuse/components': 14.1.0(vue@3.5.26(typescript@5.9.3))
+      '@vueuse/core': 14.1.0(vue@3.5.26(typescript@5.9.3))
+      tailwind-merge: 3.4.0
+      tailwind-variants: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.18)
+      tailwindcss: 4.1.18
+      vue: 3.5.26(typescript@5.9.3)
+    transitivePeerDependencies:
+      - typescript
 
   '@gwhitney/detect-indent@7.0.1': {}
 

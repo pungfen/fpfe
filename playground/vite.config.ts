@@ -14,6 +14,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  optimizeDeps: { exclude: ['@fpfe/theme', '@fpfe/ui'] },
   plugins: [
     VueRouter(),
     Vue(),
@@ -31,7 +32,15 @@ export default defineConfig({
       resolvers: [ElementPlusResolver(), IconsResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver(), IconsResolver()]
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver(),
+        (name) => {
+          if (name.startsWith('X')) {
+            return { name, from: '@fpfe/ui' }
+          }
+        }
+      ]
     })
   ],
   resolve: {

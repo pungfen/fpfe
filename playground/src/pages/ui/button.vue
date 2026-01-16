@@ -3,10 +3,12 @@
     <ElText size="large">基础用法</ElText>
   </ElDivider>
 
+  <ElButton plain>xx</ElButton>
+
   <ElSpace wrap>
-    <XButton type="text">text</XButton>
-    <XButton type="default">default</XButton>
-    <XButton type="plain">plain</XButton>
+    <XButton>default</XButton>
+    <XButton>text</XButton>
+    <XButton>plain</XButton>
   </ElSpace>
 
   <ElDivider content-position="left">
@@ -14,12 +16,10 @@
   </ElDivider>
 
   <ElSpace wrap>
-    <XButton disabled type="text">text</XButton>
-    <XButton disabled type="default">default</XButton>
-    <XButton disabled type="plain">plain</XButton>
+    <XButton size="sm">text</XButton>
+    <XButton size="md">default</XButton>
+    <XButton size="lg">plain</XButton>
   </ElSpace>
 </template>
 
-<script setup lang="ts">
-import { XButton } from '@fpfe/ui'
-</script>
+<script setup lang="ts"></script>

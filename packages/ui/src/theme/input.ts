@@ -1,3 +1,5 @@
+import { tv } from '@ui/plugins/tv'
+
 export const inputUi = tv({
   base: 'rounded-full bg-blue-500 font-medium text-white active:opacity-80',
   variants: {

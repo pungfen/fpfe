@@ -1,6 +1,6 @@
-import { tv } from '@ui/plugins/tv'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-export const buttonUi = tv({
+export const button = tv({
   base: 'rounded font-medium active:opacity-80',
   variants: {
     color: {
@@ -14,6 +14,7 @@ export const buttonUi = tv({
     disabled: {
       true: 'cursor-not-allowed opacity-50'
     },
+    plain: {},
     size: {
       sm: 'text-sm',
       md: 'text-md',
@@ -31,4 +32,4 @@ export const buttonUi = tv({
   }
 })
 
-export type ButtonUiVariants = VariantProps<typeof buttonUi>
+export type ButtonVariants = VariantProps<typeof button>

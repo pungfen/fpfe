@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@source '../../node_modules/@fpfe/ui/src/components';
+@source '../../node_modules/@fpfe/ui/src/theme';
+@plugin '../../node_modules/@fpfe/theme/src/tailwindcss';
+
+@custom-variant dark
+  (&: where(.dark, .dark *));
 
 @layer base {
   html,
