@@ -1,35 +1,85 @@
-import { tv, type VariantProps } from 'tailwind-variants'
+import { tv, type VariantProps } from '../shared/tv'
 
 export const button = tv({
-  base: 'rounded font-medium active:opacity-80',
+  base: 'inline-flex cursor-pointer items-center gap-2 rounded px-3 py-1 transition delay-100',
   variants: {
     color: {
-      amber: 'bg-amber-500 text-white',
-      blue: 'bg-blue-500 text-white',
-      cyan: 'bg-cyan-500 text-white',
-      gray: 'bg-gray-500 text-white',
-      neutral: 'bg-neutral-500 text-white',
-      red: 'bg-red-500 text-white'
+      primary: '',
+      success: '',
+      warning: '',
+      danger: ''
     },
     disabled: {
       true: 'cursor-not-allowed opacity-50'
     },
-    plain: {},
-    size: {
-      sm: 'text-sm',
-      md: 'text-md',
-      lg: 'text-lg'
+    type: {
+      solid: 'text-white',
+      ring: 'ring-1 ring-current ring-inset',
+      text: ''
     }
   },
   compoundVariants: [
     {
-      size: ['sm', 'md'],
-      class: 'px-3 py-1'
+      type: 'solid',
+      color: 'primary',
+      class: 'bg-cyan-500 hover:bg-cyan-600'
+    },
+    {
+      type: 'solid',
+      color: 'success',
+      class: 'bg-green-500 hover:bg-green-600'
+    },
+    {
+      type: 'solid',
+      color: 'warning',
+      class: 'bg-yellow-500 hover:bg-yellow-600'
+    },
+    {
+      type: 'solid',
+      color: 'danger',
+      class: 'bg-red-500 hover:bg-red-600'
+    },
+    {
+      type: 'ring',
+      color: 'primary',
+      class: 'text-cyan-700 ring-cyan-500 hover:ring-cyan-600'
+    },
+    {
+      type: 'ring',
+      color: 'success',
+      class: 'text-green-700 ring-green-500 hover:ring-green-600'
+    },
+    {
+      type: 'ring',
+      color: 'warning',
+      class: 'text-yellow-700 ring-yellow-500 hover:ring-yellow-600'
+    },
+    {
+      type: 'ring',
+      color: 'danger',
+      class: 'text-red-700 ring-red-500 hover:ring-red-600'
+    },
+    {
+      type: 'text',
+      color: 'primary',
+      class: 'text-cyan-700 hover:bg-cyan-100'
+    },
+    {
+      type: 'text',
+      color: 'success',
+      class: 'text-green-700 hover:bg-green-100'
+    },
+    {
+      type: 'text',
+      color: 'warning',
+      class: 'text-yellow-700 hover:bg-yellow-100'
+    },
+    {
+      type: 'text',
+      color: 'danger',
+      class: 'text-red-700 hover:bg-red-100'
     }
-  ],
-  defaultVariants: {
-    size: 'md'
-  }
+  ]
 })
 
 export type ButtonVariants = VariantProps<typeof button>

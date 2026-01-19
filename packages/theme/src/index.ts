@@ -1,3 +1,2 @@
 export * from './variants/button'
-
-export * from './tailwindcss'
+export * from './variants/input'

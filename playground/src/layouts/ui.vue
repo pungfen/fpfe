@@ -16,9 +16,14 @@ const darkMode = computed({
 
 const componentMenus: Menu[] = [
   {
-    name: 'Basic 基础组件',
+    name: '基础组件',
     index: 'basic',
-    children: [{ name: '按钮', index: '/ui/button' }]
+    children: [{ name: 'Button', index: '/ui/button' }]
+  },
+  {
+    name: '表单组件',
+    index: 'basic',
+    children: [{ name: 'Input', index: '/ui/input' }]
   }
 ]
 </script>
@@ -63,11 +68,9 @@ const componentMenus: Menu[] = [
         </ElScrollbar>
       </ElAside>
 
-      <ElMain>
+      <ElMain class="flex flex-col">
         <RouterView />
       </ElMain>
-
-      <ElAside class="outline outline-(--el-border-color)"></ElAside>
     </ElContainer>
   </ElContainer>
 </template>

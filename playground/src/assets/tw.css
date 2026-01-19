@@ -1,10 +1,9 @@
 @import 'tailwindcss';
 
 @source '../../node_modules/@fpfe/ui/src/components';
-@source '../../node_modules/@fpfe/ui/src/theme';
+@source '../../node_modules/@fpfe/theme/src/variants';
 
-@custom-variant dark
-  (&: where(.dark, .dark *));
+@custom-variant dark (&: where(.dark, .dark *));
 
 @layer base {
   html,

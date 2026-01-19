@@ -1,6 +1,9 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
   "files.associations": {
     "*.css": "tailwindcss"
   },
@@ -9,6 +12,10 @@
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
+  "tailwindCSS.experimental.configFile": {
+    "playground/src/assets/tw.css": "playground/src/**"
+  },
+  "tailwindCSS.emmetCompletions": true,
 
   "typescript.tsdk": "node_modules/typescript/lib"
 }
