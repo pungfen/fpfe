@@ -1,6 +1,7 @@
 <script setup lang="tsx" generic="V extends string">
 import { type InputVariants, input as ui } from '@fpfe/theme'
 import { useId, type Component, ref } from 'vue'
+import { useFocus } from '@vueuse/core'
 
 export interface InputProps {
   disabled?: InputVariants['disabled']
@@ -8,11 +9,8 @@ export interface InputProps {
   placeholder?: string
 }
 
-const {
-  disabled = undefined,
-  placeholder = '请输入内容',
-  color = 'primary'
-} = defineProps<InputProps>()
+const { disabled = undefined, placeholder = '请输入内容' } =
+  defineProps<InputProps>()
 
 const model = defineModel<V>()
 
@@ -29,6 +27,8 @@ const { append, prepend } = defineSlots<{
 const id = useId()
 const el = ref<HTMLInputElement | null>(null)
 
+const { focused } = useFocus(el)
+
 const blur = () => {
   emit('blur')
 }
@@ -39,7 +39,7 @@ const focus = () => {
 defineExpose({ blur, focus })
 
 const X = () => (
-  <div class={ui({ color, disabled })}>
+  <div class={ui({ color: focused.value ? 'primary' : 'gray', disabled })}>
     {prepend?.()}
     <input
       ref={el}
@@ -50,7 +50,7 @@ const X = () => (
         const v = (e.target as HTMLInputElement).value as V
         model.value = v
       }}
-      class="ml-1 flex-1 border-none first:ml-0"
+      class="ml-1 flex-1 first:ml-0 focus-within:border-none!"
     />
     {append?.()}
   </div>

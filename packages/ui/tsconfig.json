@@ -1,7 +1,9 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.ui.json" },
-  ]
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "paths": {
+      "@ui/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "src/**/*.vue"]
 }

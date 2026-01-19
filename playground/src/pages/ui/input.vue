@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { XInput } from '@fpfe/ui'
+</script>
+
 <template>
   <ElInput placeholder="请输入"></ElInput>
 

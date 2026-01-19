@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { XButton } from '@fpfe/ui'
+</script>
+
 <template>
   <ElDivider content-position="left">
     <ElText size="large">实心按钮</ElText>
@@ -53,5 +57,3 @@
     <XButton disabled type="text" color="danger">danger</XButton>
   </ElSpace>
 </template>
-
-<script setup lang="ts"></script>

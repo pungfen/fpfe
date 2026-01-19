@@ -1,0 +1,13 @@
+{
+  "name": "@fpfe/tsconfig",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "typescript": "5.x",
+    "vue": "^3.4.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}
