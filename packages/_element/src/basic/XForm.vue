@@ -5,9 +5,10 @@ import {
   ElFormItem,
   type FormInstance
 } from 'element-plus'
+import type { VNodeChild } from 'vue'
 
 export interface XFormItemProps {
-  content?: () => VNode
+  content?: () => VNodeChild
   label?: string
   labelPosition?: '' | 'left' | 'right' | 'top'
   labelWidth?: number | string
@@ -87,12 +88,12 @@ export interface XFormItemConfig<D> extends Omit<
   XFormItemProps,
   'content' | 'label'
 > {
-  content?: (scope: { data: D }) => VNode
+  content?: (scope: { data: D }) => VNodeChild
   label: string
 }
 
 export interface XFormProps<D> {
-  content?: (scope: { data: D }) => VNode
+  content?: (scope: { data: D }) => VNodeChild
   data?: D
   disabled?: boolean
   inline?: boolean

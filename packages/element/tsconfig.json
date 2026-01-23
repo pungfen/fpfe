@@ -1,13 +1,11 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "compilerOptions": {
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "types": ["vite/client", "unplugin-icons/types/vue"]
-  },
-  "include": [
-    "auto-imports.d.ts",
-    "components.d.ts",
-    "src/**/*",
-    "src/**/*.vue"
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

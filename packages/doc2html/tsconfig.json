@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    
+
     "target": "ESNext",
     "moduleDetection": "force",
     "module": "ESNext",
@@ -10,5 +10,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["eslint.config.ts", "src"]
+  "include": ["src"]
 }

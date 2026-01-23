@@ -7,18 +7,15 @@ import {
   VueUseComponentsResolver
 } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
-import { defineConfig, Environment } from 'vite'
+import { defineConfig } from 'vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Dts from 'vite-plugin-dts'
 
 const futp = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 
-const state = new Map<Environment, { count: number }>()
-
 export default defineConfig({
   build: {
-    cssCodeSplit: true,
     lib: {
       entry: futp('src/index.ts'),
       fileName: 'index',
@@ -26,7 +23,15 @@ export default defineConfig({
     },
     minify: false,
     rollupOptions: {
-      external: ['element-plus', 'vue']
+      external: ['element-plus', 'vue'],
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            const segments = id.toString().split('node_modules/')[1].split('/')
+            return segments[1].split('@')[0] ?? 'vendor'
+          }
+        }
+      }
     }
   },
   plugins: [
@@ -44,30 +49,12 @@ export default defineConfig({
     Components({
       dirs: ['./src/basic'],
       resolvers: [
-        ElementPlusResolver(),
+        ElementPlusResolver({ importStyle: false }),
         IconsResolver(),
         VueUseComponentsResolver()
       ]
     }),
     Icons(),
-    Dts({}),
-    {
-      name: 'count-transformed-modules',
-      perEnvironmentStartEndDuringDev: true,
-      buildStart() {
-        state.set(this.environment, { count: 0 })
-      },
-      transform(id) {
-        state.get(this.environment)!.count++
-      },
-      buildEnd() {
-        console.log(
-          'xx',
-          this.environment.name,
-          state.get(this.environment)?.count
-        )
-      }
-    }
-  ],
-  resolve: { alias: { '@': futp('src') } }
+    Dts({ tsconfigPath: './tsconfig.lib.json' })
+  ]
 })
