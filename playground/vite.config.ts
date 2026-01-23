@@ -16,7 +16,6 @@ import { defineConfig } from 'vite'
 const futp = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 
 export default defineConfig({
-  optimizeDeps: { exclude: ['@fpfe/theme', '@fpfe/ui'] },
   plugins: [
     VueRouter(),
     Vue(),
@@ -29,12 +28,24 @@ export default defineConfig({
       resolvers: [ElementPlusResolver(), IconsResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver(), IconsResolver()]
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver(),
+        (name) => {
+          if (name.startsWith('X')) {
+            return {
+              name,
+              from: '@fpfe/element'
+            }
+          }
+        }
+      ]
     })
   ],
   resolve: {
     alias: {
       '@': futp('./src'),
+      // '@fpfe/element': futp('../packages/element/src'),
       '@fpfe/theme': futp('../packages/theme/src'),
       '@fpfe/ui': futp('../packages/ui/src')
     }

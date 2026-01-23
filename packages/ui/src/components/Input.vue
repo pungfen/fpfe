@@ -1,5 +1,5 @@
 <script setup lang="tsx" generic="V extends string">
-import { type InputVariants, input as ui } from '@fpfe/theme'
+import { type InputVariants, input as ui } from '../variants/input'
 import { useId, type Component, ref } from 'vue'
 import { useFocus } from '@vueuse/core'
 
@@ -39,7 +39,7 @@ const focus = () => {
 defineExpose({ blur, focus })
 
 const X = () => (
-  <div class={ui({ color: focused.value ? 'primary' : 'gray', disabled })}>
+  <div class={ui({ disabled })}>
     {prepend?.()}
     <input
       ref={el}

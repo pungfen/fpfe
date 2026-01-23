@@ -1,0 +1,13 @@
+@theme {
+  --ui-button-bg-primary: var(--ui-color-primary-500);
+}
+
+@layer components {
+  .x-button {
+    @apply inline-flex cursor-pointer items-center gap-2 rounded bg-(--color-primary-500) px-3 py-1 text-sm transition delay-100;
+  }
+}
+
+@utility ibgp-* {
+  background-color: --value(--color-primary-*);
+}

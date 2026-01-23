@@ -1,4 +1,4 @@
-import { tv, type VariantProps } from '../shared/tv'
+import { tv, type VariantProps } from '../tailwind'
 
 export const input = tv({
   slots: {
@@ -10,6 +10,9 @@ export const input = tv({
       success: '',
       warning: '',
       danger: ''
+    },
+    disabled: {
+      true: ''
     }
   },
   compoundVariants: [

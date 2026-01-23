@@ -1,0 +1,22 @@
+@theme {
+  /* 非常浅色 - 用于背景、悬停状态 */
+  --color-primary-50: oklch(98% 0.02 194.8);
+  --color-primary-100: oklch(95% 0.04 194.8);
+  --color-primary-200: oklch(90% 0.06 194.8);
+
+  /* 浅色 - 用于边框、次要元素 */
+  --color-primary-300: oklch(83% 0.085 194.8);
+  --color-primary-400: oklch(77.5% 0.102 194.8);
+
+  /** 基础色 - 主品牌色 #18bcbc*/
+  --color-primary-500: oklch(72.15% 0.12 194.8);
+
+  /* 深色 - 用于悬浮状态、强调 */
+  --color-primary-600: oklch(66% 0.118 194.8);
+  --color-primary-700: oklch(59.5% 0.113 194.8);
+  --color-primary-800: oklch(53% 0.105 194.8);
+
+  /* 非常深色 - 用于文字、重要元素 */
+  --color-primary-900: oklch(46.5% 0.095 194.8);
+  --color-primary-950: oklch(40% 0.08 194.8);
+}

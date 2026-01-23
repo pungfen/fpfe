@@ -3,6 +3,13 @@ import { XButton } from '@fpfe/ui'
 </script>
 
 <template>
+  <div class="flex gap-2">
+    <div class="ibgp-50 h-10 w-10">xx</div>
+    <div class="ibgp-100 h-10 w-10">xx</div>
+    <div class="ibgp-200 h-10 w-10">xx</div>
+    <div class="ibgp-300 h-10 w-10">xx</div>
+  </div>
+
   <ElDivider content-position="left">
     <ElText size="large">实心按钮</ElText>
   </ElDivider>

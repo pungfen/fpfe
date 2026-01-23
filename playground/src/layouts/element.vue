@@ -18,7 +18,11 @@ const componentMenus: Menu[] = [
   {
     name: 'Basic 基础组件',
     index: 'basic',
-    children: [{ name: '按钮', index: '/element/button' }]
+    children: [
+      { name: 'Button', index: '/element/button' },
+      { name: 'Input', index: '/element/input' },
+      { name: 'Table', index: '/element/table' }
+    ]
   }
 ]
 </script>

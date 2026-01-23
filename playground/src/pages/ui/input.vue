@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { XInput } from '@fpfe/ui'
+
+const value1 = ref('')
 </script>
 
 <template>
@@ -10,6 +12,7 @@ import { XInput } from '@fpfe/ui'
   </ElDivider>
 
   <ElSpace wrap>
-    <XInput>default</XInput>
+    <XInput v-model="value1">default</XInput>
+    <span>value: {{ value1 }}</span>
   </ElSpace>
 </template>

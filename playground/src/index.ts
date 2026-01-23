@@ -1,5 +1,7 @@
-import '@/assets/tw.css'
+import '@/tailwind.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
+
+import '@fpfe/element/style.css'
 
 import { createApp } from 'vue'
 
