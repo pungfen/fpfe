@@ -5,7 +5,7 @@ import {
   ElFormItem,
   type FormInstance
 } from 'element-plus'
-import type { VNodeChild } from 'vue'
+import { defineComponent, type VNodeChild, inject, ref } from 'vue'
 
 export interface XFormItemProps {
   content?: () => VNodeChild

@@ -38,7 +38,6 @@ export default defineConfig({
     Vue(),
     VueJsx(),
     AutoImport({
-      dirs: ['./src/basic', './src/internal'],
       imports: ['vue', '@vueuse/core'],
       resolvers: [
         ElementPlusResolver(),
@@ -47,7 +46,6 @@ export default defineConfig({
       ]
     }),
     Components({
-      dirs: ['./src/basic'],
       resolvers: [
         ElementPlusResolver({ importStyle: false }),
         IconsResolver(),

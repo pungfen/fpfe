@@ -9,5 +9,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["auto-imports.d.ts", "src/**/*", "../element/src/use/useGlue.ts"]
+  "include": ["auto-imports.d.ts", "src/**/*", "../element/src/use/useGlue.ts"],
+  "references": [{ "path": "../_element/tsconfig.lib.json" }]
 }

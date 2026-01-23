@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "main": "src/index.ts",
-  "dependencies": {
+  "devDependencies": {
     "@iconify-json/ep": "^1.2.3",
     "@vueuse/components": "^14.1.0",
     "@vueuse/core": "^14.1.0",
