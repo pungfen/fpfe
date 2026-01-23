@@ -1,12 +1,14 @@
 <script setup lang="tsx" generic="V extends string | string[]">
-import type { UploadFile, UploadFiles, UploadRawFile } from 'element-plus'
-import { computed, inject, type Component } from 'vue'
-import { ElMessage } from 'element-plus'
-
-import { X_FORM_ITEM_VALIDATION } from '../internal/constants'
+import {
+  ElMessage,
+  type UploadFile,
+  type UploadFiles,
+  type UploadRawFile
+} from 'element-plus'
 
 export interface XUploadProps {
   action?: string
+  data?: () => Record<string, unknown>
   disabled?: boolean
   limit?: number
   multiple?: boolean
@@ -16,12 +18,12 @@ export interface XUploadProps {
   listType?: 'picture' | 'picture-card' | 'text'
   maxSize?: number
 }
-const props = withDefaults(defineProps<XUploadProps>(), {
-  limit: 9,
-  disabled: undefined,
-  maxSize: Infinity,
-  showFileList: true
-})
+const {
+  limit,
+  disabled = undefined,
+  maxSize = Infinity,
+  showFileList = true
+} = defineProps<XUploadProps>()
 
 defineSlots<{
   default: () => Component
@@ -61,10 +63,10 @@ if (formItemValidation?.required) {
 }
 
 const beforeUpload = (rawFile: UploadRawFile) => {
-  if (rawFile.size > props.maxSize) {
+  if (rawFile.size > maxSize) {
     ElMessage.warning('文件过大,请重新选择')
   }
-  return rawFile.size < props.maxSize
+  return rawFile.size < maxSize
 }
 const preview = (uploadFile: UploadFile) => window.open(uploadFile.url)
 const remove = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
@@ -77,7 +79,11 @@ const remove = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
 <template>
   <ElUpload
     v-bind="{
-      ...props,
+      limit,
+      disabled,
+      data,
+      maxSize,
+      showFileList,
       fileList,
       beforeUpload,
       onPreview: preview,

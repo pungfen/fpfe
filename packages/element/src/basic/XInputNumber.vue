@@ -1,13 +1,5 @@
 <script setup lang="tsx" generic="V extends number">
-import { inject } from 'vue'
 import type { InputNumberProps } from 'element-plus'
-
-import {
-  X_FORM_ITEM_VALIDATION,
-  X_FORM_ITEM_LABEL,
-  X_TABLE_QUERY_UPDATE_HOOK,
-  X_TABLE_QUERY_EXECUTE_HOOK
-} from '../internal/constants'
 
 export interface XInputNumberProps {
   placeholder?: string

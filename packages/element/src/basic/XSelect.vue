@@ -1,14 +1,5 @@
 <script setup lang="tsx" generic="D, V, MV extends V | V[]">
-import { computed, ref, watch, inject, type Ref } from 'vue'
 import type { SelectProps } from 'element-plus'
-import { useArrayMap } from '@vueuse/core'
-
-import {
-  X_FORM_ITEM_VALIDATION,
-  X_FORM_ITEM_LABEL,
-  X_TABLE_QUERY_UPDATE_HOOK,
-  X_TABLE_QUERY_EXECUTE_HOOK
-} from '../internal/constants'
 
 export interface XSelectOptionProps<V> {
   disabled?: boolean

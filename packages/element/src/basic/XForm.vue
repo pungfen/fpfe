@@ -6,18 +6,8 @@ import {
   type FormInstance
 } from 'element-plus'
 
-import { defineComponent, inject, ref, provide, type VNodeChild } from 'vue'
-
-import {
-  X_TAB_PANE,
-  X_FORM_ITEM_VALIDATION,
-  X_FORM_ITEM_LABEL,
-  X_FORM_TAB_UPDATE_HOOK,
-  X_FORM_VALIDATIONS
-} from '../internal/constants'
-
 export interface XFormItemProps {
-  content?: () => VNodeChild
+  content?: () => VNode
   label?: string
   labelPosition?: '' | 'left' | 'right' | 'top'
   labelWidth?: number | string
@@ -97,12 +87,12 @@ export interface XFormItemConfig<D> extends Omit<
   XFormItemProps,
   'content' | 'label'
 > {
-  content?: (scope: { data: D }) => VNodeChild
+  content?: (scope: { data: D }) => VNode
   label: string
 }
 
 export interface XFormProps<D> {
-  content?: (scope: { data: D }) => VNodeChild
+  content?: (scope: { data: D }) => VNode
   data?: D
   disabled?: boolean
   inline?: boolean

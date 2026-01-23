@@ -1,9 +1,10 @@
 <script setup lang="ts">
-export interface XPaginationProps {
-  layout?: string
+import type { PaginationProps } from 'element-plus'
+
+export interface XPaginationProps extends Partial<
+  Omit<PaginationProps, 'pageSizes'>
+> {
   sizes?: number[]
-  total?: number
-  background?: boolean
 }
 
 const {

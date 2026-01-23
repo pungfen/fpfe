@@ -18,7 +18,7 @@ const state = new Map<Environment, { count: number }>()
 
 export default defineConfig({
   build: {
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     lib: {
       entry: futp('src/index.ts'),
       fileName: 'index',
@@ -33,7 +33,7 @@ export default defineConfig({
     Vue(),
     VueJsx(),
     AutoImport({
-      dirs: ['./src/internal'],
+      dirs: ['./src/basic', './src/internal'],
       imports: ['vue', '@vueuse/core'],
       resolvers: [
         ElementPlusResolver(),

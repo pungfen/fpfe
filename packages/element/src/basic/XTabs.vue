@@ -1,14 +1,10 @@
 <script lang="tsx">
-import { defineComponent, provide, inject } from 'vue'
-
 import {
   ElTabs,
   ElTabPane,
   type TabPaneProps,
   type TabsProps
 } from 'element-plus'
-
-import { X_TAB_PANES, X_TAB_PANE } from '../internal/constants'
 
 export interface XTabPaneProps extends Partial<TabPaneProps> {}
 

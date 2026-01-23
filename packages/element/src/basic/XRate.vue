@@ -1,14 +1,7 @@
 <script setup lang="tsx" generic="V extends number">
-export interface XRateProps {
-  disabled?: boolean
-  max?: number
-  showScore?: boolean
-  showText?: boolean
-  scoreTemplate?: string
-  lowThreshold?: number
-  highThreshold?: number
-  texts?: string[]
-}
+import type { RateProps } from 'element-plus'
+
+export interface XRateProps extends Partial<Omit<RateProps, 'modelValue'>> {}
 
 const props = withDefaults(defineProps<XRateProps>(), { disabled: undefined })
 const model = defineModel<V>()

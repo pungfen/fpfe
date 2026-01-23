@@ -1,13 +1,11 @@
 <script setup lang="tsx" generic="D">
-import { computed, useTemplateRef, ref, type VNodeChild } from 'vue'
+import { type VNodeChild } from 'vue'
 import {
   ElTable,
   ElTableColumn,
   type TableColumnCtx,
   type TableInstance
 } from 'element-plus'
-
-import { useElementSize } from '@vueuse/core'
 
 export interface XTableColumnProps<D> {
   label?: string

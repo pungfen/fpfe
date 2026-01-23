@@ -1,6 +1,4 @@
 <script setup lang="tsx">
-import { computed, useTemplateRef } from 'vue'
-
 import type { ScrollbarProps } from 'element-plus'
 
 export interface XScrollbarProps extends Partial<ScrollbarProps> {}
