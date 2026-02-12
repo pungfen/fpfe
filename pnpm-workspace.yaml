@@ -1,8 +1,5 @@
 packages:
   - packages/*
-  - playground
 
 onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - esbuild
   - simple-git-hooks

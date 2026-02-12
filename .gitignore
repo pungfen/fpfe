@@ -26,7 +26,3 @@ mock-dist
 *.sw?
 
 *.output
-
-auto-imports.d.ts
-typed-router.d.ts
-components.d.ts

@@ -1,1 +1,1 @@
-export * from './plugins/app'
+export const name = '@fpfe/vite'
