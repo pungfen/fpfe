@@ -1,0 +1,5 @@
+{
+  "name": "@fpfe/element",
+  "type": "module",
+  "main": "src/index.ts"
+}
