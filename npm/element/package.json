@@ -1,0 +1,14 @@
+{
+  "name": "@fpfex/element",
+  "version": "0.0.1-alpha.18",
+  "description": "Element Plus Components",
+  "author": {
+    "name": "pungfen",
+    "email": "fp94214@gmail.com",
+    "url": "https://github.com/pungfen"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  }
+}

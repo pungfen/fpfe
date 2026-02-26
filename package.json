@@ -1,12 +1,20 @@
 {
   "name": "fpfe",
-  "type": "module",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
+  },
   "devDependencies": {
+    "@fpfe/element": "workspace:*",
+    "@fpfe/oxc": "workspace:*",
     "@types/node": "^25.2.3",
     "oxfmt": "^0.32.0",
     "oxlint": "^1.47.0",
     "simple-git-hooks": "^2.13.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }

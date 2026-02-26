@@ -1,5 +1,11 @@
 {
   "name": "@fpfe/element",
   "type": "module",
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@vue/tsconfig": "^0.8.1"
+  },
+  "dependencies": {
+    "element-plus": "^2.13.2"
+  }
 }

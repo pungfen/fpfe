@@ -1,5 +1,8 @@
 packages:
   - packages/*
+  - npm/*
 
 onlyBuiltDependencies:
+  - esbuild
   - simple-git-hooks
+  - vue-demi
