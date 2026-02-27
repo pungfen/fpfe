@@ -7,8 +7,20 @@
     "email": "fp94214@gmail.com",
     "url": "https://github.com/pungfen"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "exports": {},
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "rolldown"
+  },
+  "devDependencies": {
+    "@vue/tsconfig": "^0.8.1",
+    "unplugin-vue": "^7.1.1",
+    "vue-tsc": "^3.2.5"
   }
 }
