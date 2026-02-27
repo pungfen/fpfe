@@ -1,13 +1,7 @@
 import { defineConfig } from "oxlint";
 
+import { base, typescript } from "@fp/oxlint-config";
+
 export default defineConfig({
-  categories: {
-    correctness: "error",
-    pedantic: "warn",
-    style: "error",
-    suspicious: "warn",
-  },
-  rules: {
-    "eslint/no-unused-vars": "error",
-  },
+  extends: [base, typescript],
 });

@@ -1,11 +1,7 @@
 {
-  "name": "@fp/element",
+  "name": "@fp/generator",
   "type": "module",
   "main": "src/index.ts",
-  "scripts": {
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
-  },
   "dependencies": {
     "@vueuse/core": "^14.1.0",
     "element-plus": "^2.13.2",
@@ -13,5 +9,8 @@
   },
   "devDependencies": {
     "@vue/tsconfig": "^0.8.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
   }
 }

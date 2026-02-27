@@ -5,6 +5,5 @@
 
     "types": ["element-plus/global"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "*.config.ts"]
-
+  "include": ["src/**/*.ts", "src/**/*.vue"]
 }

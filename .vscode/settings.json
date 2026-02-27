@@ -11,6 +11,7 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "oxc.disableNestedConfig": true,
   "oxc.typeAware": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.experimental.useTsgo": true
 }

@@ -1,3 +1,3 @@
-import { findWorkspacePackages } from '@pnpm/workspace.find-packages'
+import { findWorkspacePackages } from "@pnpm/workspace.find-packages";
 
-export { findWorkspacePackages }
+export { findWorkspacePackages };

@@ -2,6 +2,6 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    projects: ["packages/oxc", "packages/packer"],
+    projects: ["packages/oxlint-config"],
   },
 });

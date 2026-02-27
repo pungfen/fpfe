@@ -1,0 +1,19 @@
+{
+  "name": "@fp/oxlint-config",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "test": "oxlint --type-aware test"
+  },
+  "devDependencies": {
+    "oxlint": "^1.47.0",
+    "oxlint-tsgolint": "^0.15.0"
+  },
+  "peerDependencies": {
+    "oxlint": "^1.47.0",
+    "oxlint-tsgolint": "^0.15.0"
+  }
+}
