@@ -3,23 +3,24 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "vitest",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "build": "pnpm -C build build"
   },
   "devDependencies": {
-    "@fp/element": "workspace:*",
-    "@fp/generator": "workspace:*",
-    "@fp/oxlint-config": "workspace:*",
-    "@types/node": "^25.2.3",
-    "@typescript/native-preview": "7.0.0-dev.20260227.1",
-    "oxfmt": "^0.32.0",
-    "oxlint": "^1.47.0",
+    "@types/node": "^25.3.3",
+    "@vitejs/plugin-vue": "^6.0.4",
+    "@vue/test-utils": "^2.4.6",
+    "bumpp": "^10.4.1",
+    "oxfmt": "^0.36.0",
+    "oxlint": "^1.51.0",
     "oxlint-tsgolint": "^0.15.0",
     "rolldown": "1.0.0-rc.6",
     "simple-git-hooks": "^2.13.1",
-    "skills": "^1.4.2",
-    "tsdown": "0.21.0-beta.2",
-    "vitest": "^4.0.18"
+    "skills": "^1.4.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }

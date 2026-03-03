@@ -1,22 +1,22 @@
-import { tv, type VariantProps } from '../tailwind'
+import { tv, type VariantProps } from "../tailwind";
 
 export const button = tv({
-  base: 'x-button',
+  base: "x-button",
   variants: {
     color: {
-      primary: 'x-button:primary',
-      success: 'x-button:success',
-      warning: 'x-button:warning',
-      danger: 'x-button:danger'
+      primary: "x-button:primary",
+      success: "x-button:success",
+      warning: "x-button:warning",
+      danger: "x-button:danger",
     },
     disabled: {
-      true: 'cursor-not-allowed opacity-50'
+      true: "cursor-not-allowed opacity-50",
     },
     type: {
-      solid: 'text-white',
-      ring: 'ring-1 ring-current ring-inset',
-      text: ''
-    }
+      solid: "text-white",
+      ring: "ring-1 ring-current ring-inset",
+      text: "",
+    },
   },
   compoundVariants: [
     // {
@@ -79,7 +79,7 @@ export const button = tv({
     //   color: 'danger',
     //   class: 'text-red-700 hover:bg-red-100'
     // }
-  ]
-})
+  ],
+});
 
-export type ButtonVariant = VariantProps<typeof button>
+export type ButtonVariant = VariantProps<typeof button>;

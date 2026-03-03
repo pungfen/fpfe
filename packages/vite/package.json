@@ -1,7 +1,7 @@
 {
   "name": "@fpfe/vite",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "main": "src/index.ts",
   "dependencies": {
     "vite": "npm:rolldown-vite@7.2.5"

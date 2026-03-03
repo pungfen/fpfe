@@ -6,6 +6,7 @@
     "name": "pungfen",
     "email": "fp94214@gmail.com"
   },
+  "type": "module",
   "main": "src/index.ts",
   "dependencies": {
     "cac": "^6.7.14",

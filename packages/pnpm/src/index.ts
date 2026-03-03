@@ -1,3 +1,3 @@
-import { findWorkspacePackages } from "@pnpm/workspace.find-packages";
+import { findWorkspacePackages, type Project } from '@pnpm/workspace.find-packages'
 
-export { findWorkspacePackages };
+export { findWorkspacePackages, type Project }

@@ -1,27 +1,27 @@
-import { tv, type VariantProps } from '../tailwind'
+import { tv, type VariantProps } from "../tailwind";
 
 export const input = tv({
   slots: {
-    wrapper: 'inline-flex w-full items-center'
+    wrapper: "inline-flex w-full items-center",
   },
   variants: {
     color: {
-      primary: '',
-      success: '',
-      warning: '',
-      danger: ''
+      primary: "",
+      success: "",
+      warning: "",
+      danger: "",
     },
     disabled: {
-      true: ''
-    }
+      true: "",
+    },
   },
   compoundVariants: [
     {
-      color: 'primary',
-      class: 'focus-within:ring-primary-400 focus-within:ring-2'
-    }
-  ]
-})
+      color: "primary",
+      class: "focus-within:ring-primary-400 focus-within:ring-2",
+    },
+  ],
+});
 
-export type InputVariants = VariantProps<typeof input>
-export type InputSlots = keyof ReturnType<typeof input>
+export type InputVariants = VariantProps<typeof input>;
+export type InputSlots = keyof ReturnType<typeof input>;

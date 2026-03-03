@@ -1,11 +1,20 @@
-import { access, constants, mkdir, writeFile } from 'fs/promises'
-import { convertToHtml } from 'mammoth'
-import { dirname, resolve } from 'path'
-import { format } from 'prettier'
+import { access, constants, mkdir, writeFile } from "fs/promises"
+import { convertToHtml } from "mammoth"
+import { dirname, resolve } from "path"
+import { format } from "prettier"
 
 const cwd = process.cwd()
-const root = '/mnt/c/Users/fp942/Desktop/enoch/excel'
-const names = ['用户协议中文-中国', '用户协议英文-中国', '用户协议中文-沙特', '用户协议英文-沙特', '隐私政策中文-中国', '隐私政策英文-中国', '隐私政策中文-沙特', '隐私政策英文-沙特']
+const root = "/mnt/c/Users/fp942/Desktop/enoch/excel"
+const names = [
+  "用户协议中文-中国",
+  "用户协议英文-中国",
+  "用户协议中文-沙特",
+  "用户协议英文-沙特",
+  "隐私政策中文-中国",
+  "隐私政策英文-中国",
+  "隐私政策中文-沙特",
+  "隐私政策英文-沙特",
+]
 const html = (body: string): string => `
 <!doctype html>
 <html lang="en">
@@ -44,7 +53,7 @@ const html = (body: string): string => `
 `
 
 interface DocElement {
-  alignment?: 'center' | 'right'
+  alignment?: "center" | "right"
   children?: DocElement[]
   font?: string
   fontSize?: number
@@ -63,9 +72,9 @@ interface DocElement {
   isUnderline?: boolean
   styleId?: string
   styleName?: string
-  type?: 'paragraph' | 'run' | 'text'
+  type?: "paragraph" | "run" | "text"
   value?: string
-  verticalAlignment?: 'baseline'
+  verticalAlignment?: "baseline"
 }
 
 const transformDocument = (element: DocElement) => {
@@ -73,38 +82,31 @@ const transformDocument = (element: DocElement) => {
     element.children = element.children.map(transformDocument)
   }
 
-  if (element.type === 'paragraph') {
+  if (element.type === "paragraph") {
   }
   return element
 }
 
 await Promise.all(
-  names.map(
-    async name => {
-      const res = await convertToHtml({ path: `${root}/${name}.docx` },
-        {
-          // styleMap: [
-          //   `p[style-name='text-center'] => p:fresh`
-          // ],
-          transformDocument
-        }
-      )
-      const file = resolve(cwd, '.output', `${name}.html`)
-      const dir = dirname(file)
-      try {
-        await access(dir, constants.R_OK | constants.W_OK)
+  names.map(async (name) => {
+    const res = await convertToHtml(
+      { path: `${root}/${name}.docx` },
+      {
+        // styleMap: [
+        //   `p[style-name='text-center'] => p:fresh`
+        // ],
+        transformDocument,
+      },
+    )
+    const file = resolve(cwd, ".output", `${name}.html`)
+    const dir = dirname(file)
+    try {
+      await access(dir, constants.R_OK | constants.W_OK)
+    } catch (err) {
+      if (err !== null && typeof err == "object" && "code" in err && err.code === "ENOENT") {
+        await mkdir(dir, { recursive: true })
       }
-      catch (err) {
-        if (
-          err !== null
-          && typeof err == 'object'
-          && 'code' in err
-          && err.code === 'ENOENT'
-        ) {
-          await mkdir(dir, { recursive: true })
-        }
-      }
-      await writeFile(file, await format(html(res.value), { parser: 'html' }), 'utf-8')
     }
-  )
+    await writeFile(file, await format(html(res.value), { parser: "html" }), "utf-8")
+  }),
 )

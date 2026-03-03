@@ -4,5 +4,5 @@
     "moduleResolution": "bundler",
     "strict": true
   },
-  "include": ["src/**/*", "oxlint.config.ts"]
+  "include": ["src/**/*"]
 }

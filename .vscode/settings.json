@@ -4,14 +4,13 @@
   },
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file",
-  "editor.quickSuggestions": {
-    "strings": "on"
-  },
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "oxc.disableNestedConfig": true,
   "oxc.typeAware": true,
-  "typescript.experimental.useTsgo": true
+  "oxc.enable.oxlint": true,
+  "oxc.enable.oxfmt": true,
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "typescript.experimental.useTsgo": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -1,3 +1,3 @@
-import { plugin } from './tailwind'
+import { plugin } from "./tailwind";
 
-export default plugin({ prefix: 'x' })
+export default plugin({ prefix: "x" });

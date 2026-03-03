@@ -1,7 +1,21 @@
-import { defineConfig } from "oxlint";
-
-import { base, typescript } from "@fp/oxlint-config";
+import { defineConfig } from 'oxlint'
 
 export default defineConfig({
-  extends: [base, typescript],
-});
+  categories: {
+    correctness: 'error',
+    suspicious: 'error',
+    perf: 'warn',
+  },
+  rules: {},
+  overrides: [
+    {
+      files: ['**/*.ts'],
+      plugins: ['typescript'],
+    },
+    {
+      files: ['**/*.vue'],
+      plugins: ['vue'],
+      rules: {},
+    },
+  ],
+})
