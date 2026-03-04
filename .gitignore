@@ -26,3 +26,9 @@ mock-dist
 *.sw?
 
 *.output
+
+# npm build
+
+npm/**/cjs
+npm/**/es
+npm/**/types

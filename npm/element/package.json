@@ -1,28 +1,45 @@
 {
   "name": "@pungfe/element",
   "version": "0.0.1-alpha.18",
-  "description": "Element Plus Components",
+  "description": "make Element Plus easier to use",
+  "keywords": [
+    "Element Plus",
+    "typescript",
+    "vue"
+  ],
+  "homepage": "https://github.com/pungfen/fpfe/tree/main/packages/element",
+  "bugs": {
+    "url": "https://github.com/pungfen/element/issues"
+  },
   "author": {
     "name": "pungfen",
     "email": "fp94214@gmail.com",
     "url": "https://github.com/pungfen"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pungfen/fpfe.git",
+    "directory": "packages/element"
+  },
   "files": [
-    "dist",
-    "global.d.ts"
+    "cjs",
+    "es",
+    "types"
   ],
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.cts",
+  "main": "./cjs/index.js",
+  "module": "./es/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./es/index.js",
+      "require": "./cjs/index.js"
     },
-    "./test": {
-      "import": "./dist/test.mjs",
-      "require": "./dist/test.cjs"
+    "./es": {
+      "import": "./es/index.js"
+    },
+    "./cjs": {
+      "require": "./cjs/index.js"
     },
     "./*": "./*"
   },

@@ -1,8 +1,12 @@
 <script setup lang="tsx">
-import { useSlots, type VNodeChild } from 'vue'
+import { ElInputNumber } from 'element-plus'
+import { type VNodeChild } from 'vue'
 
 export interface InputNumberProps {
+  controls?: boolean
   disabled?: boolean
+  max?: number
+  min?: number
   type?:
     | 'text'
     | 'textarea'
@@ -15,8 +19,7 @@ export interface InputNumberProps {
     | (string & NonNullable<unknown>)
 }
 
-const { disabled = false, type } = defineProps<InputNumberProps>()
-const slots = useSlots()
+const { disabled = false } = defineProps<InputNumberProps>()
 
 defineSlots<{
   suffix: () => VNodeChild
@@ -27,17 +30,17 @@ defineSlots<{
 </script>
 
 <template>
-  <ElInputNumber v-bind="{ disabled, type }">
-    <template v-if="slots.decreaseIcon" #decrease-icon>
+  <ElInputNumber v-bind="{ ...$props, disabled }">
+    <template v-if="$slots.decreaseIcon" #decrease-icon>
       <slot name="decreaseIcon"></slot>
     </template>
-    <template v-if="slots.increaseIcon" #increase-icon>
+    <template v-if="$slots.increaseIcon" #increase-icon>
       <slot name="increaseIcon"></slot>
     </template>
-    <template v-if="slots.prefix" #prefix>
+    <template v-if="$slots.prefix" #prefix>
       <slot name="prefix"></slot>
     </template>
-    <template v-if="slots.suffix" #suffix>
+    <template v-if="$slots.suffix" #suffix>
       <slot name="suffix"></slot>
     </template>
   </ElInputNumber>

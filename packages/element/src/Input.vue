@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+import { ElInput } from 'element-plus'
 import { useSlots, type VNodeChild } from 'vue'
 
 export interface InputProps {

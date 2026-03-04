@@ -1,4 +1,6 @@
 <script setup lang="tsx">
+import { ElButton } from 'element-plus'
+
 export interface ButtonProps {
   disabled?: boolean
   text?: boolean
@@ -6,16 +8,15 @@ export interface ButtonProps {
   type?: 'default' | 'primary' | 'success' | 'warning' | 'info' | 'danger' | 'text' | ''
 }
 
-const { disabled = false, type } = defineProps<ButtonProps>()
+const { disabled = false } = defineProps<ButtonProps>()
 
-const obj = {
-  b: 2,
-  a: 1,
-}
+const emit = defineEmits<{
+  click: [e: MouseEvent]
+}>()
 </script>
 
 <template>
-  <ElButton v-bind="{ disabled, type, text, link }">
+  <ElButton v-bind="{ ...$props, disabled }" @click="emit('click', $event)">
     <slot></slot>
   </ElButton>
 </template>

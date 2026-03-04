@@ -7,7 +7,7 @@
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
-    "build": "pnpm -C build build"
+    "npm:element": "pnpm -C packages/element-npm build"
   },
   "devDependencies": {
     "@types/node": "^25.3.3",
