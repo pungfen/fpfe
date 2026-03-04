@@ -23,27 +23,25 @@ pnpm lint:fix          # 自动修复 lint 问题
 
 ## 包结构
 
-| 包名                | 路径                   | 说明                               |
-| ------------------- | ---------------------- | ---------------------------------- |
-| `@fp/element`       | packages/element       | Vue 3 + Element Plus 集成          |
-| `@fp/generator`     | packages/generator     | 代码生成器                         |
-| `@fp/oxc`           | packages/oxc           | Oxc 集成                           |
-| `@fp/oxlint-config` | packages/oxlint-config | 共享的 oxlint 配置                 |
-| `@fpfe/claude`      | packages/claude        | Claude 工具集成                    |
-| `@fpfe/doc2html`    | packages/doc2html      | 文档转 HTML                        |
-| `@fpfe/packer`      | packages/packer        | 使用 rolldown 的打包工具           |
-| `@fpfe/pnpm`        | packages/pnpm          | pnpm 工作区工具                    |
-| `@fpfe/tsconfig`    | packages/tsconfig      | 共享 TypeScript 配置               |
-| `@fpfe/ui`          | packages/ui            | Vue 3 UI 组件（使用 Tailwind CSS） |
-| `@fpfe/vite`        | packages/vite          | Vite (rolldown-vite) 集成          |
+| 包名             | 路径               | 说明                               |
+| ---------------- | ------------------ | ---------------------------------- |
+| `@fp/element`    | packages/element   | Vue 3 + Element Plus 集成          |
+| `@fp/generator`  | packages/generator | 代码生成器                         |
+| `@fp/oxc`        | packages/oxc       | Oxc 集成                           |
+| `@fpfe/claude`   | packages/claude    | Claude 工具集成                    |
+| `@fpfe/doc2html` | packages/doc2html  | 文档转 HTML                        |
+| `@fpfe/packer`   | packages/packer    | 使用 rolldown 的打包工具           |
+| `@fpfe/pnpm`     | packages/pnpm      | pnpm 工作区工具                    |
+| `@fpfe/tsconfig` | packages/tsconfig  | 共享 TypeScript 配置               |
+| `@fpfe/ui`       | packages/ui        | Vue 3 UI 组件（使用 Tailwind CSS） |
+| `@fpfe/vite`     | packages/vite      | Vite (rolldown-vite) 集成          |
 
 ### npm 目录
 
-| 包名                | 路径              | 说明                       |
-| ------------------- | ----------------- | -------------------------- |
-| `@fp/element`       | npm/element       | Element 组件库（发布版本） |
-| `@fp/generator`     | npm/generator     | 代码生成器（发布版本）     |
-| `@fp/oxlint-config` | npm/oxlint-config | oxlint 配置（发布版本）    |
+| 包名            | 路径          | 说明                       |
+| --------------- | ------------- | -------------------------- |
+| `@fp/element`   | npm/element   | Element 组件库（发布版本） |
+| `@fp/generator` | npm/generator | 代码生成器（发布版本）     |
 
 ## 编辑器配置
 
@@ -53,7 +51,6 @@ pnpm lint:fix          # 自动修复 lint 问题
 - **格式化工具**: oxfmt（配置为默认）
 - **保存时自动修复**: `source.fixAll.oxc` 已启用
 - **类型检查**: oxc 启用类型感知模式
-- **tsgo**: TypeScript Go 风格导入（可选）
 
 ### VSCode 设置
 
@@ -71,7 +68,5 @@ VSCode 设置位于 [.vscode/settings.json](.vscode/settings.json)。
 
 ## 关键模式
 
-1. 每个包都有自己的 `oxlint.config.ts`，继承自 `@fp/oxlint-config`
-2. 包的脚本通常包含 `lint` 和 `lint:fix`
-3. 使用 `tsx` 直接运行 TypeScript 文件
-4. 工作区依赖使用 `workspace:*` 协议
+1. 使用 `tsx` 直接运行 TypeScript 文件
+2. 工作区依赖使用 `workspace:*` 协议
