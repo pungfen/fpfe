@@ -6,6 +6,7 @@ export interface FormProps<D> {
   data?: D[]
   disabled?: boolean
   inline?: boolean
+  labelSuffix?: string
   labelWidth?: number | string
   labelPosition?: 'left' | 'right' | 'top'
   content?: (scope: { data: D }) => VNodeChild
@@ -17,11 +18,23 @@ const form = useTemplateRef('form')
 
 const Content = () => content?.({ data: data ?? {} } as { data: D })
 
-defineExpose({ data })
+const validate = async () => {
+  await form.value?.validate()
+}
+
+const resetFields = () => {
+  form.value?.resetFields()
+}
+
+const clearValidate = () => {
+  form.value?.clearValidate()
+}
+
+defineExpose({ data, clearValidate, validate, resetFields })
 </script>
 
 <template>
-  <ElForm ref="form" v-bind="{ ...$props, disabled }">
+  <ElForm ref="form" v-bind="{ model: data, disabled, inline, labelPosition, labelWidth, labelSuffix }">
     <Content />
   </ElForm>
 </template>
