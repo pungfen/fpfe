@@ -7,6 +7,11 @@ export interface ButtonProps {
 }
 
 const { disabled = false, type } = defineProps<ButtonProps>()
+
+const obj = {
+  b: 2,
+  a: 1,
+}
 </script>
 
 <template>

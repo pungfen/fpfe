@@ -6,11 +6,16 @@ export default defineConfig({
     suspicious: 'error',
     perf: 'warn',
   },
-  rules: {},
+  rules: {
+    'vue-js/no-ref-as-operand': 'error',
+    'vue-js/no-dupe-keys': 'error',
+    'vue-js/no-reserved-keys': 'error',
+  },
+  plugins: ['typescript', 'unicorn', 'oxc', 'import', 'promise', 'node', 'vue'],
+  jsPlugins: ['eslint-plugin-perfectionist', { name: 'vue-js', specifier: 'eslint-plugin-vue' }],
   overrides: [
     {
       files: ['**/*.ts'],
-      plugins: ['typescript'],
     },
     {
       files: ['**/*.vue'],

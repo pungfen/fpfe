@@ -1,8 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 
-import Vue from '@vitejs/plugin-vue'
 import Dts from 'unplugin-dts/vite'
+import Vue from '@vitejs/plugin-vue'
 
 import fg from 'fast-glob'
 
