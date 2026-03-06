@@ -2,11 +2,13 @@
   "compilerOptions": {
     "strict": true,
     "target": "esnext",
-
     "esModuleInterop": true,
-
     "module": "esnext",
     "moduleResolution": "bundler"
   },
-  "include": ["rolldown.config.ts"]
+  "include": [
+    "rolldown.config.ts",
+    "vitest.config.ts",
+    "test/**/*"
+  ]
 }

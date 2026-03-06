@@ -5,22 +5,22 @@
 ## 安装
 
 ```bash
-pnpm add @fpfe/element
+pnpm add @pungfe/element
 ```
 
 ## 快速开始
 
 ```ts
-import { Button, Input, InputNumber } from '@fpfe/element'
+import { XButton, XInput, XInputNumber } from '@pungfe/element'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 ```
 
 ## 组件
 
-- [Button](./docs/Button.md) - 按钮组件
-- [Input](./docs/Input.md) - 输入框组件
-- [InputNumber](./docs/InputNumber.md) - 数字输入框组件
+- [XButton](./docs/XButton.md) - 按钮组件
+- [XInput](./docs/XInput.md) - 输入框组件
+- [XInputNumber](./docs/XInputNumber.md) - 数字输入框组件
 
 ## 国际化
 

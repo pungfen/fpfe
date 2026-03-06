@@ -2,7 +2,7 @@
 import { ElForm } from 'element-plus'
 import { useTemplateRef, type VNodeChild } from 'vue'
 
-export interface FormProps<D> {
+export interface XFormProps<D> {
   data?: D[]
   disabled?: boolean
   inline?: boolean
@@ -12,7 +12,7 @@ export interface FormProps<D> {
   content?: (scope: { data: D }) => VNodeChild
 }
 
-const { disabled = false, content, data } = defineProps<FormProps<D>>()
+const { disabled = false, content, data } = defineProps<XFormProps<D>>()
 
 const form = useTemplateRef('form')
 
@@ -34,7 +34,10 @@ defineExpose({ data, clearValidate, validate, resetFields })
 </script>
 
 <template>
-  <ElForm ref="form" v-bind="{ model: data, disabled, inline, labelPosition, labelWidth, labelSuffix }">
+  <ElForm
+    ref="form"
+    v-bind="{ model: data, disabled, inline, labelPosition, labelWidth, labelSuffix }"
+  >
     <Content />
   </ElForm>
 </template>

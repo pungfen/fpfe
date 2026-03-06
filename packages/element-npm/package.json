@@ -2,9 +2,11 @@
   "name": "@fpfe/element-npm",
   "type": "module",
   "scripts": {
-    "build": "rolldown -c"
+    "build": "rolldown -c",
+    "test": "vitest"
   },
   "dependencies": {
+    "@fpfe/element": "workspace:*",
     "@fpfe/pnpm": "workspace:*",
     "fast-glob": "^3.3.3",
     "rolldown": "1.0.0-rc.6",
@@ -13,5 +15,10 @@
     "unplugin-vue": "^7.1.1",
     "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-jsx": "^0.8.1"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^28.1.0",
+    "vitest-browser-vue": "^2.0.2"
   }
 }

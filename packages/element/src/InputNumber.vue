@@ -2,7 +2,7 @@
 import { ElInputNumber } from 'element-plus'
 import { type VNodeChild } from 'vue'
 
-export interface InputNumberProps {
+export interface XInputNumberProps {
   controls?: boolean
   disabled?: boolean
   max?: number
@@ -19,7 +19,7 @@ export interface InputNumberProps {
     | (string & NonNullable<unknown>)
 }
 
-const { disabled = false } = defineProps<InputNumberProps>()
+const { disabled = false } = defineProps<XInputNumberProps>()
 
 defineSlots<{
   suffix: () => VNodeChild

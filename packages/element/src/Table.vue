@@ -1,5 +1,5 @@
 <script lang="tsx">
-export interface TableColumnProps<D> {
+export interface XTableColumnProps<D> {
   label?: string
   width?: number
   fixed?: 'left' | 'right'
@@ -7,7 +7,7 @@ export interface TableColumnProps<D> {
   type?: 'default' | 'selection'
 }
 
-export const TableColumn = defineComponent((props: TableColumnProps<D>) => {
+export const TableColumn = defineComponent((props: XTableColumnProps<D>) => {
   return () => <ElTableColumn></ElTableColumn>
 }, {
   props: ['label', 'width', 'fixed', 'type', 'content']
@@ -20,7 +20,7 @@ import { useTemplateRef, type VNodeChild, ref, defineComponent } from 'vue'
 
 export interface TableProps<D> {
   data?: D[]
-  columns?: TableColumnProps<D>[]
+  columns?: XTableColumnProps<D>[]
   height?: number
 }
 

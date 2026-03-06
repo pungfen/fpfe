@@ -1,33 +1,18 @@
 {
   "name": "@pungfe/element",
-  "version": "0.0.1-alpha.18",
-  "description": "make Element Plus easier to use",
-  "keywords": [
-    "Element Plus",
-    "typescript",
-    "vue"
-  ],
-  "homepage": "https://github.com/pungfen/fpfe/tree/main/packages/element",
-  "bugs": {
-    "url": "https://github.com/pungfen/element/issues"
-  },
+  "version": "",
+  "description": "A Component Library for Vue 3",
   "author": {
-    "name": "pungfen",
-    "email": "fp94214@gmail.com",
-    "url": "https://github.com/pungfen"
+    "name": "pungfeng",
+    "email": "fp94214@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pungfen/fpfe.git",
+    "url": "git+https://github.com/pungfen/fpfe.git",
     "directory": "packages/element"
   },
-  "files": [
-    "cjs",
-    "es",
-    "types"
-  ],
   "type": "module",
-  "main": "./cjs/index.js",
+  "main": "./es/index.js",
   "module": "./es/index.js",
   "types": "./types/index.d.ts",
   "exports": {
@@ -35,18 +20,13 @@
       "import": "./es/index.js",
       "require": "./cjs/index.js"
     },
-    "./es": {
-      "import": "./es/index.js"
-    },
-    "./cjs": {
-      "require": "./cjs/index.js"
-    },
-    "./*": "./*"
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "vue": ">=3.5.0"
+    "element-plus": "^2.13.3",
+    "vue": "^3.5.29"
   }
 }

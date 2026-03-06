@@ -12,36 +12,47 @@
 # 安装依赖
 pnpm install
 
-# 运行测试
-pnpm test              # 运行所有测试
-pnpm test -- packages/oxlint-config  # 运行特定包的测试
-
-# 代码检查
+# 代码检查与格式化
 pnpm lint              # 对所有包运行 oxlint
 pnpm lint:fix          # 自动修复 lint 问题
+pnpm format            # 使用 oxfmt 格式化代码
+pnpm format:check      # 检查代码格式
+
+# 运行测试
+vitest run             # 运行所有测试
+vitest run packages/oxc # 运行特定包的测试
+
+# 构建
+pnpm npm:element       # 构建 @fp/element 到 npm/element
 ```
 
 ## 包结构
 
-| 包名             | 路径               | 说明                               |
-| ---------------- | ------------------ | ---------------------------------- |
-| `@fp/element`    | packages/element   | Vue 3 + Element Plus 集成          |
-| `@fp/generator`  | packages/generator | 代码生成器                         |
-| `@fp/oxc`        | packages/oxc       | Oxc 集成                           |
-| `@fpfe/claude`   | packages/claude    | Claude 工具集成                    |
-| `@fpfe/doc2html` | packages/doc2html  | 文档转 HTML                        |
-| `@fpfe/packer`   | packages/packer    | 使用 rolldown 的打包工具           |
-| `@fpfe/pnpm`     | packages/pnpm      | pnpm 工作区工具                    |
-| `@fpfe/tsconfig` | packages/tsconfig  | 共享 TypeScript 配置               |
-| `@fpfe/ui`       | packages/ui        | Vue 3 UI 组件（使用 Tailwind CSS） |
-| `@fpfe/vite`     | packages/vite      | Vite (rolldown-vite) 集成          |
+### packages/（开发中的包）
 
-### npm 目录
+| 包名             | 路径               | 说明                            |
+| ---------------- | ------------------ | ------------------------------- |
+| `@fp/element`    | packages/element   | Vue 3 + Element Plus 组件库     |
+| `@fp/generator`  | packages/generator | 代码生成器                      |
+| `@fp/oxc`        | packages/oxc       | Oxc 工具集成                    |
+| `@fpfe/claude`   | packages/claude    | Claude 工具集成                 |
+| `@fpfe/doc2html` | packages/doc2html  | 文档转 HTML                     |
+| `@fpfe/packer`   | packages/packer    | 基于 rolldown 的打包工具        |
+| `@fpfe/pnpm`     | packages/pnpm      | pnpm 工作区工具                 |
+| `@fpfe/tsconfig` | packages/tsconfig  | 共享 TypeScript 配置            |
+| `@fpfe/ui`       | packages/ui        | Vue 3 UI 组件库（Tailwind CSS） |
+| `@fpfe/vite`     | packages/vite      | Vite (rolldown-vite) 集成       |
+
+### npm/（发布版本）
 
 | 包名            | 路径          | 说明                       |
 | --------------- | ------------- | -------------------------- |
 | `@fp/element`   | npm/element   | Element 组件库（发布版本） |
 | `@fp/generator` | npm/generator | 代码生成器（发布版本）     |
+
+### .agents/skills/
+
+项目使用 skills 配置，位于 [.agents/skills/](.agents/skills/) 目录。
 
 ## 编辑器配置
 
@@ -59,7 +70,7 @@ VSCode 设置位于 [.vscode/settings.json](.vscode/settings.json)。
 ## 技术栈
 
 - **Monorepo**: pnpm 工作区（`packages/*` 和 `npm/*`）
-- **测试**: Vitest（根目录和各包均已配置）
+- **测试**: Vitest
 - **代码检查**: oxlint 支持 TypeScript
 - **打包**: rolldown
 - **UI 框架**: Vue 3 + Composition API

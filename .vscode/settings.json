@@ -9,8 +9,8 @@
   },
   "oxc.typeAware": true,
   "oxc.fmt.configPath": ".oxfmtrc.json",
-  "typescript.tsdk": "node_modules/typescript/lib",
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }

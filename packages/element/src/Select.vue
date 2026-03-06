@@ -3,17 +3,17 @@ import { ElSelect, ElOption } from 'element-plus'
 import { computed, ref, type Ref, watch } from 'vue'
 import { useArrayMap } from '@vueuse/core'
 
-export interface SelectOptionProps<V> {
+export interface XSelectOptionProps<V> {
   disabled?: boolean
   label?: number | string
   value: V
 }
 
-export interface SelectProps<D, V> {
+export interface XSelectProps<D, V> {
   disabled?: boolean
   data?: D[]
   identify?: (value: V) => number | string
-  factory: (option: D) => SelectOptionProps<V>
+  factory: (option: D) => XSelectOptionProps<V>
   supplement?: (lacks: V[]) => D[] | PromiseLike<D[]>
 
   multiple?: boolean
@@ -33,7 +33,7 @@ const {
   data,
   factory,
   supplement
-} = defineProps<SelectProps<D, V>>()
+} = defineProps<XSelectProps<D, V>>()
 
 const model = defineModel<MV>()
 

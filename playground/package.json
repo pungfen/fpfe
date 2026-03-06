@@ -1,0 +1,7 @@
+{
+  "name": "@fpfe/playground",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  }
+}
