@@ -20,7 +20,6 @@
   "enabledPlugins": {
     "skill-creator@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "claude-mem@thedotmack": true,
     "frontend-design@claude-plugins-official": true
   }
 }

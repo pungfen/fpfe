@@ -42,6 +42,7 @@ pnpm npm:element       # 构建 @fp/element 到 npm/element
 | `@fpfe/tsconfig` | packages/tsconfig  | 共享 TypeScript 配置            |
 | `@fpfe/ui`       | packages/ui        | Vue 3 UI 组件库（Tailwind CSS） |
 | `@fpfe/vite`     | packages/vite      | Vite (rolldown-vite) 集成       |
+| `@fpfe/fetch`    | packages/fetch     | fetch api                       |
 
 ### npm/（发布版本）
 
