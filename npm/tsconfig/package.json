@@ -1,0 +1,24 @@
+{
+  "name": "@pungfe/tsconfig",
+  "version": "0.0.1-alpha.1",
+  "author": {
+    "name": "pungfeng",
+    "email": "fp94214@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pungfen/fpfe.git",
+    "directory": "packages/tsconfig"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "typescript": "5.x"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}
