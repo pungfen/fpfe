@@ -1,36 +1,36 @@
 <script setup lang="tsx" generic="D extends object">
-import { ElForm } from 'element-plus'
-import { useTemplateRef, type VNodeChild } from 'vue'
+  import { ElForm } from 'element-plus'
+  import { useTemplateRef, type VNodeChild } from 'vue'
 
-export interface XFormProps<D> {
-  data?: D[]
-  disabled?: boolean
-  inline?: boolean
-  labelSuffix?: string
-  labelWidth?: number | string
-  labelPosition?: 'left' | 'right' | 'top'
-  content?: (scope: { data: D }) => VNodeChild
-}
+  export interface XFormProps<D> {
+    data?: D[]
+    disabled?: boolean
+    inline?: boolean
+    labelSuffix?: string
+    labelWidth?: number | string
+    labelPosition?: 'left' | 'right' | 'top'
+    content?: (scope: { data: D }) => VNodeChild
+  }
 
-const { disabled = false, content, data } = defineProps<XFormProps<D>>()
+  const { disabled = false, content, data } = defineProps<XFormProps<D>>()
 
-const form = useTemplateRef('form')
+  const form = useTemplateRef('form')
 
-const Content = () => content?.({ data: data ?? {} } as { data: D })
+  const Content = () => content?.({ data: data ?? {} } as { data: D })
 
-const validate = async () => {
-  await form.value?.validate()
-}
+  const validate = async () => {
+    await form.value?.validate()
+  }
 
-const resetFields = () => {
-  form.value?.resetFields()
-}
+  const resetFields = () => {
+    form.value?.resetFields()
+  }
 
-const clearValidate = () => {
-  form.value?.clearValidate()
-}
+  const clearValidate = () => {
+    form.value?.clearValidate()
+  }
 
-defineExpose({ data, clearValidate, validate, resetFields })
+  defineExpose({ data, clearValidate, validate, resetFields })
 </script>
 
 <template>

@@ -9,7 +9,7 @@
     "@fpfe/element": "workspace:*",
     "@fpfe/pnpm": "workspace:*",
     "fast-glob": "^3.3.3",
-    "rolldown": "1.0.0-rc.6",
+    "rolldown": "1.0.0-rc.8",
     "unplugin-auto-import": "^21.0.0",
     "unplugin-dts": "1.0.0-beta.6",
     "unplugin-vue": "^7.1.1",

@@ -1,0 +1,62 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    // 明显错误或无用的代码
+    "correctness": "error",
+    // 很可能错误或无用的代码
+    "suspicious": "warn",
+    // 过于严格的规则，可能会出现误报
+    "pedantic": "off",
+    // 提高运行时性能的规则
+    "perf": "allow"
+  },
+  "plugins": [
+    "eslint",
+    "oxc",
+    "typescript",
+    "promise",
+    "unicorn",
+    "import",
+    "vue"
+  ],
+  "jsPlugins": [
+    {
+      "name": "vue-js",
+      "specifier": "eslint-plugin-vue"
+    }
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.d.ts"
+      ],
+      "rules": {
+        "unicorn/require-module-specifiers": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.vue"
+      ],
+      "rules": {
+        "vue-js/no-ref-as-operand": "error",
+        "vue-js/no-dupe-keys": "error",
+        "vue-js/no-reserved-keys": "error"
+      }
+    }
+  ],
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "rules": {
+    "no-shadow": "off",
+    "typescript/no-floating-promises": [
+      "error",
+      {
+        "ignoreVoid": true
+      }
+    ],
+    "typescript/no-unsafe-assignment": "warn"
+  }
+}

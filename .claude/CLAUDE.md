@@ -4,7 +4,7 @@
 
 ## 项目概述
 
-这是一个 **pnpm monorepo** 项目 (`fpfe`)，包含多个 Vue 3 生态系统工具包。
+这是一个 **pnpm monorepo** 项目 (`fpfe`)，包含多个 Vue/Typescript 生态系统工具包。
 
 ## 常用命令
 
@@ -18,38 +18,41 @@ pnpm lint:fix          # 自动修复 lint 问题
 pnpm format            # 使用 oxfmt 格式化代码
 pnpm format:check      # 检查代码格式
 
+
 # 运行测试
-vitest run             # 运行所有测试
-vitest run packages/oxc # 运行特定包的测试
+pnpm test              # 运行所有测试
 
 # 构建
-pnpm npm:element       # 构建 @fp/element 到 npm/element
+pnpm build             # 打包构建packages下需要构建的包(packages.json中有build字段)
 ```
 
 ## 包结构
 
+### build（打包工具）
+
+| 包名 | 说明 |
+|------|------|
+| `@fpfe/build` | 打包工具，将 packages 下需要发布的包（package.json 中有 build 字段）打包到 npm/ 目录 |
+
 ### packages/（开发中的包）
 
-| 包名             | 路径               | 说明                            |
-| ---------------- | ------------------ | ------------------------------- |
-| `@fp/element`    | packages/element   | Vue 3 + Element Plus 组件库     |
-| `@fp/generator`  | packages/generator | 代码生成器                      |
-| `@fp/oxc`        | packages/oxc       | Oxc 工具集成                    |
-| `@fpfe/claude`   | packages/claude    | Claude 工具集成                 |
-| `@fpfe/doc2html` | packages/doc2html  | 文档转 HTML                     |
-| `@fpfe/packer`   | packages/packer    | 基于 rolldown 的打包工具        |
-| `@fpfe/pnpm`     | packages/pnpm      | pnpm 工作区工具                 |
-| `@fpfe/tsconfig` | packages/tsconfig  | 共享 TypeScript 配置            |
-| `@fpfe/ui`       | packages/ui        | Vue 3 UI 组件库（Tailwind CSS） |
-| `@fpfe/vite`     | packages/vite      | Vite (rolldown-vite) 集成       |
-| `@fpfe/fetch`    | packages/fetch     | fetch api                       |
+| 包名             | 路径                | 说明                        |
+| ---------------- | ------------------- | --------------------------- |
+| `@fp/composable` | packages/composable | Vue 3 Composable            |
+| `@fp/element`    | packages/element   | Vue 3 + Element Plus 组件库 |
+| `@fp/element-npm`| packages/element-npm| Element NPM 相关            |
+| `@fpfe/doc2html` | packages/doc2html   | 文档转 HTML                 |
+| `@fpfe/packer`   | packages/packer     | 基于 rolldown 的打包工具    |
+| `@fpfe/pnpm`     | packages/pnpm       | pnpm 工作区工具             |
+| `@fpfe/tsconfig` | packages/tsconfig  | 共享 TypeScript 配置        |
+| `@fpfe/fetch`    | packages/fetch      | fetch api                   |
 
 ### npm/（发布版本）
 
-| 包名            | 路径          | 说明                       |
-| --------------- | ------------- | -------------------------- |
-| `@fp/element`   | npm/element   | Element 组件库（发布版本） |
-| `@fp/generator` | npm/generator | 代码生成器（发布版本）     |
+| 包名               | 路径         | 说明                       |
+| ------------------ | ------------ | -------------------------- |
+| `@pungfe/element`  | npm/element  | Element 组件库（发布版本） |
+| `@pungfe/tsconfig` | npm/tsconfig | 共享 TypeScript 配置       |
 
 ### .agents/skills/
 

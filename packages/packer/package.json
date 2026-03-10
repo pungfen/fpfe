@@ -10,7 +10,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "cac": "^7.0.0",
-    "rolldown": "1.0.0-rc.6",
+    "rolldown": "1.0.0-rc.8",
     "tinyexec": "^1.0.2"
   }
 }

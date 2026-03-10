@@ -1,35 +1,27 @@
-<script setup lang="tsx" generic="MV extends string">
-import { ElInput } from 'element-plus'
-import { type VNodeChild } from 'vue'
+<script setup lang="tsx" generic="MV extends string | number">
+  import { ElInput } from 'element-plus'
+  import { type VNodeChild } from 'vue'
+  import type { XInputType } from './types'
 
-export interface XInputProps {
-  disabled?: boolean
-  type?:
-    | 'text'
-    | 'textarea'
-    | 'number'
-    | 'password'
-    | 'email'
-    | 'search'
-    | 'tel'
-    | 'url'
-    | (string & NonNullable<unknown>)
-}
+  export interface XInputProps {
+    disabled?: boolean
+    type?: XInputType
+  }
 
-defineSlots<{
-  suffix: () => VNodeChild
-  prefix: () => VNodeChild
-  append: () => VNodeChild
-  prepend: () => VNodeChild
-}>()
-const { disabled = false, type } = defineProps<XInputProps>()
+  defineSlots<{
+    suffix: () => VNodeChild
+    prefix: () => VNodeChild
+    append: () => VNodeChild
+    prepend: () => VNodeChild
+  }>()
+  const { disabled = false, type = 'text' } = defineProps<XInputProps>()
 
-defineEmits<{
-  focus: [e: FocusEvent]
-  blur: [e: FocusEvent]
-}>()
+  defineEmits<{
+    focus: [e: FocusEvent]
+    blur: [e: FocusEvent]
+  }>()
 
-const model = defineModel<MV>()
+  const model = defineModel<MV>({ default: '', required: false })
 </script>
 
 <template>
