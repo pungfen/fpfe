@@ -28,5 +28,5 @@ mock-dist
 *.output
 
 # npm build
-npm/*
-!npm/*/package.json
+npm/**
+!npm/**/package.json
