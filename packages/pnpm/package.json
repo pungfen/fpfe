@@ -5,6 +5,9 @@
   "main": "src/index.ts",
   "dependencies": {
     "@pnpm/find-workspace-dir": "^1000.1.4",
-    "@pnpm/workspace.find-packages": "^1000.0.62"
+    "@pnpm/workspace.find-packages": "^1000.0.63"
+  },
+  "devDependencies": {
+    "@pnpm/types": "^1001.3.0"
   }
 }

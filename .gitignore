@@ -28,7 +28,5 @@ mock-dist
 *.output
 
 # npm build
-
-npm/**/cjs
-npm/**/es
-npm/**/types
+npm/*
+!npm/**/*/package.json

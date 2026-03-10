@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // 大多数非库项目不需要生成声明。 因此我们默认添加此选项以使配置对大多数项目更友好。
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "verbatimModuleSyntax": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    // Vue Recommended
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "libReplacement": false,
+    // See <https://github.com/vuejs/vue-cli/pull/5688>
+    "skipLibCheck": true,
+    "lib": [
+      // Target ES2022 to align with Vite.
+      // <https://vite.dev/config/build-options.html#build-target>
+      // Support for newer versions of language built-ins are
+      // left for the users to include, because that would require:
+      //   - either the project doesn't need to support older versions of browsers;
+      //   - or the project has properly included the necessary polyfills.
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+      // No `ScriptHost` because Vue 3 dropped support for IE
+    ],
+    // 节省性能,让ts不要自动包含node_modules/types下所有的d.ts,如果升级typescript 6版本,此选项默认为空
+    "types": []
+  }
+}

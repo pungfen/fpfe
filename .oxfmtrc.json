@@ -2,6 +2,18 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "semi": false,
   "singleQuote": true,
-  "experimentalSortPackageJson": true,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "ignorePatterns": [
+    "dist"
+  ],
+  "sortImports": {
+    "partitionByNewline": true,
+    "newlinesBetween": false
+  },
+  "sortTailwindcss": {},
+  "sortPackageJson": {
+    "sortScripts": true
+  },
+  "insertFinalNewline": false,
+  "vueIndentScriptAndStyle": true
 }
