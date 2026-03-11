@@ -22,12 +22,16 @@
     "unicorn",
     "import",
     "vue",
-    "vitest"
+    "vitest",
   ],
   "jsPlugins": [
     {
       "name": "vue-js",
       "specifier": "eslint-plugin-vue"
+    },
+    {
+      "name": "stylistic",
+      "specifier": "@stylistic/eslint-plugin"
     }
   ],
   "options": {
@@ -53,7 +57,11 @@
     "typescript/no-import-type-side-effects": "error",
     "typescript/no-explicit-any": "off",
     "typescript/no-unused-vars": "off",
-    "typescript/ban-ts-comment": "off"
+    "typescript/ban-ts-comment": "off",
+    "@stylistic/indent": [
+      "error",
+      2
+    ]
   },
   "overrides": [
     {

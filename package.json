@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@fpfe/tsconfig": "workspace:*",
+    "@stylistic/eslint-plugin": "^5.10.0",
     "@types/node": "^25.4.0",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vitejs/plugin-vue-jsx": "^5.1.4",
