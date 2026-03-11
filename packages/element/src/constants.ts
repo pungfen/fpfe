@@ -1,4 +1,5 @@
 import type { InjectionKey } from 'vue'
+
 import type { XComponentSize } from './types'
 
 export const X_ELEMENT_SIZE: XComponentSize = 'default'

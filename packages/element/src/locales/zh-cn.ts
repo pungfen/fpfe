@@ -1,3 +1,3 @@
-import zhCn from "element-plus/es/locale/lang/zh-cn";
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-export { zhCn };
+export { zhCn }

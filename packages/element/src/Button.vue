@@ -1,24 +1,27 @@
 <script setup lang="tsx">
-  import { ElButton } from 'element-plus'
+import { ElButton } from 'element-plus'
 
-  import type { XButtonType } from './types'
+import type { XButtonType } from './types'
 
-  export interface XButtonProps {
-    disabled?: boolean
-    text?: boolean
-    link?: boolean
-    type?: XButtonType
-  }
+export interface XButtonProps {
+  disabled?: boolean
+  link?: boolean
+  text?: boolean
+  type?: XButtonType
+}
 
-  const { disabled = false } = defineProps<XButtonProps>()
+const { disabled = false } = defineProps<XButtonProps>()
 
-  const emit = defineEmits<{
-    click: [e: MouseEvent]
-  }>()
+const emit = defineEmits<{
+  click: [e: MouseEvent]
+}>()
 </script>
 
 <template>
-  <ElButton v-bind="{ type, text, link, disabled }" @click="emit('click', $event)">
-    <slot></slot>
+  <ElButton
+    v-bind="{ type, text, link, disabled }"
+    @click="emit('click', $event)"
+  >
+    <slot />
   </ElButton>
 </template>

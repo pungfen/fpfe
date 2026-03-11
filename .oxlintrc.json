@@ -82,5 +82,5 @@
         "vue-js/no-reserved-keys": "error"
       }
     }
-  ],
+  ]
 }

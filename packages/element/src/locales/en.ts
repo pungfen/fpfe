@@ -1,3 +1,3 @@
-import en from "element-plus/es/locale/lang/en";
+import en from 'element-plus/es/locale/lang/en'
 
-export { en };
+export { en }

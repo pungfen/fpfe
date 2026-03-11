@@ -1,16 +1,23 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "always"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
-  "editor.defaultFormatter": "oxc.oxc-vscode",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "json",
+    "jsonc",
+    "css"
+  ],
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off", "fixable": true },
+  ],
   "files.associations": {
     "*.css": "tailwindcss"
-  },
-  "oxc.typeAware": true,
-  "oxc.fmt.configPath": ".oxfmtrc.json",
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "js/ts.tsdk.path": "node_modules/typescript/lib"
 }

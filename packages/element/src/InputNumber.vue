@@ -1,52 +1,65 @@
 <script setup lang="tsx">
-  import { ElInputNumber } from 'element-plus'
-  import type { HTMLAttributes, VNodeChild } from 'vue'
-  import type { XComponentSize } from './types'
+import type { HTMLAttributes, VNodeChild } from 'vue'
 
-  export interface XInputNumberProps {
-    placeholder?: string
-    disabled?: boolean
-    controls?: boolean
-    precision?: number
-    stepStrictly?: boolean
-    align?: 'left' | 'right' | 'center'
-    max?: number
-    min?: number
-    size?: XComponentSize
-    step?: number
-    inputmode?: HTMLAttributes['inputmode']
-  }
+import { ElInputNumber } from 'element-plus'
 
-  const { disabled = false } = defineProps<XInputNumberProps>()
+import type { XComponentSize } from './types'
 
-  const model = defineModel<number>()
+export interface XInputNumberProps {
+  align?: 'center' | 'left' | 'right'
+  controls?: boolean
+  disabled?: boolean
+  inputmode?: HTMLAttributes['inputmode']
+  max?: number
+  min?: number
+  placeholder?: string
+  precision?: number
+  size?: XComponentSize
+  step?: number
+  stepStrictly?: boolean
+}
 
-  const emit = defineEmits<{
-    focus: [e: FocusEvent]
-    blur: [e: FocusEvent]
-  }>()
+const { disabled = false } = defineProps<XInputNumberProps>()
 
-  defineSlots<{
-    suffix: () => VNodeChild
-    prefix: () => VNodeChild
-  }>()
+const model = defineModel<number>()
 
-  const focus = (e: FocusEvent) => {
-    emit('focus', e)
-  }
+const emit = defineEmits<{
+  blur: [e: FocusEvent]
+  focus: [e: FocusEvent]
+}>()
 
-  const blur = (e: FocusEvent) => {
-    emit('blur', e)
-  }
+defineSlots<{
+  prefix: () => VNodeChild
+  suffix: () => VNodeChild
+}>()
+
+const focus = (e: FocusEvent) => {
+  emit('focus', e)
+}
+
+const blur = (e: FocusEvent) => {
+  emit('blur', e)
+}
 </script>
 
 <template>
-  <ElInputNumber v-bind="{ ...$props, disabled }" :model-value="model" @blur="blur" @focus="focus">
-    <template v-if="$slots.prefix" #prefix>
-      <slot name="prefix"></slot>
+  <ElInputNumber
+    v-bind="{ ...$props, disabled }"
+    :model-value="model"
+    @blur="blur"
+    @focus="focus"
+  >
+    <template
+      v-if="$slots.prefix"
+      #prefix
+    >
+      <slot name="prefix" />
     </template>
-    <template v-if="$slots.suffix" #suffix>
-      <slot name="suffix"></slot>
+    <template
+      v-if="$slots.suffix"
+      #suffix
+    >
+      <slot name="suffix" />
     </template>
   </ElInputNumber>
 </template>

@@ -1,17 +1,18 @@
 <script setup lang="tsx">
-  import { ElPagination } from 'element-plus'
-  import type { XComponentSize } from './types'
+import { ElPagination } from 'element-plus'
 
-  export interface XPaginationProps {
-    size?: XComponentSize
-    total?: number
-    pageSizes?: number[]
-  }
+import type { XComponentSize } from './types'
 
-  defineProps<XPaginationProps>()
+export interface XPaginationProps {
+  pageSizes?: number[]
+  size?: XComponentSize
+  total?: number
+}
 
-  const currentPage = defineModel<number>('currentPage')
-  const pageSize = defineModel<number>('pageSize')
+defineProps<XPaginationProps>()
+
+const currentPage = defineModel<number>('currentPage')
+const pageSize = defineModel<number>('pageSize')
 </script>
 
 <template>
@@ -20,6 +21,6 @@
     v-model:current-page="currentPage"
     v-model:page-size="pageSize"
   >
-    <slot></slot>
+    <slot />
   </ElPagination>
 </template>

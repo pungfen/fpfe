@@ -1,28 +1,30 @@
 <script setup lang="tsx">
-  import { ElInput } from 'element-plus'
-  import type { VNodeChild } from 'vue'
-  import type { XComponentSize, XInputType } from './types'
+import type { VNodeChild } from 'vue'
 
-  export interface XInputProps {
-    disabled?: boolean
-    type?: XInputType
-    size?: XComponentSize
-  }
+import { ElInput } from 'element-plus'
 
-  defineSlots<{
-    suffix: () => VNodeChild
-    prefix: () => VNodeChild
-    append: () => VNodeChild
-    prepend: () => VNodeChild
-  }>()
-  const { disabled = false, type = 'text' } = defineProps<XInputProps>()
+import type { XComponentSize, XInputType } from './types'
 
-  defineEmits<{
-    focus: [e: FocusEvent]
-    blur: [e: FocusEvent]
-  }>()
+export interface XInputProps {
+  disabled?: boolean
+  size?: XComponentSize
+  type?: XInputType
+}
 
-  const model = defineModel<string | number>()
+defineSlots<{
+  append: () => VNodeChild
+  prefix: () => VNodeChild
+  prepend: () => VNodeChild
+  suffix: () => VNodeChild
+}>()
+const { disabled = false, type = 'text' } = defineProps<XInputProps>()
+
+defineEmits<{
+  blur: [e: FocusEvent]
+  focus: [e: FocusEvent]
+}>()
+
+const model = defineModel<number | string>()
 </script>
 
 <template>
@@ -32,17 +34,29 @@
     @blur="$emit('blur', $event)"
     @focus="$emit('focus', $event)"
   >
-    <template v-if="$slots.append" #append>
-      <slot name="append"></slot>
+    <template
+      v-if="$slots.append"
+      #append
+    >
+      <slot name="append" />
     </template>
-    <template v-if="$slots.prepend" #prepend>
-      <slot name="prepend"></slot>
+    <template
+      v-if="$slots.prepend"
+      #prepend
+    >
+      <slot name="prepend" />
     </template>
-    <template v-if="$slots.prefix" #prefix>
-      <slot name="prefix"></slot>
+    <template
+      v-if="$slots.prefix"
+      #prefix
+    >
+      <slot name="prefix" />
     </template>
-    <template v-if="$slots.suffix" #suffix>
-      <slot name="suffix"></slot>
+    <template
+      v-if="$slots.suffix"
+      #suffix
+    >
+      <slot name="suffix" />
     </template>
   </ElInput>
 </template>
