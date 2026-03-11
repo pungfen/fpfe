@@ -1,6 +1,6 @@
 <script setup lang="tsx" generic="D extends object">
   import { ElForm } from 'element-plus'
-  import { useTemplateRef, type VNodeChild } from 'vue'
+  import { type VNodeChild, useTemplateRef } from 'vue'
 
   export interface XFormProps<D> {
     data?: D[]
@@ -10,6 +10,14 @@
     labelWidth?: number | string
     labelPosition?: 'left' | 'right' | 'top'
     content?: (scope: { data: D }) => VNodeChild
+  }
+
+  export interface XFormItemProps<D> {
+    content?: () => VNodeChild
+    label?: string
+    labelPosition?: '' | 'left' | 'right' | 'top'
+    labelWidth?: number | string
+    required?: boolean
   }
 
   const { disabled = false, content, data } = defineProps<XFormProps<D>>()

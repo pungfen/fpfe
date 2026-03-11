@@ -1,0 +1,10 @@
+{
+  "extends": "@fpfe/tsconfig/tsconfig.node24.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+  },
+  "include": [
+    "vite.config.ts"
+  ]
+}

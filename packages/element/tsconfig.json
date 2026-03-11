@@ -1,17 +1,16 @@
 {
   "extends": [
     "@vue/tsconfig/tsconfig.dom.json",
-    "@vue/tsconfig/tsconfig.lib.json"
   ],
   "compilerOptions": {
     "lib": [
       "ESNext",
       "DOM",
       "DOM.Iterable"
-    ],
+    ]
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue",
+    "src/**/*.vue"
   ]
 }

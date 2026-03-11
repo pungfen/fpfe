@@ -1,42 +1,47 @@
 <script setup lang="tsx">
-import { ElInputNumber } from 'element-plus'
-import { type VNodeChild } from 'vue'
+  import { ElInputNumber } from 'element-plus'
+  import type { HTMLAttributes, VNodeChild } from 'vue'
+  import type { XComponentSize } from './types'
 
-export interface XInputNumberProps {
-  controls?: boolean
-  disabled?: boolean
-  max?: number
-  min?: number
-  type?:
-    | 'text'
-    | 'textarea'
-    | 'number'
-    | 'password'
-    | 'email'
-    | 'search'
-    | 'tel'
-    | 'url'
-    | (string & NonNullable<unknown>)
-}
+  export interface XInputNumberProps {
+    placeholder?: string
+    disabled?: boolean
+    controls?: boolean
+    precision?: number
+    stepStrictly?: boolean
+    align?: 'left' | 'right' | 'center'
+    max?: number
+    min?: number
+    size?: XComponentSize
+    step?: number
+    inputmode?: HTMLAttributes['inputmode']
+  }
 
-const { disabled = false } = defineProps<XInputNumberProps>()
+  const { disabled = false } = defineProps<XInputNumberProps>()
 
-defineSlots<{
-  suffix: () => VNodeChild
-  prefix: () => VNodeChild
-  decreaseIcon: () => VNodeChild
-  increaseIcon: () => VNodeChild
-}>()
+  const model = defineModel<number>()
+
+  const emit = defineEmits<{
+    focus: [e: FocusEvent]
+    blur: [e: FocusEvent]
+  }>()
+
+  defineSlots<{
+    suffix: () => VNodeChild
+    prefix: () => VNodeChild
+  }>()
+
+  const focus = (e: FocusEvent) => {
+    emit('focus', e)
+  }
+
+  const blur = (e: FocusEvent) => {
+    emit('blur', e)
+  }
 </script>
 
 <template>
-  <ElInputNumber v-bind="{ ...$props, disabled }">
-    <template v-if="$slots.decreaseIcon" #decrease-icon>
-      <slot name="decreaseIcon"></slot>
-    </template>
-    <template v-if="$slots.increaseIcon" #increase-icon>
-      <slot name="increaseIcon"></slot>
-    </template>
+  <ElInputNumber v-bind="{ ...$props, disabled }" :model-value="model" @blur="blur" @focus="focus">
     <template v-if="$slots.prefix" #prefix>
       <slot name="prefix"></slot>
     </template>

@@ -1,8 +1,9 @@
 <script setup lang="tsx">
   import { ElPagination } from 'element-plus'
+  import type { XComponentSize } from './types'
 
   export interface XPaginationProps {
-    size?: 'large' | 'default' | 'small'
+    size?: XComponentSize
     total?: number
     pageSizes?: number[]
   }

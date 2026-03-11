@@ -26,6 +26,11 @@ mock-dist
 *.sw?
 
 *.output
+*.tsbuildinfo
+
+auto-imports.d.ts
+components.d.ts
+typed-router.d.ts
 
 # npm build
 npm/**/cjs

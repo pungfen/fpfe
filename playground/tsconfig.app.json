@@ -1,0 +1,23 @@
+{
+  "extends": "@fpfe/tsconfig/tsconfig.vue.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    },
+    "types": [
+      "vite/client",
+      "vue-router/auto"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "typed-router.d.ts"
+  ]
+}

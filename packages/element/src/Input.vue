@@ -1,11 +1,12 @@
-<script setup lang="tsx" generic="MV extends string | number">
+<script setup lang="tsx">
   import { ElInput } from 'element-plus'
-  import { type VNodeChild } from 'vue'
-  import type { XInputType } from './types'
+  import type { VNodeChild } from 'vue'
+  import type { XComponentSize, XInputType } from './types'
 
   export interface XInputProps {
     disabled?: boolean
     type?: XInputType
+    size?: XComponentSize
   }
 
   defineSlots<{
@@ -21,7 +22,7 @@
     blur: [e: FocusEvent]
   }>()
 
-  const model = defineModel<MV>({ default: '', required: false })
+  const model = defineModel<string | number>()
 </script>
 
 <template>

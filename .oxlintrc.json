@@ -1,5 +1,9 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    "**/dist/",
+    "**/coverage/"
+  ],
   "categories": {
     // 明显错误或无用的代码
     "correctness": "error",
@@ -17,7 +21,8 @@
     "promise",
     "unicorn",
     "import",
-    "vue"
+    "vue",
+    "vitest"
   ],
   "jsPlugins": [
     {
@@ -25,6 +30,31 @@
       "specifier": "eslint-plugin-vue"
     }
   ],
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "rules": {
+    "no-shadow": "off",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "typescript/prefer-ts-expect-error": "error",
+    "typescript/consistent-type-imports": [
+      "error",
+      {
+        "fixStyle": "inline-type-imports",
+        "disallowTypeAnnotations": false
+      }
+    ],
+    "typescript/no-import-type-side-effects": "error",
+    "typescript/no-explicit-any": "off",
+    "typescript/no-unused-vars": "off",
+    "typescript/ban-ts-comment": "off"
+  },
   "overrides": [
     {
       "files": [
@@ -45,18 +75,4 @@
       }
     }
   ],
-  "options": {
-    "typeAware": true,
-    "typeCheck": true
-  },
-  "rules": {
-    "no-shadow": "off",
-    "typescript/no-floating-promises": [
-      "error",
-      {
-        "ignoreVoid": true
-      }
-    ],
-    "typescript/no-unsafe-assignment": "warn"
-  }
 }
