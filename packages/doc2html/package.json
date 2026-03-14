@@ -1,7 +1,7 @@
 {
   "name": "@fpfe/doc2html",
-  "version": "1.0.0",
   "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "start": "tsx src/index.ts",
     "lint": "oxlint",

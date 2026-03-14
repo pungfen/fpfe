@@ -1,13 +1,18 @@
-import { Config, MaybeArray } from '../types'
-import { interopDefault } from '../utils'
+import js from '@eslint/js'
 
-export const javascript = async (): Promise<MaybeArray<Config>> => {
-  const jsPlugin = await interopDefault(import('@eslint/js'))
+import { type Config } from '../types'
+import { pluginFpfe } from '../plugins'
 
+export const javascript = async (): Promise<Config[]> => {
   return [
     {
-      name: 'fpfe/js',
-      ...jsPlugin.configs.recommended
+      ...js.configs.recommended,
+      name: 'fpfe/js/recommend'
+    },
+    {
+      plugins: {
+        fpfe: pluginFpfe()
+      }
     }
   ]
 }

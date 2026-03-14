@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    // 大多数非库项目不需要生成声明。 因此我们默认添加此选项以使配置对大多数项目更友好。
-    "noEmit": true,
+    "moduleDetection": "force",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "moduleDetection": "force",
     "strict": true,
     "exactOptionalPropertyTypes": true,
+    // 大多数非库项目不需要生成声明。 因此我们默认添加此选项以使配置对大多数项目更友好。
+    "noEmit": true,
   }
 }

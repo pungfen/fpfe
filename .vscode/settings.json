@@ -6,6 +6,7 @@
   "editor.formatOnSave": false,
   "eslint.validate": [
     "javascript",
+    "javascriptreact",
     "typescript",
     "typescriptreact",
     "vue",
@@ -13,9 +14,7 @@
     "jsonc",
     "css"
   ],
-  "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off", "fixable": true },
-  ],
+  "eslint.rules.customizations": [],
   "files.associations": {
     "*.css": "tailwindcss"
   },

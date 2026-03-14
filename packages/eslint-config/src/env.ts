@@ -13,11 +13,9 @@ const isPackageExists = (name: string): boolean => {
 
 export const hasTypeScript = (): boolean => isPackageExists('typescript')
 
-export const hasVue = (): boolean =>
-  isPackageExists('vue')
-  || isPackageExists('nuxt')
-  || isPackageExists('vitepress')
-  || isPackageExists('@slidev/cli')
+export const hasVue = (): boolean => isPackageExists('vue') || isPackageExists('nuxt') || isPackageExists('vitepress') || isPackageExists('@slidev/cli')
+
+export const hasTypescript = (): boolean => isPackageExists('typescript')
 
 export function isInEditorEnv(): boolean {
   if (process.env.CI) return false

@@ -1,16 +1,19 @@
-import { type Linter } from 'eslint'
+import { type Config } from '../types'
 
-import { MaybeArray } from '../types'
-import { interopDefault } from '../utils'
+import pluginStylistic from '@stylistic/eslint-plugin'
 
-export const stylistic = async (): Promise<MaybeArray<Linter.Config>> => {
-  const stylisticPlugin = await interopDefault(import('@stylistic/eslint-plugin'))
-  return {
-    plugins: {
-      ['@stylistic']: stylisticPlugin
-    },
-    rules: {
-      ...stylisticPlugin.configs.customize({ commaDangle: 'never' }).rules
-    }
-  }
+const stylisticConfig = pluginStylistic.configs.customize({ commaDangle: 'never' })
+
+export const stylistic = (): Config[] => {
+
+
+
+  return [
+    {
+      name: 'fpfe/stylistic',
+      ...stylisticConfig,
+      rules: {
+        ...stylisticConfig.rules
+      }
+    }]
 }

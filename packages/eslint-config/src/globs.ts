@@ -34,37 +34,38 @@ export const GLOB_ALL_SRC: string[] = [
   GLOB_HTML
 ]
 
-export const GLOB_NODE_MODULES = '**/node_modules' as const
-export const GLOB_DIST = '**/dist' as const
-export const GLOB_LOCKFILE: string[] = [
+export const GLOB_EXCLUDE: string[] = [
+  '**/node_modules',
+  '**/dist',
   '**/package-lock.json',
   '**/yarn.lock',
   '**/pnpm-lock.yaml',
-  '**/bun.lockb'
-]
-export const GLOB_EXCLUDE: string[] = [
-  GLOB_NODE_MODULES,
-  GLOB_DIST,
-  ...GLOB_LOCKFILE,
+  '**/bun.lockb',
 
-  'output',
+  '**/output',
   '**/coverage',
   '**/temp',
-  '**/fixtures',
+  '**/.temp',
+  '**/tmp',
+  '**/.tmp',
+  '**/.history',
   '**/.vitepress/cache',
   '**/.nuxt',
+  '**/.next',
+  '**/.svelte-kit',
   '**/.vercel',
   '**/.changeset',
   '**/.idea',
+  '**/.cache',
   '**/.output',
   '**/.vite-inspect',
-  '**/.nitro',
-  '**/.context', // Conductor
+  '**/.yarn',
+  '**/vite.config.*.timestamp-*',
 
   '**/CHANGELOG*.md',
   '**/*.min.*',
   '**/LICENSE*',
   '**/__snapshots__',
   '**/auto-import?(s).d.ts',
-  '**/components.d.ts'
+  '**/components.d.ts',
 ]

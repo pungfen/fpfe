@@ -1,8 +1,8 @@
 <script setup lang="tsx" generic="D extends Record<string, unknown>">
-import { ElTable, ElTableColumn, type TableColumnCtx } from 'element-plus'
-import { type CSSProperties, type FunctionalComponent, provide, useTemplateRef, type VNodeChild } from 'vue'
-
 import type { XComponentSize } from './types'
+import { ElTable, ElTableColumn, type TableColumnCtx } from 'element-plus'
+
+import { type CSSProperties, type FunctionalComponent, provide, useTemplateRef, type VNodeChild } from 'vue'
 
 import { X_ELEMENT_IN_X_TABLE } from './constants'
 

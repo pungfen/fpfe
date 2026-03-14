@@ -1,1 +1,2 @@
-export * from './configs/stylistic'
+export * from './configs'
+export * from './factory'

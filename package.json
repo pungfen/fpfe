@@ -1,7 +1,7 @@
 {
   "name": "fpfe",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "pnpm -C build start",
     "dev": "pnpm -C playground dev",
@@ -12,6 +12,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@fpfe/eslint-config": "workspace:*",
+    "@fpfe/prettier-config": "workspace:*",
     "@fpfe/tsconfig": "workspace:*",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/node": "^25.4.0",

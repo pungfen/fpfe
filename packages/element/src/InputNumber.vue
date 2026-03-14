@@ -1,9 +1,9 @@
 <script setup lang="tsx">
 import type { HTMLAttributes, VNodeChild } from 'vue'
 
-import { ElInputNumber } from 'element-plus'
-
 import type { XComponentSize } from './types'
+
+import { ElInputNumber } from 'element-plus'
 
 export interface XInputNumberProps {
   align?: 'center' | 'left' | 'right'

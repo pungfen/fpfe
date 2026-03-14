@@ -8,9 +8,7 @@ const MessageComponent = {
 
 describe('Table', () => {
   it('basic render', () => {
-    const wrapper = mount(MessageComponent, {
-      props: { msg: 'xx' }
-    })
+    const wrapper = mount(MessageComponent, { props: { msg: 'xx' }})
     expect(wrapper.text()).toContain('xx')
   })
 })

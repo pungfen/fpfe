@@ -1,9 +1,9 @@
 <script setup lang="tsx" generic="D, V, MV extends V | V[]">
+import type { XComponentSize } from './types'
 import { useArrayMap } from '@vueuse/core'
 import { ElOption, ElSelect } from 'element-plus'
-import { computed, type Ref, ref, watch } from 'vue'
 
-import type { XComponentSize } from './types'
+import { computed, type Ref, ref, watch } from 'vue'
 
 export interface XSelectOptionProps<V> {
   disabled?: boolean

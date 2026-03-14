@@ -1,15 +1,15 @@
 <script setup lang="tsx">
 import type { VNodeChild } from 'vue'
 
-import { ElInput } from 'element-plus'
-
-import type { XComponentSize, XInputType } from './types'
+import { ElInput, type InputProps, type InputType } from 'element-plus'
 
 export interface XInputProps {
-  disabled?: boolean
-  size?: XComponentSize
-  type?: XInputType
+  disabled?: InputProps['disabled']
+  size?: InputProps['size']
+  type?: InputProps['type']
 }
+
+export type XInputType = InputType
 
 defineSlots<{
   append: () => VNodeChild
@@ -17,7 +17,7 @@ defineSlots<{
   prepend: () => VNodeChild
   suffix: () => VNodeChild
 }>()
-const { disabled = false, type = 'text' } = defineProps<XInputProps>()
+defineProps<XInputProps>()
 
 defineEmits<{
   blur: [e: FocusEvent]
@@ -28,34 +28,17 @@ const model = defineModel<number | string>()
 </script>
 
 <template>
-  <ElInput
-    v-bind="{ disabled, type }"
-    v-model="model"
-    @blur="$emit('blur', $event)"
-    @focus="$emit('focus', $event)"
-  >
-    <template
-      v-if="$slots.append"
-      #append
-    >
+  <ElInput v-bind="{ disabled, type, size }" v-model="model" @blur="$emit('blur', $event)" @focus="$emit('focus', $event)">
+    <template v-if="$slots.append" #append>
       <slot name="append" />
     </template>
-    <template
-      v-if="$slots.prepend"
-      #prepend
-    >
+    <template v-if="$slots.prepend" #prepend>
       <slot name="prepend" />
     </template>
-    <template
-      v-if="$slots.prefix"
-      #prefix
-    >
+    <template v-if="$slots.prefix" #prefix>
       <slot name="prefix" />
     </template>
-    <template
-      v-if="$slots.suffix"
-      #suffix
-    >
+    <template v-if="$slots.suffix" #suffix>
       <slot name="suffix" />
     </template>
   </ElInput>

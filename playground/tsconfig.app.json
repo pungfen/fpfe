@@ -3,6 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "jsx": "preserve",
     "paths": {
       "@/*": [
         "./src/*"
@@ -11,8 +12,7 @@
     "types": [
       "vite/client",
       "vue-router/auto"
-    ],
-    "jsx": "preserve"
+    ]
   },
   "include": [
     "src/**/*.ts",

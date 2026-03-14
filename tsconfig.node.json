@@ -1,7 +1,9 @@
 {
   "extends": "@fpfe/tsconfig/tsconfig.node24.json",
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "module": "preserve",
+    "moduleResolution": "bundler"
   },
   "include": [
     "eslint.config.ts",

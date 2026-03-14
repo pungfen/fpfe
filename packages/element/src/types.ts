@@ -1,7 +1,4 @@
-import type { ButtonType, ComponentSize, InputType } from 'element-plus'
-
-export type XButtonType = ButtonType
+import type { ComponentSize } from 'element-plus'
 
 export type XComponentSize = ComponentSize
 
-export type XInputType = InputType

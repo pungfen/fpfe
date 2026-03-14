@@ -1,12 +1,12 @@
 {
   "name": "@fpfe/packer",
+  "type": "module",
   "version": "0.0.1",
   "description": "A packer for fpfe",
   "author": {
     "name": "pungfen",
     "email": "fp94214@gmail.com"
   },
-  "type": "module",
   "main": "src/index.ts",
   "dependencies": {
     "cac": "^7.0.0",
