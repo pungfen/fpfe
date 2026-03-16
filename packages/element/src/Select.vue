@@ -3,7 +3,9 @@ import type { XComponentSize } from './types'
 import { useArrayMap } from '@vueuse/core'
 import { ElOption, ElSelect } from 'element-plus'
 
-import { computed, type Ref, ref, watch } from 'vue'
+import { computed, inject, type Ref, ref, watch } from 'vue'
+
+import { X_FORM_ITEM_VALIDATION } from './constants'
 
 export interface XSelectOptionProps<V> {
   disabled?: boolean
@@ -112,6 +114,17 @@ const localModel = computed({
     }
   }
 })
+
+const formItemValidation = inject(X_FORM_ITEM_VALIDATION, undefined)
+if (formItemValidation?.required) {
+  const { label, validator } = formItemValidation
+  formItemValidation.validator = () => {
+    if (!model.value || (Array.isArray(model.value) && model.value.length === 0)) {
+      return `请选择${label}`
+    }
+    return validator?.()
+  }
+}
 </script>
 
 <template>

@@ -2,7 +2,7 @@
 import type { XFormItemValidation } from './FormItem.vue'
 import { ElForm } from 'element-plus'
 import { provide, useTemplateRef, type VNodeChild } from 'vue'
-import { X_FORM_VALIDATIONS } from './constants'
+import { X_ELEMENT_IN_FORM, X_FORM_VALIDATIONS } from './constants'
 
 export interface XFormItemProps {
   content?: () => VNodeChild
@@ -14,7 +14,7 @@ export interface XFormItemProps {
 
 export interface XFormProps<D> {
   content?: (scope: { data: D }) => VNodeChild
-  data?: D[]
+  data?: D
   disabled?: boolean
   inline?: boolean
   labelPosition?: 'left' | 'right' | 'top'
@@ -28,12 +28,14 @@ const form = useTemplateRef('form')
 
 const Content = () => content?.({ data: data ?? {} } as { data: D })
 
+provide(X_ELEMENT_IN_FORM, true)
+
 const validations = [] as XFormItemValidation[]
 provide(X_FORM_VALIDATIONS, validations)
 const validate = () => validations.every(item => item.validate())
-const resetFields = () => validations.forEach(it => it.clearValidate())
+const clearValidate = () => validations.forEach(it => it.clearValidate())
 
-defineExpose({ data, resetFields, validate })
+defineExpose({ clearValidate, data, validate })
 </script>
 
 <template>

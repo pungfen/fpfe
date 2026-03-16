@@ -1,12 +1,15 @@
 <script setup lang="tsx" generic="V extends string">
 import { type DatePickerProps, ElDatePicker } from 'element-plus'
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
+
+import { X_FORM_ITEM_VALIDATION } from './constants'
 
 export interface XDatePickerProps {
   disabled?: boolean
   disabledDate?: DatePickerProps['disabledDate']
   endPlaceholder?: DatePickerProps['endPlaceholder']
   placeholder?: DatePickerProps['placeholder']
+  shortcuts?: DatePickerProps['shortcuts']
   startPlaceholder?: DatePickerProps['startPlaceholder']
   type?: DatePickerProps['type']
   valueFormat?: DatePickerProps['valueFormat']
@@ -16,7 +19,8 @@ const {
   endPlaceholder = '结束日期',
   placeholder = '请选择',
   startPlaceholder = '开始日期',
-  type = 'date' } = defineProps<XDatePickerProps>()
+  type = 'date'
+} = defineProps<XDatePickerProps>()
 
 const model = defineModel<V>()
 const start = defineModel<V>('start')
@@ -43,6 +47,20 @@ const modelValue = computed({
   }
 })
 
+const formItemValidation = inject(X_FORM_ITEM_VALIDATION, undefined)
+if (formItemValidation?.required) {
+  const { label, validator } = formItemValidation
+  formItemValidation.validator = () => {
+    if (type.includes('range') && (!start.value || !end.value)) {
+      return `请选择${label}`
+    }
+    else if (!model.value) {
+      return `请选择${label}`
+    }
+    return validator?.()
+  }
+}
+
 defineEmits<{
   blur: [e: FocusEvent]
   focus: [e: FocusEvent]
@@ -51,7 +69,7 @@ defineEmits<{
 
 <template>
   <ElDatePicker
-    v-bind="{ disabled, disabledDate, type, valueFormat, placeholder, startPlaceholder, endPlaceholder }"
+    v-bind="{ disabled, disabledDate, type, valueFormat, placeholder, startPlaceholder, endPlaceholder, shortcuts }"
     v-model="modelValue"
     @blur="$emit('blur', $event)"
     @focus="$emit('focus', $event)"

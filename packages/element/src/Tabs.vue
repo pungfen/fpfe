@@ -1,22 +1,24 @@
 <script setup lang="tsx" generic="V extends string | number">
-import type { XTabPaneConfig } from './TabPane.vue'
+import { createEventHook } from '@vueuse/core'
 import { ElTabs, type TabsProps } from 'element-plus'
 import { provide } from 'vue'
-import { X_TABS_PANES } from './constants'
+import { X_ELEMENT_IN_TABS, X_TABS_MODEL_UPDATE_HOOK } from './constants'
 
 export interface XTabsProps {
-  addable: TabsProps['addable']
-  editable: TabsProps['editable']
-  tabPosition: TabsProps['tabPosition']
+  addable?: TabsProps['addable']
+  editable?: TabsProps['editable']
+  tabPosition?: TabsProps['tabPosition']
   type?: TabsProps['type']
 }
 
 defineProps<XTabsProps>()
 
 const model = defineModel<V>()
+provide(X_ELEMENT_IN_TABS, true)
 
-const panes: XTabPaneConfig[] = []
-provide(X_TABS_PANES, panes)
+const modelUpdateHook = createEventHook()
+provide(X_TABS_MODEL_UPDATE_HOOK, modelUpdateHook)
+modelUpdateHook.on(value => model.value = value)
 </script>
 
 <template>

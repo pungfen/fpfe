@@ -1,9 +1,9 @@
 <script setup lang="tsx">
-import type { HTMLAttributes, VNodeChild } from 'vue'
-
 import type { XComponentSize } from './types'
-
 import { ElInputNumber } from 'element-plus'
+import { type HTMLAttributes, inject, type VNode } from 'vue'
+
+import { X_FORM_ITEM_VALIDATION } from './constants'
 
 export interface XInputNumberProps {
   align?: 'center' | 'left' | 'right'
@@ -21,7 +21,7 @@ export interface XInputNumberProps {
 
 const { disabled = false } = defineProps<XInputNumberProps>()
 
-const model = defineModel<number>()
+const model = defineModel<number | undefined>()
 
 const emit = defineEmits<{
   blur: [e: FocusEvent]
@@ -29,9 +29,20 @@ const emit = defineEmits<{
 }>()
 
 defineSlots<{
-  prefix: () => VNodeChild
-  suffix: () => VNodeChild
+  prefix: () => VNode
+  suffix: () => VNode
 }>()
+
+const formItemValidation = inject(X_FORM_ITEM_VALIDATION, undefined)
+if (formItemValidation?.required) {
+  const { label, validator } = formItemValidation
+  formItemValidation.validator = () => {
+    if (!model.value) {
+      return `请输入${label}`
+    }
+    return validator?.()
+  }
+}
 
 const focus = (e: FocusEvent) => {
   emit('focus', e)
@@ -45,7 +56,7 @@ const blur = (e: FocusEvent) => {
 <template>
   <ElInputNumber
     v-bind="{ ...$props, disabled }"
-    :model-value="model"
+    v-model="model"
     @blur="blur"
     @focus="focus"
   >

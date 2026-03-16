@@ -14,7 +14,13 @@ import { VueRouterAutoImports } from 'vue-router/unplugin'
 
 const XResolve: Record<string, string[]> = {
   XButton: ['element-plus/es/components/button/style/css'],
-  XTable: ['element-plus/es/components/table/style/css']
+  XInput: ['element-plus/es/components/input/style/css'],
+  XInputNumber: ['element-plus/es/components/input-number/style/css'],
+  XTable: ['element-plus/es/components/table/style/css'],
+  XForm: ['element-plus/es/components/form/style/css'],
+  XFormItem: ['element-plus/es/components/form-item/style/css'],
+  XTabs: ['element-plus/es/components/tabs/style/css'],
+  XTabPane: ['element-plus/es/components/tab-pane/style/css'],
 }
 
 export default defineConfig({

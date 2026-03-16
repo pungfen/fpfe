@@ -21,11 +21,7 @@ export default defineConfig({
   plugins: [
     Vue(),
     VueJsx(),
-    Dts({
-      root: cwd,
-      processor: 'vue',
-      outDirs: resolve(npm, 'types')
-    })
+    Dts({ root: cwd, processor: 'vue', outDirs: resolve(npm, 'types')})
   ],
   external: ['vue', 'element-plus'],
   output: [

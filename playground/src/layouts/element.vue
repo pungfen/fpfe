@@ -9,6 +9,10 @@ const menus = ref([
   {
     index: '/element/table',
     label: 'Table'
+  },
+  {
+    index: '/element/form',
+    label: 'Form'
   }
 ])
 </script>
