@@ -29,6 +29,7 @@ A pnpm workspace-based monorepo project for managing and packaging frontend tool
 | `@fpfe/packer` | Vite wrapper providing minimal config to run dev/build |
 | `@fpfe/pnpm` | pnpm workspace utilities, e.g., getting all packages in workspace |
 | `@fpfe/prettier-config` | Prettier shared config |
+| `@fpfe/skills` | **Shared AI Skills** collection for Claude/Copilot (e.g., page-scaffold for Vue page generation) |
 | `@fpfe/tsconfig` | Shared TypeScript config, similar to @vue/tsconfig |
 
 ## Getting Started
