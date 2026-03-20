@@ -1,0 +1,20 @@
+{
+  "name": "@fpfe/skills",
+  "version": "1.0.0",
+  "description": "Shared AI Skills collection for Claude/Copilot in personal frontend projects",
+  "private": true,
+  "keywords": [
+    "ai-skills",
+    "claude",
+    "copilot",
+    "page-scaffold",
+    "vue"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/pungfen/fpfe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pungfen/fpfe.git",
+    "directory": "packages/skills"
+  }
+}
