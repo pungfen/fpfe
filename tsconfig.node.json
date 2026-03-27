@@ -1,12 +1,6 @@
 {
-  "extends": "@fpfe/tsconfig/tsconfig.node24.json",
   "compilerOptions": {
-    "composite": true,
-    "module": "preserve",
-    "moduleResolution": "bundler"
+    "strict": true,
   },
-  "include": [
-    "eslint.config.ts",
-    "vitest.config.ts"
-  ]
+  "include": ["scripts"]
 }

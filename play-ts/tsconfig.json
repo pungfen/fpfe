@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "declaration": true,
+    "listFiles": true,
+    "types": [],
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "buildOptions": {
+    "dry": false
+  },
+  "exclude": ["node_modules"]
+}

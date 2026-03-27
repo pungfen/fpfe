@@ -1,0 +1,4 @@
+{
+  "extends": "@fpfe/tsconfig/tsconfig.node24.json",
+  "include": ["src"]
+}

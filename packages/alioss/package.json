@@ -1,0 +1,11 @@
+{
+  "name": "@fpfe/alioss",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "ali-oss": "^6.23.0"
+  },
+  "devDependencies": {
+    "@types/ali-oss": "^6.23.3"
+  }
+}
