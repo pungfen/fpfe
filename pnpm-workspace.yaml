@@ -1,7 +1,6 @@
 packages:
   - packages/*
-  - play-vue
-  - play-ts
+  - play
 
 onlyBuiltDependencies:
   - esbuild

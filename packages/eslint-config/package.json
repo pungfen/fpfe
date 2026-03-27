@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "main": "src/index.ts",
+  "scripts": {
+    "lint": "eslint"
+  },
   "peerDependencies": {
     "eslint": "^10.0.3"
   },
