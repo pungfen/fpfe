@@ -1,7 +1,0 @@
-{
-  "name": "@fpfe/play-ts",
-  "type": "module",
-  "devDependencies": {
-    "vitest": "^4.1.2"
-  }
-}
