@@ -1,0 +1,11 @@
+{
+  "name": "@fpfe/element-plus",
+  "version": "0.0.1",
+  "type": "module",
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "element-plus": "catalog:",
+    "typescript": "catalog:"
+  }
+}

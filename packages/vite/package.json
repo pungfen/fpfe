@@ -1,0 +1,27 @@
+{
+  "name": "@fpfe/vite",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    "./local-plugins": {
+      "import": "./src/plugins.ts"
+    },
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./plugin": {
+      "import": "./src/index.ts"
+    }
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  },
+  "peerDependencies": {
+    "vite": "catalog:"
+  },
+  "dependencies": {
+    "unplugin-auto-import": "^21.0.0"
+  }
+}

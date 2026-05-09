@@ -1,0 +1,11 @@
+{
+  "name": "@fpfe/vue",
+  "version": "0.0.1",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  }
+}
