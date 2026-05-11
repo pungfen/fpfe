@@ -2,8 +2,18 @@
   "name": "fpfe",
   "private": true,
   "type": "module",
+  "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "prettier . --write"
+  },
   "devDependencies": {
+    "@fpfe/oxc-config": "workspace:*",
+    "@fpfe/prettier-config": "workspace:*",
     "@fpfe/tsconfig": "workspace:*",
-    "oxlint": "catalog:"
-  }
+    "oxlint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@fpfe/prettier-config"
 }

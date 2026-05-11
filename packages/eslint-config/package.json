@@ -1,0 +1,10 @@
+{
+  "name": "@fpfe/eslint-config",
+  "type": "module",
+  "devDependencies": {
+    "eslint": "catalog:"
+  },
+  "peerDependencies": {
+    "eslint": "catalog:"
+  }
+}

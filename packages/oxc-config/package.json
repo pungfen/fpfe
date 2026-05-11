@@ -1,5 +1,5 @@
 {
-  "name": "@fpfe/oxc",
+  "name": "@fpfe/oxc-config",
   "type": "module",
   "devDependencies": {
     "oxlint": "catalog:"

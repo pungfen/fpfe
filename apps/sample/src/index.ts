@@ -1,11 +1,11 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 
-import { createRouter,createMemoryHistory } from 'vue-router'
+import { createRouter, createMemoryHistory } from 'vue-router';
 
-import App from '@/app.vue'
+import App from '@/app.vue';
 
-const router = createRouter({ history: createMemoryHistory(), routes: [] })
+const router = createRouter({ history: createMemoryHistory(), routes: [] });
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
+app.use(router);
