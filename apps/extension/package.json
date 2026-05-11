@@ -1,0 +1,51 @@
+{
+  "name": "@apps/extension",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "engines": {
+    "vscode": "^1.118.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "工作助手配置",
+      "properties": {
+        "yunxiao.domain": {
+          "type": "string",
+          "default": "openapi-rdc.aliyuncs.com",
+          "scope": "application"
+        }
+      }
+    },
+    "views": {
+      "yunxiao_workbench": [
+        {
+          "id": "yunxiao.workbench",
+          "name": "工作台",
+          "icon": "assets/icon_yunxiao_workbench.svg"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "yunxiao_workbench",
+          "title": "Hello World",
+          "icon": ""
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.118.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

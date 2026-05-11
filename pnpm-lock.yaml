@@ -55,6 +55,18 @@ importers:
         specifier: ^6
         version: 6.0.3
 
+  apps/extension:
+    devDependencies:
+      '@types/vscode':
+        specifier: ^1.118.0
+        version: 1.118.0
+      '@vscode/test-cli':
+        specifier: ^0.0.12
+        version: 0.0.12
+      '@vscode/test-electron':
+        specifier: ^2.5.2
+        version: 2.5.2
+
   apps/sample:
     dependencies:
       '@fpfe/vite':
