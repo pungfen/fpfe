@@ -1,19 +1,20 @@
 {
   "name": "fpfe",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "prettier . --write"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
     "@fpfe/oxc-config": "workspace:*",
     "@fpfe/prettier-config": "workspace:*",
     "@fpfe/tsconfig": "workspace:*",
+    "eslint": "catalog:",
     "oxlint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@fpfe/prettier-config"
+  }
 }
