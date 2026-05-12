@@ -1,12 +1,10 @@
-import type { PluginOption } from 'vite';
+import type { PluginOption } from 'vite'
 
-export const BasePlugin = (
-  options: {
-    base?: string;
-    proxy?: Record<string, string>;
-  } = {},
-): PluginOption[] => {
-  const { base = '/' } = options;
+export function BasePlugin(options: {
+  base?: string
+  proxy?: Record<string, string>
+} = {}): PluginOption[] {
+  const { base = '/' } = options
 
   return [
     {
@@ -15,10 +13,10 @@ export const BasePlugin = (
         base,
         resolve: {
           alias: {
-            '@': './src',
-          },
-        },
-      }),
-    },
-  ];
-};
+            '@': './src'
+          }
+        }
+      })
+    }
+  ]
+}

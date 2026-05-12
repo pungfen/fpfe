@@ -8,7 +8,6 @@
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:",
     "@fpfe/oxc-config": "workspace:*",
     "@fpfe/prettier-config": "workspace:*",
     "@fpfe/tsconfig": "workspace:*",

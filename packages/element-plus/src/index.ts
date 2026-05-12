@@ -1,1 +1,1 @@
-export const name = 'element-plus';
+export const name = 'element-plus'

@@ -1,6 +1,9 @@
 shellEmulator: true
 
 trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver
+  - chokidar
 
 packages:
   - apps/*
@@ -9,11 +12,12 @@ packages:
 overrides:
   typescript: ^6
   vite: ^8
+
 catalog:
-  '@antfu/eslint-config': ^8.2.0,
+  '@antfu/eslint-config': ^8.2.0
   element-plus: ^2.13.7
   eslint: ^10.3.0
-  oxlint: ^1.63.0
+  oxlint: ^1.64.0
   pinia: ^3.0.4
   prettier: ^3.8.3
   typescript: ^6.0.3
