@@ -1,10 +1,10 @@
 {
   "name": "@fpfe/oxc-config",
   "type": "module",
-  "devDependencies": {
+  "peerDependencies": {
     "oxlint": "catalog:"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "oxlint": "catalog:"
   }
 }

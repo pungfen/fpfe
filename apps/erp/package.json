@@ -1,5 +1,5 @@
 {
-  "name": "@apps/sample",
+  "name": "@apps/erp",
   "type": "module",
   "scripts": {
     "dev": "vite"

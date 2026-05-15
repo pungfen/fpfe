@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
+import { BasePlugin } from '@fpfe/vite/local-plugins'
 
-import { BasePlugin } from '@fpfe/vite/local-plugins';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [BasePlugin()],
-});
+  plugins: [BasePlugin()]
+})

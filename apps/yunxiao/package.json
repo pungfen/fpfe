@@ -1,0 +1,53 @@
+{
+  "publisher": "fp94214@gmail.com",
+  "name": "@apps/yunxiao",
+  "type": "module",
+  "version": "1.0.0",
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/index.js",
+  "engines": {
+    "vscode": "^1.118.0"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "yunxiao",
+          "title": "云效工作台",
+          "icon": "assets/icon_yunxiao_workbench.svg"
+        }
+      ]
+    },
+    "views": {
+      "yunxiao": [
+        {
+          "id": "index",
+          "name": "工作台",
+          "icon": "assets/icon_yunxiao_workbench.svg"
+        },
+        {
+          "id": "task",
+          "name": "任务",
+          "icon": "assets/icon_yunxiao_workbench.svg"
+        },
+        {
+          "id": "bug",
+          "name": "缺陷",
+          "icon": "assets/icon_yunxiao_workbench.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --format cjs --external vscode",
+    "test": "vscode-test",
+    "vscode:prepublish": "bun run build"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.118.0",
+    "@vscode/test-cli": "catalog:",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}

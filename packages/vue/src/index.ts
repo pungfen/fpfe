@@ -1,5 +1,5 @@
-import { createApp as createVueApp } from 'vue';
+import { createApp as createVueApp } from 'vue'
 
-export const createApp = () => {
-  const app = createVueApp({});
-};
+export function createApp() {
+  const app = createVueApp({})
+}

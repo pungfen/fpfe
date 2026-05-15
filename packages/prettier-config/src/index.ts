@@ -1,5 +1,5 @@
-import type { Config } from 'prettier';
+import type { Config } from 'prettier'
 
 export default {
-  singleQuote: true,
-} as Config;
+  singleQuote: true
+} as Config

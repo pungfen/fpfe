@@ -1,1 +1,1 @@
-export const name = '@fpfe/crx';
+export const name = '@fpfe/crx'

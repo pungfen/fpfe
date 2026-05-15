@@ -5,5 +5,11 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc ."
+  },
+  "peerDependencies": {
+    "vite": "catalog:"
+  },
+  "devDependencies": {
+    "vite": "catalog:"
   }
 }
