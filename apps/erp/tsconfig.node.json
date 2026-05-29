@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "module": "preserve",
-    "moduleResolution": "bundler",
-    "types": ["node"],
-    "noEmit": true
-  },
-  "include": ["vite.config.ts"]
-}

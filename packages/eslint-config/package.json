@@ -2,9 +2,15 @@
   "name": "@fpfe/eslint-config",
   "type": "module",
   "peerDependencies": {
-    "eslint": "catalog:"
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "catalog:",
+    "eslint-plugin-perfectionist": "^5.9.0",
+    "eslint-plugin-vue": "^10.9.1"
   },
   "devDependencies": {
-    "eslint": "catalog:"
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "catalog:",
+    "eslint-plugin-perfectionist": "^5.9.0",
+    "eslint-plugin-vue": "^10.9.1"
   }
 }

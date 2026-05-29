@@ -2,45 +2,14 @@
   "name": "fpfe",
   "type": "module",
   "private": true,
-  "workspaces": {
-    "packages": ["apps/*", "packages/*"],
-    "catalog": {
-      "@antfu/eslint-config": "^9.0.0",
-      "@tailwindcss/vite": "^4.2.4",
-      "@types/bun": "^1.3.14",
-      "@types/node": "^25.6.2",
-      "@vitejs/plugin-vue": "^6.0.6",
-      "@vitejs/plugin-vue-jsx": "^5.1.5",
-      "@vscode/test-cli": "^0.0.12",
-      "@vscode/test-electron": "^2.5.2",
-      "@vue/tsconfig": "^0.9.1",
-      "element-plus": "^2.13.7",
-      "eslint": "^10.3.0",
-      "oxlint": "^1.64.0",
-      "pinia": "^3.0.4",
-      "prettier": "^3.8.3",
-      "tailwindcss": "^4.2.4",
-      "typescript": "^6.0.3",
-      "vite": " ^8.0.11",
-      "vue": "^3.5.34",
-      "vue-router": "^5.0.6",
-      "vue-tsc": "^3.2.8"
-    }
-  },
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:",
-    "@fpfe/oxc-config": "workspace:*",
-    "@fpfe/prettier-config": "workspace:*",
     "@fpfe/tsconfig": "workspace:*",
-    "@types/bun": "catalog:",
     "eslint": "catalog:",
-    "oxlint": "catalog:",
-    "prettier": "catalog:",
     "typescript": "catalog:"
   }
 }

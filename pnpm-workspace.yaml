@@ -1,0 +1,24 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+packages:
+  - packages/*
+
+catalog:
+  '@tailwindcss/vite': ^4.2.4
+  '@types/node': ^25.6.2
+  '@vitejs/plugin-vue': ^6.0.6
+  '@vitejs/plugin-vue-jsx': ^5.1.5
+  '@vscode/test-cli': ^0.0.12
+  '@vscode/test-electron': ^2.5.2
+  '@vue/tsconfig': ^0.9.1
+  element-plus: ^2.13.7
+  eslint: ^10.3.0
+  pinia: ^3.0.4
+  tailwindcss: ^4.2.4
+  typescript: ^6.0.3
+  vite: ^8.0.11
+  vue: ^3.5.34
+  vue-router: ^5.0.6
+  vue-tsc: ^3.2.2
