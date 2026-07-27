@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+*.env
+
 # AI agent worktrees
 .claude/worktrees/

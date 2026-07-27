@@ -1,12 +1,10 @@
 {
   "name": "@fpfe/ali-oss",
-  "type": "module",
   "version": "0.0.1",
-  "main": "src/index.ts",
-  "scripts": {
-  },
-  "peerDependencies": {
-  },
-  "devDependencies": {
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    "./client": "./client/src/index.ts",
+    "./node": "./node/src/index.ts"
   }
 }
