@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+
+    "allowSyntheticDefaultImports": true,
+
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+
+    "skipLibCheck": true,
+    "incremental": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}

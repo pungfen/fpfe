@@ -1,15 +1,18 @@
 {
   "name": "fpfe",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "format": "prettier . --write"
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "devDependencies": {
     "@fpfe/tsconfig": "workspace:*",
     "eslint": "catalog:",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
     "typescript": "catalog:"
   }
 }

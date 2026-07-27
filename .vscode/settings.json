@@ -1,18 +1,5 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-  },
-  "editor.formatOnSave": false,
-  "eslint.validate": [
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml"
-  ],
-  "prettier.enable": false,
-  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "prettier.enable": false
 }
